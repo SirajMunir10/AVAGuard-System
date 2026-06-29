@@ -1,9 +1,9 @@
 #!/bin/bash
-# Install requirements
-pip install -r web_portal/requirements.txt
+# Install requirements using the flag to override the externally managed environment
+python3 -m pip install -r requirements.txt --break-system-packages
 
 # Run migrations
-python web_portal/manage.py migrate
+python3 web_portal/manage.py migrate --noinput
 
 # Collect static files
-python web_portal/manage.py collectstatic --noinput
+python3 web_portal/manage.py collectstatic --noinput
