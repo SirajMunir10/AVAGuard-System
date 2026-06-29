@@ -1,0 +1,278 @@
+{% extends 'ai_ops/base_ai_ops.html' %}
+{% load static %}
+
+{% block title %}AI Feedback Moderation - AVAGuard{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'ai_ops/css/admin.css' %}?v=3.0">
+<style>
+    .moderation-table-container {
+        border-radius: 12px;
+        background: var(--avag-bg-card, #121224);
+        border: 1px solid var(--avag-border-color, rgba(255, 255, 255, 0.08));
+        overflow: hidden;
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25);
+    }
+    .feedback-row {
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .feedback-row.resolved {
+        opacity: 0;
+        transform: translateX(50px);
+    }
+    .feedback-comment {
+        background: rgba(255, 75, 75, 0.03);
+        border-left: 3px solid var(--avag-accent-danger, #ff4b4b);
+        padding: 8px 12px;
+        border-radius: 0 6px 6px 0;
+        font-size: 13px;
+        color: var(--avag-text-primary);
+        margin-top: 6px;
+    }
+    .badge-confidence {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        font-size: 12px;
+        font-weight: 600;
+        color: var(--avag-text-primary);
+    }
+    .confidence-dot {
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        display: inline-block;
+    }
+    .dot-high { background-color: var(--avag-accent-success, #00ff88); }
+    .dot-medium { background-color: var(--avag-accent-warning, #ffd93d); }
+    .dot-low { background-color: var(--avag-accent-danger, #ff4b4b); }
+    .dot-none { background-color: var(--avag-text-secondary, #808080); }
+    
+    .empty-moderation {
+        text-align: center;
+        padding: 60px 40px;
+        color: var(--avag-text-secondary);
+    }
+    .empty-moderation-icon {
+        width: 64px;
+        height: 64px;
+        color: var(--avag-accent-success, #00ff88);
+        opacity: 0.8;
+        margin-bottom: 16px;
+    }
+    .btn-action-group {
+        display: flex;
+        gap: 8px;
+        justify-content: flex-end;
+    }
+</style>
+{% endblock %}
+
+{% block ai_page_name %}User Feedback{% endblock %}
+
+{% block ai_content %}
+<div class="ai-audit-container">
+    {% csrf_token %}
+
+    <!-- Info banner -->
+    <div class="ai-info-banner warning avag-mb-24">
+        <div class="ai-info-icon">
+            <i data-lucide="shield-alert"></i>
+        </div>
+        <div class="ai-info-text">
+            <strong>Negative Feedback Moderation Queue</strong>
+            <p>This moderation interface indexes all instances where users flagged AI responses as inaccurate or unhelpful, along with their optional qualitative feedback. Review the context, inspect the query execution path inside the Retrieval Inspector, and resolve items once the corpus has been updated or verified.</p>
+        </div>
+    </div>
+
+    <!-- Moderation Table -->
+    <div class="moderation-table-container">
+        <div class="ai-panel-header" style="padding: 20px 24px; border-bottom: 1px solid var(--avag-border-color); display: flex; justify-content: space-between; align-items: center;">
+            <h3 class="ai-panel-title">
+                <i data-lucide="thumbs-down" style="color: var(--avag-accent-danger);"></i> Unresolved Negative Feedback Items
+            </h3>
+            <span class="ai-security-indicator" id="moderation-queue-badge" style="color: var(--avag-accent-warning); background: rgba(255, 217, 61, 0.08);">
+                <i data-lucide="inbox"></i> <span id="queue-count">{{ feedbacks|length }}</span> Items Pending
+            </span>
+        </div>
+
+        <div class="table-container" style="overflow-x: auto;">
+            <table class="avag-table" style="width: 100%; border-collapse: collapse; text-align: left;">
+                <thead>
+                    <tr style="border-bottom: 1px solid var(--avag-border-color); color: var(--avag-text-secondary);">
+                        <th style="padding: 16px 24px; width: 180px;">User Account</th>
+                        <th style="padding: 16px 24px;">Flagged Query & Comments</th>
+                        <th style="padding: 16px 24px; width: 120px;">Confidence</th>
+                        <th style="padding: 16px 24px; width: 110px;">Latency</th>
+                        <th style="padding: 16px 24px; width: 120px;">Citations</th>
+                        <th style="padding: 16px 24px; width: 180px;">Timestamp</th>
+                        <th style="padding: 16px 24px; text-align: right; width: 220px;">Actions</th>
+                    </tr>
+                </thead>
+                <tbody id="moderation-tbody">
+                    {% for fb in feedbacks %}
+                    <tr id="feedback-row-{{ fb.id }}" class="feedback-row" style="border-bottom: 1px solid var(--avag-border-color);">
+                        <td style="padding: 16px 24px; font-weight: 500; color: var(--avag-text-primary); vertical-align: top;">
+                            <div style="display: flex; flex-direction: column; gap: 4px;">
+                                <span><i data-lucide="user" style="width: 12px; height: 12px; vertical-align: middle; margin-right: 4px; color: var(--avag-text-secondary);"></i> {{ fb.submitted_by.email|default:"Anonymous" }}</span>
+                                <span style="font-size: 11px; color: var(--avag-text-secondary);">ID: {{ fb.query_log.id|slice:":8" }}...</span>
+                            </div>
+                        </td>
+                        <td style="padding: 16px 24px; vertical-align: top;">
+                            <div style="display: flex; flex-direction: column; gap: 6px;">
+                                <strong style="color: var(--avag-text-primary); font-weight: 600;">"{{ fb.query_log.query_text }}"</strong>
+                                {% if fb.comment %}
+                                <div class="feedback-comment">
+                                    <i data-lucide="message-square" style="width: 12px; height: 12px; vertical-align: middle; margin-right: 4px; color: var(--avag-accent-danger);"></i>
+                                    <span>{{ fb.comment }}</span>
+                                </div>
+                                {% endif %}
+                            </div>
+                        </td>
+                        <td style="padding: 16px 24px; vertical-align: top;">
+                            {% if fb.query_log.confidence_level == 'high' %}
+                                <span class="badge-confidence"><span class="confidence-dot dot-high"></span>High</span>
+                            {% elif fb.query_log.confidence_level == 'medium' %}
+                                <span class="badge-confidence"><span class="confidence-dot dot-medium"></span>Medium</span>
+                            {% elif fb.query_log.confidence_level == 'low' %}
+                                <span class="badge-confidence"><span class="confidence-dot dot-low"></span>Low</span>
+                            {% else %}
+                                <span class="badge-confidence"><span class="confidence-dot dot-none"></span>None</span>
+                            {% endif %}
+                        </td>
+                        <td style="padding: 16px 24px; color: var(--avag-text-secondary); vertical-align: top;">
+                            {{ fb.query_log.latency_ms|floatformat:0 }} ms
+                        </td>
+                        <td style="padding: 16px 24px; color: var(--avag-text-secondary); vertical-align: top;">
+                            {{ fb.query_log.source_count }} cited
+                        </td>
+                        <td style="padding: 16px 24px; color: var(--avag-text-secondary); vertical-align: top; font-size: 13px;">
+                            <div style="display: flex; flex-direction: column; gap: 4px;">
+                                <span><i data-lucide="clock" style="width: 12px; height: 12px; vertical-align: middle; margin-right: 4px;"></i> {{ fb.submitted_at|date:"M d, Y" }}</span>
+                                <span style="font-size: 11px; color: var(--avag-text-secondary);">at {{ fb.submitted_at|date:"H:i" }}</span>
+                            </div>
+                        </td>
+                        <td style="padding: 16px 24px; text-align: right; vertical-align: top;">
+                            <div class="btn-action-group">
+                                <a href="{% url 'ai_ops_ui:retrieval_inspector' %}?query_id={{ fb.query_log.id }}" class="btn btn-secondary btn-small" style="display: inline-flex; align-items: center; gap: 4px;">
+                                    <i data-lucide="search-code" style="width: 14px; height: 14px;"></i> Inspect
+                                </a>
+                                <button class="btn btn-primary btn-small" onclick="resolveFeedback('{{ fb.id }}')" id="resolve-btn-{{ fb.id }}" style="display: inline-flex; align-items: center; gap: 4px;">
+                                    <i data-lucide="check-circle" style="width: 14px; height: 14px;"></i> Resolve
+                                </button>
+                            </div>
+                        </td>
+                    </tr>
+                    {% empty %}
+                    <tr id="empty-moderation-row">
+                        <td colspan="7" class="empty-moderation">
+                            <i data-lucide="check-circle-2" class="empty-moderation-icon"></i>
+                            <h4>Excellent! Queue is Empty</h4>
+                            <p style="color: var(--avag-text-secondary); font-size: 14px; margin-top: 4px;">All negative user feedback items have been successfully investigated and resolved.</p>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        if (window.lucide) {
+            window.lucide.createIcons();
+        }
+    });
+
+    function resolveFeedback(feedbackId) {
+        const resolveBtn = document.getElementById(`resolve-btn-${feedbackId}`);
+        const row = document.getElementById(`feedback-row-${feedbackId}`);
+        if (!resolveBtn || !row) return;
+
+        // Disable button to prevent double-submits
+        resolveBtn.setAttribute('disabled', 'disabled');
+        resolveBtn.innerHTML = '<span class="spinner-small" style="width:12px; height:12px; border-width:2px;"></span> Resolving...';
+
+        // Retrieve CSRF token
+        let csrfToken = '';
+        const csrfInput = document.querySelector('[name=csrfmiddlewaretoken]');
+        if (csrfInput) {
+            csrfToken = csrfInput.value;
+        }
+
+        fetch('/api/ai/admin/feedback/resolve/', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'X-CSRFToken': csrfToken,
+                'X-Requested-With': 'XMLHttpRequest'
+            },
+            body: JSON.stringify({
+                feedback_id: feedbackId
+            })
+        })
+        .then(async response => {
+            const data = await response.json();
+            if (!response.ok) {
+                throw new Error(data.error || 'Failed to resolve feedback.');
+            }
+            return data;
+        })
+        .then(data => {
+            if (window.Toast) {
+                window.Toast.success('Feedback successfully resolved.');
+            }
+            
+            // Add resolved class to trigger CSS transition
+            row.classList.add('resolved');
+            
+            // Wait for transition, then remove row and update stats count
+            setTimeout(() => {
+                row.remove();
+                
+                // Update badge and item count
+                const countBadge = document.getElementById('queue-count');
+                if (countBadge) {
+                    let currentCount = parseInt(countBadge.textContent) || 0;
+                    if (currentCount > 0) {
+                        currentCount--;
+                        countBadge.textContent = currentCount;
+                    }
+                    
+                    // Show empty state if count drops to 0
+                    if (currentCount === 0) {
+                        const tbody = document.getElementById('moderation-tbody');
+                        tbody.innerHTML = `
+                            <tr id="empty-moderation-row">
+                                <td colspan="7" class="empty-moderation">
+                                    <i data-lucide="check-circle-2" class="empty-moderation-icon"></i>
+                                    <h4>Excellent! Queue is Empty</h4>
+                                    <p style="color: var(--avag-text-secondary); font-size: 14px; margin-top: 4px;">All negative user feedback items have been successfully investigated and resolved.</p>
+                                </td>
+                            </tr>
+                        `;
+                        if (window.lucide) {
+                            window.lucide.createIcons();
+                        }
+                    }
+                }
+            }, 300);
+        })
+        .catch(err => {
+            if (window.Toast) {
+                window.Toast.error(err.message || 'Error resolving feedback.');
+            } else {
+                alert(err.message || 'Error resolving feedback.');
+            }
+            resolveBtn.removeAttribute('disabled');
+            resolveBtn.innerHTML = '<i data-lucide="check-circle" style="width: 14px; height: 14px;"></i> Resolve';
+            if (window.lucide) {
+                window.lucide.createIcons();
+            }
+        });
+    }
+</script>
+{% endblock %}

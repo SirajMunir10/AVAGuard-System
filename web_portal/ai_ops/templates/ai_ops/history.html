@@ -1,0 +1,88 @@
+{% extends 'ai_ops/base_ai_ops.html' %}
+{% load static %}
+
+{% block title %}Query History - AVAGuard{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'ai_ops/css/query.css' %}?v=3.0">
+{% endblock %}
+
+{% block ai_page_name %}Query History{% endblock %}
+
+{% block ai_content %}
+<div class="ai-history-container">
+    
+    <!-- Filter bar -->
+    <div class="ai-filter-bar stat-card avag-mb-24">
+        <div class="ai-search-group">
+            <i data-lucide="search" class="ai-search-icon"></i>
+            <input type="text" id="ai-history-search" placeholder="Filter queries by question content or answer keywords...">
+        </div>
+        <div class="ai-filter-group">
+            <button class="btn btn-secondary" onclick="clearFilters()"><i data-lucide="refresh-cw"></i> Reset</button>
+        </div>
+    </div>
+
+    <!-- History Logs Grid/List -->
+    <div class="stat-card" style="padding: 0; overflow: hidden;">
+        <div class="ai-panel-header" style="padding: 20px 24px; border-bottom: 1px solid var(--avag-border-color);">
+            <h3 class="ai-panel-title"><i data-lucide="list"></i> Your Compliance Logs</h3>
+            <span class="ai-subtitle-text" id="history-count-label">Showing past compliance audits</span>
+        </div>
+
+        <div class="table-container" style="overflow-x: auto;">
+            <table class="avag-table" id="ai-history-table" style="width: 100%; border-collapse: collapse; text-align: left;">
+                <thead>
+                    <tr style="border-bottom: 1px solid var(--avag-border-color); color: var(--avag-text-secondary);">
+                        <th style="padding: 16px 24px;">Question</th>
+                        <th style="padding: 16px 24px;">Answer Preview</th>
+                        <th style="padding: 16px 24px;">Model Used</th>
+                        <th style="padding: 16px 24px;">Latency</th>
+                        <th style="padding: 16px 24px;">Citations</th>
+                        <th style="padding: 16px 24px;">Date</th>
+                        <th style="padding: 16px 24px; text-align: right;">Action</th>
+                    </tr>
+                </thead>
+                <tbody id="ai-history-tbody">
+                    <!-- Loaded via JavaScript AJAX -->
+                    <tr id="history-loading-row">
+                        <td colspan="7" style="padding: 30px; text-align: center; color: var(--avag-text-secondary);">
+                            <span class="spinner-small" style="margin-right: 8px;"></span>
+                            Loading compliance history...
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Pagination control -->
+        <div class="ai-pagination-bar" id="ai-history-pagination">
+            <!-- Populated via Javascript -->
+        </div>
+    </div>
+</div>
+
+<!-- Embed Citations Details Overlay Modal -->
+{% include 'ai_ops/partials/ai_source_modal.html' %}
+
+<!-- Query Card View Overlay Modal (for detail view) -->
+<div id="ai-card-view-modal-container" class="ai-source-modal-container">
+    <div class="ai-source-modal-overlay" onclick="closeCardModal()"></div>
+    <div class="ai-source-modal" style="max-width: 700px;">
+        <div class="ai-source-modal-header" style="border-bottom: none; padding-bottom: 0;">
+            <h3 class="ai-source-modal-title">AI Compliance Record</h3>
+            <button class="ai-source-modal-close" onclick="closeCardModal()" aria-label="Close">&times;</button>
+        </div>
+        <div class="ai-source-modal-body" id="ai-card-modal-content">
+            <!-- Query Card goes here -->
+        </div>
+        <div class="ai-source-modal-footer">
+            <button class="btn btn-secondary" onclick="closeCardModal()">Close Audit</button>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script src="{% static 'ai_ops/js/history.js' %}?v=3.0"></script>
+{% endblock %}

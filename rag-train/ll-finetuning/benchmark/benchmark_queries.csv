@@ -1,0 +1,62 @@
+question,expected_document,category
+What are the CIS password complexity requirements for Windows 11?,cis_intune_win11_26_1_l1_ensure_device_password_enabled.txt,cis_benchmarks
+How do I configure Windows Firewall according to CIS benchmarks?,cis_intune_win11_9_4_apply_host_based_firewalls_or_port.txt,cis_benchmarks
+What are the CIS recommended audit logging policies for Windows 10?,cis_intune_win10_6_2_activate_audit_logging.txt,cis_benchmarks
+How should BitLocker be configured per CIS guidelines?,windows_security_03_endpoint_hardening_bitlocker_encrypt.txt,cis_benchmarks
+What user rights assignments does CIS recommend?,cis_intune_win10_4_10_26_1_l1_ensure_block_user_from_showing.txt,cis_benchmarks
+How to harden Remote Desktop Services per CIS?,cis_intune_win11_4_10_30_1_l1_ensure_configure_offer_remote.txt,cis_benchmarks
+What are CIS account lockout policy settings?,cis_azure_4_10_enforce_automatic_device_lockout.txt,cis_benchmarks
+How to configure Windows Update per CIS Intune?,cis_intune_win11_103_1_l1_ensure_allow_auto_update_is_set.txt,cis_benchmarks
+What CIS controls apply to Azure storage accounts?,cis_azure_14_6_protect_information_through_access_part5.txt,cis_benchmarks
+How do I enable MFA in Azure AD?,azure_security_01_entra_id_multi-factor_authentication_m.txt,azure_security
+What are Azure network security group best practices?,azure_security_04_networking_network_security_group_nsg_.txt,azure_security
+How to secure Azure Key Vault access?,cis_azure_10_2_perform_complete_system_backups.txt,azure_security
+What Azure logging and monitoring controls exist?,cis_azure_6_5_central_log_management.txt,azure_security
+How to configure Azure Conditional Access?,azure_security_01_entra_id_conditional_access_policies.md,azure_security
+What are AWS IAM best practices?,aws_security_01_iam_and_roles_management.txt,aws_security
+How to secure S3 bucket permissions?,aws_security_04_data_protection_s3_bucket_security_and_p.txt,aws_security
+What AWS CloudTrail logging should be enabled?,aws_security_02_security_services_aws_cloudtrail_logging.txt,aws_security
+How to configure AWS VPC security?,aws_security_03_networking_vpc_security_groups_and_nacls.txt,aws_security
+What are the NIST 800-53 access control requirements?,nist_frameworks_02_nist_800_53_access_control_family_ac.txt,nist_frameworks
+How does NIST define incident response procedures?,nist_frameworks_02_nist_800_53_incident_response_ir.txt,nist_frameworks
+What are NIST encryption requirements?,nist_frameworks_02_nist_800_53_system_and_communications.txt,nist_frameworks
+How does NIST 800-53 address audit and accountability?,nist_frameworks_02_nist_800_53_audit_and_accountability_.txt,nist_frameworks
+What is penetration testing?,Section 1 What is PT.txt,root
+What are the different types of penetration tests?,Section 2 Types of Penetration tests.txt,root
+What is passive reconnaissance?,Section 5 Paasive Recon.txt,root
+How do web application exploits work per OWASP?,Section 8 Web App Exploitation - owasp top 10.txt,root
+What are Active Directory attack techniques?,Section 10 Active Directory Attack Techniques.txt,root
+How to perform cloud environment penetration testing?,Section 11 Cloud Environment PT.txt,root
+What is API security testing?,Section 12 API security testing.txt,root
+How do you write a penetration testing report?,Section 15 PT report.txt,root
+What MITRE ATT&CK techniques cover lateral movement?,mitre_attack_04_lateral_movement_t1021_remote_services.txt,mitre_attack
+How does MITRE ATT&CK define persistence?,mitre_attack_02_execution_persistence_t1546_event_trigge.txt,mitre_attack
+What is privilege escalation according to MITRE?,mitre_attack_03_privilege_escalation_t1068_exploitation_.txt,mitre_attack
+What are common Windows hardening techniques?,windows_security_03_endpoint_hardening_attack_surface_re.txt,windows_security
+How to secure Windows registry settings?,cis_intune_win10_8_1_bl_ensure_require_device_part1.txt,windows_security
+What are Linux file permission best practices?,cis_intune_win11_4_11_18_file_explorer.txt,linux_security
+How to harden SSH configuration on Linux?,linux_security_01_hardening_ssh_hardening.txt,linux_security
+What is SQL injection and how to prevent it?,application_security_01_web_security_sql_injection_preve.txt,application_security
+What are cross-site scripting prevention methods?,application_security_01_web_security_xss_and_csrf_protec.txt,application_security
+How to secure REST API endpoints?,application_security_02_api_security_rest_api_security.txt,application_security
+What are network segmentation best practices?,compliance_general_02_pci_dss_network_segmentation_for_p.txt,network_security
+How to configure intrusion detection systems?,network_security_02_ids_ips_suricata_configuration.txt,network_security
+What is the incident response lifecycle?,incident_response_01_ir_procedures_ir_playbook_developme.txt,incident_response
+How to create an incident response plan?,incident_response_01_ir_procedures_ir_playbook_developme.txt,incident_response
+What are SIEM platform capabilities?,linux_security_02_logging_siem_integration.txt,siem_platforms
+How to configure SIEM alert rules?,siem_platforms_01_splunk_alert_and_correlation_rules.txt,siem_platforms
+What is vulnerability scanning methodology?,vulnerability_management_01_scanning_nessus_scan_configu.txt,vulnerability_management
+How to prioritize vulnerabilities for remediation?,vulnerability_management_03_cve_analysis_risk-based_prio.txt,vulnerability_management
+What are common malware analysis techniques?,malware_analysis_02_dynamic_analysis_sandbox_analysis.txt,malware_analysis
+How does GCP IAM differ from AWS IAM?,gcp_security_01_iam_workload_identity_federation.txt,gcp_security
+How can defenders detect and mitigate the abuse of valid accounts?,mitre_attack_01_initial_access_t1078_valid_accounts_abus.txt,mitre_attack
+What are the common techniques for phishing detection and mitigation?,mitre_attack_01_initial_access_t1566_phishing_detection_.txt,mitre_attack
+How does command and scripting interpreter execution occur?,mitre_attack_02_execution_persistence_t1059_command_and_.txt,mitre_attack
+What containment strategies are recommended during incident response?,incident_response_01_ir_procedures_containment_strategie.txt,incident_response
+How should eradication procedures be handled after a security incident?,incident_response_01_ir_procedures_eradication_procedure.txt,incident_response
+How can I configure GCP VPC firewall rules securely?,gcp_security_03_networking_vpc_firewall_rules.txt,gcp_security
+What is Google Cloud Armor WAF and how do I configure it?,gcp_security_02_security_services_cloud_armor_waf.txt,gcp_security
+How can I configure auditd for logging security events on Linux?,linux_security_02_logging_auditd_configuration.txt,linux_security
+What are the differences between SELinux and AppArmor?,linux_security_01_hardening_selinux_and_apparmor.txt,linux_security
+How do you write effective YARA rules for malware detection?,malware_analysis_01_static_analysis_yara_rule_writing.txt,malware_analysis
+What are the key structures to analyze in a PE file?,malware_analysis_01_static_analysis_pe_file_analysis.txt,malware_analysis

@@ -1,0 +1,26 @@
+/**
+ * AVAGuard — Breakpoint Tokens & Responsive Strategy
+ * =========================================================
+ * Centralized responsive design tokens.
+ *
+ * Responsive Strategy Breakpoints:
+ * - Small       (Mobile & Tablets)      : max-width 767px
+ * - Medium      (Standard laptops)      : 768px - 1279px
+ * - Large       (Desktop monitors)      : 1280px - 1919px
+ * - Ultra-Wide  (Large workstations)    : 1920px and above
+ */
+
+:root {
+    /* Responsive Breakpoints */
+    --bp-small-max: 767px;
+    --bp-medium-min: 768px;
+    --bp-medium-max: 1279px;
+    --bp-large-min: 1280px;
+    --bp-large-max: 1919px;
+    --bp-ultrawide-min: 1920px;
+    
+    /* Layout constants */
+    --max-content-width: 1920px;
+    --sidebar-width: 280px;
+    --sidebar-collapsed-width: 80px;
+}

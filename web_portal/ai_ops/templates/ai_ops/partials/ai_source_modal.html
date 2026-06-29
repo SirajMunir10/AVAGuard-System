@@ -1,0 +1,48 @@
+<div id="ai-source-modal-container" class="ai-source-modal-container">
+    <div class="ai-source-modal-overlay" onclick="closeSourceModal()"></div>
+    <div class="ai-source-modal">
+        <div class="ai-source-modal-header">
+            <div class="ai-source-modal-icon">
+                <i data-lucide="file-text"></i>
+            </div>
+            <div class="ai-source-modal-title-group">
+                <div style="display: flex; align-items: center; gap: 8px;">
+                    <span class="ai-src-score" id="ai-source-type" style="text-transform: uppercase; font-size: 10px; font-weight: 700; padding: 2px 6px; border-radius: 4px;">TXT</span>
+                    <h3 class="ai-source-modal-title" id="ai-source-title">Document Source Citation</h3>
+                </div>
+                <div class="ai-source-modal-meta-line" style="margin-top: 4px; font-size: 0.75rem; color: var(--avag-text-secondary); display: flex; align-items: center; gap: 8px;">
+                    <span id="ai-source-score">Match Score: 0.000</span>
+                    <span id="ai-source-date-sep" style="display:none;">·</span>
+                    <span id="ai-source-date" style="display:none;"></span>
+                </div>
+                <div id="ai-source-path" style="font-family: monospace; font-size: 0.72rem; color: var(--avag-text-secondary); margin-top: 4px; word-break: break-all;"></div>
+            </div>
+            <button class="ai-source-modal-close" onclick="closeSourceModal()" aria-label="Close">&times;</button>
+        </div>
+        <div class="ai-source-modal-body">
+            <h4 class="ai-source-body-title">Compliance Registry Excerpt:</h4>
+            <div class="ai-source-snippet-box" id="ai-source-snippet">
+                Loading source details...
+            </div>
+        </div>
+        <div class="ai-source-modal-footer">
+            <div id="ai-source-metadata" style="font-size: 0.75rem; color: var(--avag-text-secondary); display: flex; align-items: center; gap: 8px;"></div>
+            
+            <div style="display: flex; align-items: center; gap: 12px; margin-left: auto;">
+                <!-- Multi-chunk Navigation Controls -->
+                <div id="ai-source-nav-group" style="display: none; align-items: center; gap: 8px; background: var(--avag-bg-input, rgba(255,255,255,0.03)); border: 1px solid var(--avag-border-color, rgba(255,255,255,0.08)); padding: 4px 10px; border-radius: 8px;">
+                    <button id="ai-source-prev-btn" class="btn btn-icon-small" title="Previous Chunk" style="padding: 2px 6px; background: transparent; border: none; color: var(--avag-text-primary); cursor: pointer; display: inline-flex; align-items: center;"><i data-lucide="chevron-left" style="width: 14px; height: 14px;"></i></button>
+                    <span id="ai-source-chunk-id" style="font-size: 0.72rem; font-weight: 600; color: var(--avag-text-secondary);">Chunk 1 of 1</span>
+                    <button id="ai-source-next-btn" class="btn btn-icon-small" title="Next Chunk" style="padding: 2px 6px; background: transparent; border: none; color: var(--avag-text-primary); cursor: pointer; display: inline-flex; align-items: center;"><i data-lucide="chevron-right" style="width: 14px; height: 14px;"></i></button>
+                </div>
+
+                <!-- Standalone Tab view link -->
+                <a id="ai-source-standalone-link" href="#" target="_blank" class="btn btn-secondary btn-sm" style="display: inline-flex; align-items: center; gap: 6px;">
+                    <i data-lucide="external-link" style="width: 14px; height: 14px;"></i> Open Document
+                </a>
+                
+                <button class="btn btn-secondary btn-sm" onclick="closeSourceModal()">Close Viewport</button>
+            </div>
+        </div>
+    </div>
+</div>

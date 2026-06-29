@@ -1,0 +1,2447 @@
+[
+  {
+    "scenario_title": "Response runbook: Remediating unauthorized access and compromised keys in remote wipe and retire commands",
+    "scenario_category": "Incident Response",
+    "domain": "intune",
+    "subdomain": "Device Management",
+    "is_cis": false,
+    "cis_type": "N/A",
+    "security_value": 5,
+    "rag_retrieval_value": 5,
+    "fine_tuning_value": 5,
+    "business_value": 5,
+    "estimated_file_count": 1,
+    "existing_coverage": "No",
+    "match_confidence": 36.4,
+    "technology_tags": [
+      "Microsoft Security Baseline",
+      "Zero Trust"
+    ],
+    "operational_tags": [
+      "Forensics",
+      "Incident Response"
+    ],
+    "priority_score": 5.0
+  },
+  {
+    "scenario_title": "Response runbook: Remediating unauthorized access and compromised keys in Windows Autopilot profiles",
+    "scenario_category": "Incident Response",
+    "domain": "intune",
+    "subdomain": "Autopilot",
+    "is_cis": false,
+    "cis_type": "N/A",
+    "security_value": 5,
+    "rag_retrieval_value": 5,
+    "fine_tuning_value": 5,
+    "business_value": 5,
+    "estimated_file_count": 1,
+    "existing_coverage": "No",
+    "match_confidence": 0.0,
+    "technology_tags": [
+      "Microsoft Security Baseline",
+      "Zero Trust"
+    ],
+    "operational_tags": [
+      "Forensics",
+      "Incident Response"
+    ],
+    "priority_score": 5.0
+  },
+  {
+    "scenario_title": "Response runbook: Remediating unauthorized access and compromised keys in Win32 applications packaging",
+    "scenario_category": "Incident Response",
+    "domain": "intune",
+    "subdomain": "Application Deployment",
+    "is_cis": false,
+    "cis_type": "N/A",
+    "security_value": 5,
+    "rag_retrieval_value": 5,
+    "fine_tuning_value": 5,
+    "business_value": 5,
+    "estimated_file_count": 1,
+    "existing_coverage": "No",
+    "match_confidence": 37.0,
+    "technology_tags": [
+      "Microsoft Security Baseline",
+      "Zero Trust"
+    ],
+    "operational_tags": [
+      "Forensics",
+      "Incident Response"
+    ],
+    "priority_score": 5.0
+  },
+  {
+    "scenario_title": "Response runbook: Remediating unauthorized access and compromised keys in Intune compliance policy settings",
+    "scenario_category": "Incident Response",
+    "domain": "intune",
+    "subdomain": "Compliance Policies",
+    "is_cis": false,
+    "cis_type": "N/A",
+    "security_value": 5,
+    "rag_retrieval_value": 5,
+    "fine_tuning_value": 5,
+    "business_value": 5,
+    "estimated_file_count": 1,
+    "existing_coverage": "No",
+    "match_confidence": 30.0,
+    "technology_tags": [
+      "Microsoft Security Baseline",
+      "Zero Trust"
+    ],
+    "operational_tags": [
+      "Forensics",
+      "Incident Response"
+    ],
+    "priority_score": 5.0
+  },
+  {
+    "scenario_title": "Response runbook: Remediating unauthorized access and compromised keys in Intune Administrative Templates ADMX",
+    "scenario_category": "Incident Response",
+    "domain": "intune",
+    "subdomain": "Configuration Profiles",
+    "is_cis": false,
+    "cis_type": "N/A",
+    "security_value": 5,
+    "rag_retrieval_value": 5,
+    "fine_tuning_value": 5,
+    "business_value": 5,
+    "estimated_file_count": 1,
+    "existing_coverage": "No",
+    "match_confidence": 37.0,
+    "technology_tags": [
+      "Microsoft Security Baseline",
+      "Zero Trust"
+    ],
+    "operational_tags": [
+      "Forensics",
+      "Incident Response"
+    ],
+    "priority_score": 5.0
+  },
+  {
+    "scenario_title": "Response runbook: Remediating unauthorized access and compromised keys in Apple ADE enrollment profiles",
+    "scenario_category": "Incident Response",
+    "domain": "intune",
+    "subdomain": "Enrollment",
+    "is_cis": false,
+    "cis_type": "N/A",
+    "security_value": 5,
+    "rag_retrieval_value": 5,
+    "fine_tuning_value": 5,
+    "business_value": 5,
+    "estimated_file_count": 1,
+    "existing_coverage": "No",
+    "match_confidence": 30.0,
+    "technology_tags": [
+      "Microsoft Security Baseline",
+      "Zero Trust"
+    ],
+    "operational_tags": [
+      "Forensics",
+      "Incident Response"
+    ],
+    "priority_score": 5.0
+  },
+  {
+    "scenario_title": "Response runbook: Remediating unauthorized access and compromised keys in ASR rules via Intune",
+    "scenario_category": "Incident Response",
+    "domain": "intune",
+    "subdomain": "Endpoint Security",
+    "is_cis": false,
+    "cis_type": "N/A",
+    "security_value": 5,
+    "rag_retrieval_value": 5,
+    "fine_tuning_value": 5,
+    "business_value": 5,
+    "estimated_file_count": 1,
+    "existing_coverage": "No",
+    "match_confidence": 30.0,
+    "technology_tags": [
+      "Microsoft Security Baseline",
+      "Zero Trust"
+    ],
+    "operational_tags": [
+      "Forensics",
+      "Incident Response"
+    ],
+    "priority_score": 5.0
+  },
+  {
+    "scenario_title": "Triage and containment playbook for ransomware alerts in Defender XDR",
+    "scenario_category": "Incident Response",
+    "domain": "defender",
+    "subdomain": "Threat Hunting",
+    "is_cis": false,
+    "cis_type": "N/A",
+    "security_value": 5,
+    "rag_retrieval_value": 5,
+    "fine_tuning_value": 5,
+    "business_value": 5,
+    "estimated_file_count": 1,
+    "existing_coverage": "No",
+    "match_confidence": 30.0,
+    "technology_tags": [
+      "Microsoft Security Baseline",
+      "Zero Trust"
+    ],
+    "operational_tags": [
+      "Forensics",
+      "Incident Response"
+    ],
+    "priority_score": 5.0
+  },
+  {
+    "scenario_title": "Response runbook: Remediating unauthorized access and compromised keys in MDI directory service accounts",
+    "scenario_category": "Incident Response",
+    "domain": "defender",
+    "subdomain": "Defender for Identity",
+    "is_cis": false,
+    "cis_type": "N/A",
+    "security_value": 5,
+    "rag_retrieval_value": 5,
+    "fine_tuning_value": 5,
+    "business_value": 5,
+    "estimated_file_count": 1,
+    "existing_coverage": "No",
+    "match_confidence": 0.0,
+    "technology_tags": [
+      "Microsoft Security Baseline",
+      "Zero Trust"
+    ],
+    "operational_tags": [
+      "Forensics",
+      "Incident Response"
+    ],
+    "priority_score": 5.0
+  },
+  {
+    "scenario_title": "Response runbook: Remediating unauthorized access and compromised keys in MDE security recommendations remediation",
+    "scenario_category": "Incident Response",
+    "domain": "defender",
+    "subdomain": "Vulnerability Management",
+    "is_cis": false,
+    "cis_type": "N/A",
+    "security_value": 5,
+    "rag_retrieval_value": 5,
+    "fine_tuning_value": 5,
+    "business_value": 5,
+    "estimated_file_count": 1,
+    "existing_coverage": "No",
+    "match_confidence": 0.0,
+    "technology_tags": [
+      "Microsoft Security Baseline",
+      "Zero Trust"
+    ],
+    "operational_tags": [
+      "Forensics",
+      "Incident Response"
+    ],
+    "priority_score": 5.0
+  },
+  {
+    "scenario_title": "Response runbook: Remediating unauthorized access and compromised keys in Defender for Office 365 Safe Links",
+    "scenario_category": "Incident Response",
+    "domain": "defender",
+    "subdomain": "Defender for Office 365",
+    "is_cis": false,
+    "cis_type": "N/A",
+    "security_value": 5,
+    "rag_retrieval_value": 5,
+    "fine_tuning_value": 5,
+    "business_value": 5,
+    "estimated_file_count": 1,
+    "existing_coverage": "No",
+    "match_confidence": 0.0,
+    "technology_tags": [
+      "Microsoft Security Baseline",
+      "Zero Trust"
+    ],
+    "operational_tags": [
+      "Forensics",
+      "Incident Response"
+    ],
+    "priority_score": 5.0
+  },
+  {
+    "scenario_title": "Response runbook: Remediating unauthorized access and compromised keys in Defender for Endpoint onboarding scripts",
+    "scenario_category": "Incident Response",
+    "domain": "defender",
+    "subdomain": "Defender for Endpoint",
+    "is_cis": false,
+    "cis_type": "N/A",
+    "security_value": 5,
+    "rag_retrieval_value": 5,
+    "fine_tuning_value": 5,
+    "business_value": 5,
+    "estimated_file_count": 1,
+    "existing_coverage": "No",
+    "match_confidence": 37.0,
+    "technology_tags": [
+      "Microsoft Security Baseline",
+      "Zero Trust"
+    ],
+    "operational_tags": [
+      "Forensics",
+      "Incident Response"
+    ],
+    "priority_score": 5.0
+  },
+  {
+    "scenario_title": "Response runbook: Remediating unauthorized access and compromised keys in Defender for Cloud Apps OAuth permissions",
+    "scenario_category": "Incident Response",
+    "domain": "defender",
+    "subdomain": "Defender for Cloud Apps",
+    "is_cis": false,
+    "cis_type": "N/A",
+    "security_value": 5,
+    "rag_retrieval_value": 5,
+    "fine_tuning_value": 5,
+    "business_value": 5,
+    "estimated_file_count": 1,
+    "existing_coverage": "No",
+    "match_confidence": 0.0,
+    "technology_tags": [
+      "Microsoft Security Baseline",
+      "Zero Trust"
+    ],
+    "operational_tags": [
+      "Forensics",
+      "Incident Response"
+    ],
+    "priority_score": 5.0
+  },
+  {
+    "scenario_title": "Response runbook: Remediating unauthorized access and compromised keys in Advanced Hunting KQL queries",
+    "scenario_category": "Incident Response",
+    "domain": "defender",
+    "subdomain": "Threat Hunting",
+    "is_cis": false,
+    "cis_type": "N/A",
+    "security_value": 5,
+    "rag_retrieval_value": 5,
+    "fine_tuning_value": 5,
+    "business_value": 5,
+    "estimated_file_count": 1,
+    "existing_coverage": "No",
+    "match_confidence": 36.4,
+    "technology_tags": [
+      "Microsoft Security Baseline",
+      "Zero Trust"
+    ],
+    "operational_tags": [
+      "Forensics",
+      "Incident Response"
+    ],
+    "priority_score": 5.0
+  },
+  {
+    "scenario_title": "Investigating OAuth app authorization alerts and revoking malicious access",
+    "scenario_category": "Incident Response",
+    "domain": "defender",
+    "subdomain": "Defender for Cloud Apps",
+    "is_cis": false,
+    "cis_type": "N/A",
+    "security_value": 5,
+    "rag_retrieval_value": 5,
+    "fine_tuning_value": 5,
+    "business_value": 5,
+    "estimated_file_count": 1,
+    "existing_coverage": "No",
+    "match_confidence": 0.0,
+    "technology_tags": [
+      "Microsoft Security Baseline",
+      "Zero Trust"
+    ],
+    "operational_tags": [
+      "Forensics",
+      "Incident Response"
+    ],
+    "priority_score": 5.0
+  },
+  {
+    "scenario_title": "Response runbook: Remediating unauthorized access and compromised keys in MFA registration campaigns",
+    "scenario_category": "Incident Response",
+    "domain": "azure",
+    "subdomain": "Entra ID",
+    "is_cis": false,
+    "cis_type": "N/A",
+    "security_value": 5,
+    "rag_retrieval_value": 5,
+    "fine_tuning_value": 5,
+    "business_value": 5,
+    "estimated_file_count": 1,
+    "existing_coverage": "No",
+    "match_confidence": 37.0,
+    "technology_tags": [
+      "Azure Landing Zone",
+      "Hybrid Identity",
+      "Microsoft Security Baseline",
+      "Zero Trust"
+    ],
+    "operational_tags": [
+      "Forensics",
+      "Incident Response"
+    ],
+    "priority_score": 5.0
+  },
+  {
+    "scenario_title": "Response runbook: Remediating unauthorized access and compromised keys in Conditional Access policy rules",
+    "scenario_category": "Incident Response",
+    "domain": "azure",
+    "subdomain": "Conditional Access",
+    "is_cis": false,
+    "cis_type": "N/A",
+    "security_value": 5,
+    "rag_retrieval_value": 5,
+    "fine_tuning_value": 5,
+    "business_value": 5,
+    "estimated_file_count": 1,
+    "existing_coverage": "No",
+    "match_confidence": 44.0,
+    "technology_tags": [
+      "Azure Landing Zone",
+      "Hybrid Identity",
+      "Microsoft Security Baseline",
+      "Zero Trust"
+    ],
+    "operational_tags": [
+      "Forensics",
+      "Incident Response"
+    ],
+    "priority_score": 5.0
+  },
+  {
+    "scenario_title": "Response runbook: Remediating unauthorized access and compromised keys in ExpressRoute peering",
+    "scenario_category": "Incident Response",
+    "domain": "azure",
+    "subdomain": "Networking",
+    "is_cis": false,
+    "cis_type": "N/A",
+    "security_value": 5,
+    "rag_retrieval_value": 5,
+    "fine_tuning_value": 5,
+    "business_value": 5,
+    "estimated_file_count": 1,
+    "existing_coverage": "No",
+    "match_confidence": 37.8,
+    "technology_tags": [
+      "Azure Landing Zone",
+      "Microsoft Security Baseline",
+      "Zero Trust"
+    ],
+    "operational_tags": [
+      "Forensics",
+      "Incident Response"
+    ],
+    "priority_score": 5.0
+  },
+  {
+    "scenario_title": "Response runbook: Remediating unauthorized access and compromised keys in Azure Storage firewall settings",
+    "scenario_category": "Incident Response",
+    "domain": "azure",
+    "subdomain": "Storage",
+    "is_cis": false,
+    "cis_type": "N/A",
+    "security_value": 5,
+    "rag_retrieval_value": 5,
+    "fine_tuning_value": 5,
+    "business_value": 5,
+    "estimated_file_count": 1,
+    "existing_coverage": "No",
+    "match_confidence": 37.0,
+    "technology_tags": [
+      "Azure Landing Zone",
+      "Microsoft Security Baseline",
+      "Zero Trust"
+    ],
+    "operational_tags": [
+      "Forensics",
+      "Incident Response"
+    ],
+    "priority_score": 5.0
+  },
+  {
+    "scenario_title": "Response runbook: Remediating unauthorized access and compromised keys in Azure RBAC controls",
+    "scenario_category": "Incident Response",
+    "domain": "azure",
+    "subdomain": "RBAC",
+    "is_cis": false,
+    "cis_type": "N/A",
+    "security_value": 5,
+    "rag_retrieval_value": 5,
+    "fine_tuning_value": 5,
+    "business_value": 5,
+    "estimated_file_count": 1,
+    "existing_coverage": "No",
+    "match_confidence": 37.8,
+    "technology_tags": [
+      "Azure Landing Zone",
+      "Microsoft Security Baseline",
+      "Zero Trust"
+    ],
+    "operational_tags": [
+      "Forensics",
+      "Incident Response"
+    ],
+    "priority_score": 5.0
+  },
+  {
+    "scenario_title": "Response runbook: Remediating unauthorized access and compromised keys in Azure Policies definitions",
+    "scenario_category": "Incident Response",
+    "domain": "azure",
+    "subdomain": "Governance",
+    "is_cis": false,
+    "cis_type": "N/A",
+    "security_value": 5,
+    "rag_retrieval_value": 5,
+    "fine_tuning_value": 5,
+    "business_value": 5,
+    "estimated_file_count": 1,
+    "existing_coverage": "No",
+    "match_confidence": 37.8,
+    "technology_tags": [
+      "Azure Landing Zone",
+      "Microsoft Security Baseline",
+      "Zero Trust"
+    ],
+    "operational_tags": [
+      "Forensics",
+      "Incident Response"
+    ],
+    "priority_score": 5.0
+  },
+  {
+    "scenario_title": "Response runbook: Remediating unauthorized access and compromised keys in Azure Monitor diagnostic settings",
+    "scenario_category": "Incident Response",
+    "domain": "azure",
+    "subdomain": "Monitoring",
+    "is_cis": false,
+    "cis_type": "N/A",
+    "security_value": 5,
+    "rag_retrieval_value": 5,
+    "fine_tuning_value": 5,
+    "business_value": 5,
+    "estimated_file_count": 1,
+    "existing_coverage": "No",
+    "match_confidence": 0.0,
+    "technology_tags": [
+      "Azure Landing Zone",
+      "Microsoft Security Baseline",
+      "Zero Trust"
+    ],
+    "operational_tags": [
+      "Forensics",
+      "Incident Response"
+    ],
+    "priority_score": 5.0
+  },
+  {
+    "scenario_title": "Response runbook: Remediating unauthorized access and compromised keys in Azure Key Vault access policies",
+    "scenario_category": "Incident Response",
+    "domain": "azure",
+    "subdomain": "Key Vault",
+    "is_cis": false,
+    "cis_type": "N/A",
+    "security_value": 5,
+    "rag_retrieval_value": 5,
+    "fine_tuning_value": 5,
+    "business_value": 5,
+    "estimated_file_count": 1,
+    "existing_coverage": "No",
+    "match_confidence": 37.0,
+    "technology_tags": [
+      "Azure Landing Zone",
+      "Microsoft Security Baseline",
+      "Zero Trust"
+    ],
+    "operational_tags": [
+      "Forensics",
+      "Incident Response"
+    ],
+    "priority_score": 5.0
+  },
+  {
+    "scenario_title": "Response runbook: Remediating unauthorized access and compromised keys in Azure Disk Encryption ADE",
+    "scenario_category": "Incident Response",
+    "domain": "azure",
+    "subdomain": "Virtual Machines",
+    "is_cis": false,
+    "cis_type": "N/A",
+    "security_value": 5,
+    "rag_retrieval_value": 5,
+    "fine_tuning_value": 5,
+    "business_value": 5,
+    "estimated_file_count": 1,
+    "existing_coverage": "No",
+    "match_confidence": 37.0,
+    "technology_tags": [
+      "Azure Landing Zone",
+      "Microsoft Security Baseline",
+      "Zero Trust"
+    ],
+    "operational_tags": [
+      "Forensics",
+      "Incident Response"
+    ],
+    "priority_score": 5.0
+  },
+  {
+    "scenario_title": "Response runbook: Remediating unauthorized access and compromised keys in Azure Backup vault",
+    "scenario_category": "Incident Response",
+    "domain": "azure",
+    "subdomain": "Backup",
+    "is_cis": false,
+    "cis_type": "N/A",
+    "security_value": 5,
+    "rag_retrieval_value": 5,
+    "fine_tuning_value": 5,
+    "business_value": 5,
+    "estimated_file_count": 1,
+    "existing_coverage": "No",
+    "match_confidence": 30.0,
+    "technology_tags": [
+      "Azure Landing Zone",
+      "Microsoft Security Baseline",
+      "Zero Trust"
+    ],
+    "operational_tags": [
+      "Forensics",
+      "Incident Response"
+    ],
+    "priority_score": 5.0
+  },
+  {
+    "scenario_title": "Remediating Azure resource owner role over-assignments in production scopes",
+    "scenario_category": "Incident Response",
+    "domain": "azure",
+    "subdomain": "RBAC",
+    "is_cis": false,
+    "cis_type": "N/A",
+    "security_value": 5,
+    "rag_retrieval_value": 5,
+    "fine_tuning_value": 5,
+    "business_value": 5,
+    "estimated_file_count": 1,
+    "existing_coverage": "No",
+    "match_confidence": 30.0,
+    "technology_tags": [
+      "Azure Landing Zone",
+      "Microsoft Security Baseline",
+      "Zero Trust"
+    ],
+    "operational_tags": [
+      "Forensics",
+      "Incident Response"
+    ],
+    "priority_score": 5.0
+  },
+  {
+    "scenario_title": "Response runbook: Remediating unauthorized access and compromised keys in Windows Hello for Business",
+    "scenario_category": "Incident Response",
+    "domain": "windows",
+    "subdomain": "Authentication",
+    "is_cis": false,
+    "cis_type": "N/A",
+    "security_value": 5,
+    "rag_retrieval_value": 5,
+    "fine_tuning_value": 5,
+    "business_value": 4,
+    "estimated_file_count": 1,
+    "existing_coverage": "No",
+    "match_confidence": 30.0,
+    "technology_tags": [
+      "Hybrid Identity",
+      "Microsoft Security Baseline",
+      "Zero Trust"
+    ],
+    "operational_tags": [
+      "Forensics",
+      "Incident Response"
+    ],
+    "priority_score": 4.9
+  },
+  {
+    "scenario_title": "Response runbook: Remediating unauthorized access and compromised keys in Windows Event Collector WEC",
+    "scenario_category": "Incident Response",
+    "domain": "windows",
+    "subdomain": "Event Logging",
+    "is_cis": false,
+    "cis_type": "N/A",
+    "security_value": 5,
+    "rag_retrieval_value": 5,
+    "fine_tuning_value": 5,
+    "business_value": 4,
+    "estimated_file_count": 1,
+    "existing_coverage": "No",
+    "match_confidence": 37.0,
+    "technology_tags": [
+      "Microsoft Security Baseline",
+      "Zero Trust"
+    ],
+    "operational_tags": [
+      "Forensics",
+      "Incident Response"
+    ],
+    "priority_score": 4.9
+  },
+  {
+    "scenario_title": "Response runbook: Remediating unauthorized access and compromised keys in WSUS patch classification",
+    "scenario_category": "Incident Response",
+    "domain": "windows",
+    "subdomain": "WSUS",
+    "is_cis": false,
+    "cis_type": "N/A",
+    "security_value": 5,
+    "rag_retrieval_value": 5,
+    "fine_tuning_value": 5,
+    "business_value": 4,
+    "estimated_file_count": 1,
+    "existing_coverage": "No",
+    "match_confidence": 37.0,
+    "technology_tags": [
+      "Microsoft Security Baseline",
+      "Zero Trust"
+    ],
+    "operational_tags": [
+      "Forensics",
+      "Incident Response"
+    ],
+    "priority_score": 4.9
+  },
+  {
+    "scenario_title": "Response runbook: Remediating unauthorized access and compromised keys in Shielded VMs",
+    "scenario_category": "Incident Response",
+    "domain": "windows",
+    "subdomain": "Hyper-V",
+    "is_cis": false,
+    "cis_type": "N/A",
+    "security_value": 5,
+    "rag_retrieval_value": 5,
+    "fine_tuning_value": 5,
+    "business_value": 4,
+    "estimated_file_count": 1,
+    "existing_coverage": "No",
+    "match_confidence": 0.0,
+    "technology_tags": [
+      "Microsoft Security Baseline",
+      "Zero Trust"
+    ],
+    "operational_tags": [
+      "Forensics",
+      "Incident Response"
+    ],
+    "priority_score": 4.9
+  },
+  {
+    "scenario_title": "Response runbook: Remediating unauthorized access and compromised keys in SMB 3.1.1 encryption",
+    "scenario_category": "Incident Response",
+    "domain": "windows",
+    "subdomain": "File Services",
+    "is_cis": false,
+    "cis_type": "N/A",
+    "security_value": 5,
+    "rag_retrieval_value": 5,
+    "fine_tuning_value": 5,
+    "business_value": 4,
+    "estimated_file_count": 1,
+    "existing_coverage": "No",
+    "match_confidence": 0.0,
+    "technology_tags": [
+      "Microsoft Security Baseline",
+      "Zero Trust"
+    ],
+    "operational_tags": [
+      "Forensics",
+      "Incident Response"
+    ],
+    "priority_score": 4.9
+  },
+  {
+    "scenario_title": "Response runbook: Remediating unauthorized access and compromised keys in Offline root CA",
+    "scenario_category": "Incident Response",
+    "domain": "windows",
+    "subdomain": "PKI / ADCS",
+    "is_cis": false,
+    "cis_type": "N/A",
+    "security_value": 5,
+    "rag_retrieval_value": 5,
+    "fine_tuning_value": 5,
+    "business_value": 4,
+    "estimated_file_count": 1,
+    "existing_coverage": "No",
+    "match_confidence": 30.0,
+    "technology_tags": [
+      "Microsoft Security Baseline",
+      "Zero Trust"
+    ],
+    "operational_tags": [
+      "Forensics",
+      "Incident Response"
+    ],
+    "priority_score": 4.9
+  },
+  {
+    "scenario_title": "Response runbook: Remediating unauthorized access and compromised keys in Local Administrator Password Solution LAPS",
+    "scenario_category": "Incident Response",
+    "domain": "windows",
+    "subdomain": "Windows Security",
+    "is_cis": false,
+    "cis_type": "N/A",
+    "security_value": 5,
+    "rag_retrieval_value": 5,
+    "fine_tuning_value": 5,
+    "business_value": 4,
+    "estimated_file_count": 1,
+    "existing_coverage": "No",
+    "match_confidence": 35.8,
+    "technology_tags": [
+      "Microsoft Security Baseline",
+      "Zero Trust"
+    ],
+    "operational_tags": [
+      "Forensics",
+      "Incident Response"
+    ],
+    "priority_score": 4.9
+  },
+  {
+    "scenario_title": "Response runbook: Remediating unauthorized access and compromised keys in Just Enough Administration JEA",
+    "scenario_category": "Incident Response",
+    "domain": "windows",
+    "subdomain": "PowerShell",
+    "is_cis": false,
+    "cis_type": "N/A",
+    "security_value": 5,
+    "rag_retrieval_value": 5,
+    "fine_tuning_value": 5,
+    "business_value": 4,
+    "estimated_file_count": 1,
+    "existing_coverage": "No",
+    "match_confidence": 30.0,
+    "technology_tags": [
+      "Microsoft Security Baseline",
+      "Zero Trust"
+    ],
+    "operational_tags": [
+      "Forensics",
+      "Incident Response"
+    ],
+    "priority_score": 4.9
+  },
+  {
+    "scenario_title": "Response runbook: Remediating unauthorized access and compromised keys in DNSSEC zone signing",
+    "scenario_category": "Incident Response",
+    "domain": "windows",
+    "subdomain": "DNS",
+    "is_cis": false,
+    "cis_type": "N/A",
+    "security_value": 5,
+    "rag_retrieval_value": 5,
+    "fine_tuning_value": 5,
+    "business_value": 4,
+    "estimated_file_count": 1,
+    "existing_coverage": "No",
+    "match_confidence": 30.0,
+    "technology_tags": [
+      "Microsoft Security Baseline",
+      "Zero Trust"
+    ],
+    "operational_tags": [
+      "Forensics",
+      "Incident Response"
+    ],
+    "priority_score": 4.9
+  },
+  {
+    "scenario_title": "Response runbook: Remediating unauthorized access and compromised keys in DHCP Failover replication",
+    "scenario_category": "Incident Response",
+    "domain": "windows",
+    "subdomain": "DHCP",
+    "is_cis": false,
+    "cis_type": "N/A",
+    "security_value": 5,
+    "rag_retrieval_value": 5,
+    "fine_tuning_value": 5,
+    "business_value": 4,
+    "estimated_file_count": 1,
+    "existing_coverage": "No",
+    "match_confidence": 0.0,
+    "technology_tags": [
+      "Microsoft Security Baseline",
+      "Zero Trust"
+    ],
+    "operational_tags": [
+      "Forensics",
+      "Incident Response"
+    ],
+    "priority_score": 4.9
+  },
+  {
+    "scenario_title": "Response runbook: Remediating unauthorized access and compromised keys in CIS Group Policy Benchmarks",
+    "scenario_category": "Incident Response",
+    "domain": "windows",
+    "subdomain": "Group Policy",
+    "is_cis": false,
+    "cis_type": "N/A",
+    "security_value": 5,
+    "rag_retrieval_value": 5,
+    "fine_tuning_value": 5,
+    "business_value": 4,
+    "estimated_file_count": 1,
+    "existing_coverage": "No",
+    "match_confidence": 0.0,
+    "technology_tags": [
+      "Microsoft Security Baseline",
+      "Zero Trust"
+    ],
+    "operational_tags": [
+      "Forensics",
+      "Incident Response"
+    ],
+    "priority_score": 4.9
+  },
+  {
+    "scenario_title": "Response runbook: Remediating unauthorized access and compromised keys in AD Administrative Tiers hierarchy",
+    "scenario_category": "Incident Response",
+    "domain": "windows",
+    "subdomain": "Active Directory",
+    "is_cis": false,
+    "cis_type": "N/A",
+    "security_value": 5,
+    "rag_retrieval_value": 5,
+    "fine_tuning_value": 5,
+    "business_value": 4,
+    "estimated_file_count": 1,
+    "existing_coverage": "No",
+    "match_confidence": 0.0,
+    "technology_tags": [
+      "Hybrid Identity",
+      "Microsoft Security Baseline",
+      "Zero Trust"
+    ],
+    "operational_tags": [
+      "Forensics",
+      "Incident Response"
+    ],
+    "priority_score": 4.9
+  },
+  {
+    "scenario_title": "Incident runbook: Remediating an Active Directory domain compromise and krbtgt reset",
+    "scenario_category": "Incident Response",
+    "domain": "windows",
+    "subdomain": "Active Directory",
+    "is_cis": false,
+    "cis_type": "N/A",
+    "security_value": 5,
+    "rag_retrieval_value": 5,
+    "fine_tuning_value": 5,
+    "business_value": 4,
+    "estimated_file_count": 1,
+    "existing_coverage": "No",
+    "match_confidence": 0.0,
+    "technology_tags": [
+      "Hybrid Identity",
+      "Microsoft Security Baseline",
+      "Zero Trust"
+    ],
+    "operational_tags": [
+      "Forensics",
+      "Incident Response"
+    ],
+    "priority_score": 4.9
+  },
+  {
+    "scenario_title": "Response runbook: Remediating unauthorized access and compromised keys in threat hunting queries",
+    "scenario_category": "Incident Response",
+    "domain": "sentinel",
+    "subdomain": "KQL Hunting",
+    "is_cis": false,
+    "cis_type": "N/A",
+    "security_value": 5,
+    "rag_retrieval_value": 5,
+    "fine_tuning_value": 5,
+    "business_value": 4,
+    "estimated_file_count": 1,
+    "existing_coverage": "No",
+    "match_confidence": 0.0,
+    "technology_tags": [
+      "General Security"
+    ],
+    "operational_tags": [
+      "Forensics",
+      "Incident Response"
+    ],
+    "priority_score": 4.9
+  },
+  {
+    "scenario_title": "Response runbook: Remediating unauthorized access and compromised keys in Sentinel lateral movement detection alerts",
+    "scenario_category": "Incident Response",
+    "domain": "sentinel",
+    "subdomain": "Analytics Rules",
+    "is_cis": false,
+    "cis_type": "N/A",
+    "security_value": 5,
+    "rag_retrieval_value": 5,
+    "fine_tuning_value": 5,
+    "business_value": 4,
+    "estimated_file_count": 1,
+    "existing_coverage": "No",
+    "match_confidence": 0.0,
+    "technology_tags": [
+      "General Security"
+    ],
+    "operational_tags": [
+      "Forensics",
+      "Incident Response"
+    ],
+    "priority_score": 4.9
+  },
+  {
+    "scenario_title": "Response runbook: Remediating unauthorized access and compromised keys in Sentinel automated response incident containment",
+    "scenario_category": "Incident Response",
+    "domain": "sentinel",
+    "subdomain": "Playbooks",
+    "is_cis": false,
+    "cis_type": "N/A",
+    "security_value": 5,
+    "rag_retrieval_value": 5,
+    "fine_tuning_value": 5,
+    "business_value": 4,
+    "estimated_file_count": 1,
+    "existing_coverage": "No",
+    "match_confidence": 0.0,
+    "technology_tags": [
+      "General Security"
+    ],
+    "operational_tags": [
+      "Forensics",
+      "Incident Response"
+    ],
+    "priority_score": 4.9
+  },
+  {
+    "scenario_title": "Response runbook: Remediating unauthorized access and compromised keys in Sentinel Azure activity log connector",
+    "scenario_category": "Incident Response",
+    "domain": "sentinel",
+    "subdomain": "Data Connectors",
+    "is_cis": false,
+    "cis_type": "N/A",
+    "security_value": 5,
+    "rag_retrieval_value": 5,
+    "fine_tuning_value": 5,
+    "business_value": 4,
+    "estimated_file_count": 1,
+    "existing_coverage": "No",
+    "match_confidence": 30.0,
+    "technology_tags": [
+      "General Security"
+    ],
+    "operational_tags": [
+      "Forensics",
+      "Incident Response"
+    ],
+    "priority_score": 4.9
+  },
+  {
+    "scenario_title": "Response runbook: Remediating unauthorized access and compromised keys in Log Analytics visual dashboards",
+    "scenario_category": "Incident Response",
+    "domain": "sentinel",
+    "subdomain": "Workbooks",
+    "is_cis": false,
+    "cis_type": "N/A",
+    "security_value": 5,
+    "rag_retrieval_value": 5,
+    "fine_tuning_value": 5,
+    "business_value": 4,
+    "estimated_file_count": 1,
+    "existing_coverage": "No",
+    "match_confidence": 0.0,
+    "technology_tags": [
+      "General Security"
+    ],
+    "operational_tags": [
+      "Forensics",
+      "Incident Response"
+    ],
+    "priority_score": 4.9
+  },
+  {
+    "scenario_title": "Automating Sentinel incident containment using Logic Apps playbooks",
+    "scenario_category": "Incident Response",
+    "domain": "sentinel",
+    "subdomain": "Playbooks",
+    "is_cis": false,
+    "cis_type": "N/A",
+    "security_value": 5,
+    "rag_retrieval_value": 5,
+    "fine_tuning_value": 5,
+    "business_value": 4,
+    "estimated_file_count": 1,
+    "existing_coverage": "No",
+    "match_confidence": 0.0,
+    "technology_tags": [
+      "General Security"
+    ],
+    "operational_tags": [
+      "Forensics",
+      "Incident Response"
+    ],
+    "priority_score": 4.9
+  },
+  {
+    "scenario_title": "Response runbook: Remediating unauthorized access and compromised keys in zero-hour auto purge ZAP",
+    "scenario_category": "Incident Response",
+    "domain": "exchange_online",
+    "subdomain": "Anti-Spam & Phishing",
+    "is_cis": false,
+    "cis_type": "N/A",
+    "security_value": 5,
+    "rag_retrieval_value": 5,
+    "fine_tuning_value": 5,
+    "business_value": 4,
+    "estimated_file_count": 1,
+    "existing_coverage": "No",
+    "match_confidence": 0.0,
+    "technology_tags": [
+      "General Security"
+    ],
+    "operational_tags": [
+      "Forensics",
+      "Incident Response"
+    ],
+    "priority_score": 4.9
+  },
+  {
+    "scenario_title": "Response runbook: Remediating unauthorized access and compromised keys in inbound/outbound email connectors",
+    "scenario_category": "Incident Response",
+    "domain": "exchange_online",
+    "subdomain": "Mail Flow",
+    "is_cis": false,
+    "cis_type": "N/A",
+    "security_value": 5,
+    "rag_retrieval_value": 5,
+    "fine_tuning_value": 5,
+    "business_value": 4,
+    "estimated_file_count": 1,
+    "existing_coverage": "No",
+    "match_confidence": 0.0,
+    "technology_tags": [
+      "General Security"
+    ],
+    "operational_tags": [
+      "Forensics",
+      "Incident Response"
+    ],
+    "priority_score": 4.9
+  },
+  {
+    "scenario_title": "Response runbook: Remediating unauthorized access and compromised keys in administrator mailbox access logs audits",
+    "scenario_category": "Incident Response",
+    "domain": "exchange_online",
+    "subdomain": "Auditing",
+    "is_cis": false,
+    "cis_type": "N/A",
+    "security_value": 5,
+    "rag_retrieval_value": 5,
+    "fine_tuning_value": 5,
+    "business_value": 4,
+    "estimated_file_count": 1,
+    "existing_coverage": "No",
+    "match_confidence": 0.0,
+    "technology_tags": [
+      "General Security"
+    ],
+    "operational_tags": [
+      "Forensics",
+      "Incident Response"
+    ],
+    "priority_score": 4.9
+  },
+  {
+    "scenario_title": "Response runbook: Remediating unauthorized access and compromised keys in Exchange anti-phishing threshold values",
+    "scenario_category": "Incident Response",
+    "domain": "exchange_online",
+    "subdomain": "Threat Protection",
+    "is_cis": false,
+    "cis_type": "N/A",
+    "security_value": 5,
+    "rag_retrieval_value": 5,
+    "fine_tuning_value": 5,
+    "business_value": 4,
+    "estimated_file_count": 1,
+    "existing_coverage": "No",
+    "match_confidence": 30.0,
+    "technology_tags": [
+      "General Security"
+    ],
+    "operational_tags": [
+      "Forensics",
+      "Incident Response"
+    ],
+    "priority_score": 4.9
+  },
+  {
+    "scenario_title": "Response runbook: Remediating unauthorized access and compromised keys in DKIM key signing creation",
+    "scenario_category": "Incident Response",
+    "domain": "exchange_online",
+    "subdomain": "DKIM/SPF/DMARC",
+    "is_cis": false,
+    "cis_type": "N/A",
+    "security_value": 5,
+    "rag_retrieval_value": 5,
+    "fine_tuning_value": 5,
+    "business_value": 4,
+    "estimated_file_count": 1,
+    "existing_coverage": "No",
+    "match_confidence": 0.0,
+    "technology_tags": [
+      "General Security"
+    ],
+    "operational_tags": [
+      "Forensics",
+      "Incident Response"
+    ],
+    "priority_score": 4.9
+  },
+  {
+    "scenario_title": "Response runbook: Remediating unauthorized access and compromised keys in SharePoint sensitivity labels enforcement",
+    "scenario_category": "Incident Response",
+    "domain": "sharepoint",
+    "subdomain": "Governance",
+    "is_cis": false,
+    "cis_type": "N/A",
+    "security_value": 5,
+    "rag_retrieval_value": 5,
+    "fine_tuning_value": 5,
+    "business_value": 3,
+    "estimated_file_count": 1,
+    "existing_coverage": "No",
+    "match_confidence": 0.0,
+    "technology_tags": [
+      "General Security"
+    ],
+    "operational_tags": [
+      "Forensics",
+      "Incident Response"
+    ],
+    "priority_score": 4.8
+  },
+  {
+    "scenario_title": "Response runbook: Remediating unauthorized access and compromised keys in SharePoint permission inheritance settings",
+    "scenario_category": "Incident Response",
+    "domain": "sharepoint",
+    "subdomain": "Permissions",
+    "is_cis": false,
+    "cis_type": "N/A",
+    "security_value": 5,
+    "rag_retrieval_value": 5,
+    "fine_tuning_value": 5,
+    "business_value": 3,
+    "estimated_file_count": 1,
+    "existing_coverage": "No",
+    "match_confidence": 0.0,
+    "technology_tags": [
+      "General Security"
+    ],
+    "operational_tags": [
+      "Forensics",
+      "Incident Response"
+    ],
+    "priority_score": 4.8
+  },
+  {
+    "scenario_title": "Response runbook: Remediating unauthorized access and compromised keys in SharePoint content search query",
+    "scenario_category": "Incident Response",
+    "domain": "sharepoint",
+    "subdomain": "Troubleshooting",
+    "is_cis": false,
+    "cis_type": "N/A",
+    "security_value": 5,
+    "rag_retrieval_value": 5,
+    "fine_tuning_value": 5,
+    "business_value": 3,
+    "estimated_file_count": 1,
+    "existing_coverage": "No",
+    "match_confidence": 0.0,
+    "technology_tags": [
+      "General Security"
+    ],
+    "operational_tags": [
+      "Forensics",
+      "Incident Response"
+    ],
+    "priority_score": 4.8
+  },
+  {
+    "scenario_title": "Response runbook: Remediating unauthorized access and compromised keys in SharePoint admin center tenant-wide sharing controls",
+    "scenario_category": "Incident Response",
+    "domain": "sharepoint",
+    "subdomain": "Administration",
+    "is_cis": false,
+    "cis_type": "N/A",
+    "security_value": 5,
+    "rag_retrieval_value": 5,
+    "fine_tuning_value": 5,
+    "business_value": 3,
+    "estimated_file_count": 1,
+    "existing_coverage": "No",
+    "match_confidence": 0.0,
+    "technology_tags": [
+      "General Security"
+    ],
+    "operational_tags": [
+      "Forensics",
+      "Incident Response"
+    ],
+    "priority_score": 4.8
+  },
+  {
+    "scenario_title": "Response runbook: Remediating unauthorized access and compromised keys in chat history retention policies",
+    "scenario_category": "Incident Response",
+    "domain": "teams",
+    "subdomain": "Messaging Policies",
+    "is_cis": false,
+    "cis_type": "N/A",
+    "security_value": 5,
+    "rag_retrieval_value": 5,
+    "fine_tuning_value": 5,
+    "business_value": 3,
+    "estimated_file_count": 1,
+    "existing_coverage": "No",
+    "match_confidence": 0.0,
+    "technology_tags": [
+      "General Security"
+    ],
+    "operational_tags": [
+      "Forensics",
+      "Incident Response"
+    ],
+    "priority_score": 4.8
+  },
+  {
+    "scenario_title": "Response runbook: Remediating unauthorized access and compromised keys in Teams voice settings",
+    "scenario_category": "Incident Response",
+    "domain": "teams",
+    "subdomain": "Administration",
+    "is_cis": false,
+    "cis_type": "N/A",
+    "security_value": 5,
+    "rag_retrieval_value": 5,
+    "fine_tuning_value": 5,
+    "business_value": 3,
+    "estimated_file_count": 1,
+    "existing_coverage": "No",
+    "match_confidence": 30.0,
+    "technology_tags": [
+      "General Security"
+    ],
+    "operational_tags": [
+      "Forensics",
+      "Incident Response"
+    ],
+    "priority_score": 4.8
+  },
+  {
+    "scenario_title": "Response runbook: Remediating unauthorized access and compromised keys in Teams meeting screen sharing rules",
+    "scenario_category": "Incident Response",
+    "domain": "teams",
+    "subdomain": "Meeting Policies",
+    "is_cis": false,
+    "cis_type": "N/A",
+    "security_value": 5,
+    "rag_retrieval_value": 5,
+    "fine_tuning_value": 5,
+    "business_value": 3,
+    "estimated_file_count": 1,
+    "existing_coverage": "No",
+    "match_confidence": 0.0,
+    "technology_tags": [
+      "General Security"
+    ],
+    "operational_tags": [
+      "Forensics",
+      "Incident Response"
+    ],
+    "priority_score": 4.8
+  },
+  {
+    "scenario_title": "Response runbook: Remediating unauthorized access and compromised keys in Teams external collaboration permissions",
+    "scenario_category": "Incident Response",
+    "domain": "teams",
+    "subdomain": "Guest Access",
+    "is_cis": false,
+    "cis_type": "N/A",
+    "security_value": 5,
+    "rag_retrieval_value": 5,
+    "fine_tuning_value": 5,
+    "business_value": 3,
+    "estimated_file_count": 1,
+    "existing_coverage": "No",
+    "match_confidence": 0.0,
+    "technology_tags": [
+      "General Security"
+    ],
+    "operational_tags": [
+      "Forensics",
+      "Incident Response"
+    ],
+    "priority_score": 4.8
+  },
+  {
+    "scenario_title": "Response runbook: Remediating unauthorized access and compromised keys in Teams custom app policies",
+    "scenario_category": "Incident Response",
+    "domain": "teams",
+    "subdomain": "App Management",
+    "is_cis": false,
+    "cis_type": "N/A",
+    "security_value": 5,
+    "rag_retrieval_value": 5,
+    "fine_tuning_value": 5,
+    "business_value": 3,
+    "estimated_file_count": 1,
+    "existing_coverage": "No",
+    "match_confidence": 30.0,
+    "technology_tags": [
+      "General Security"
+    ],
+    "operational_tags": [
+      "Forensics",
+      "Incident Response"
+    ],
+    "priority_score": 4.8
+  },
+  {
+    "scenario_title": "Response runbook: Remediating unauthorized access and compromised keys in Teams SIP trunk configuration",
+    "scenario_category": "Incident Response",
+    "domain": "teams",
+    "subdomain": "Voice/Calling",
+    "is_cis": false,
+    "cis_type": "N/A",
+    "security_value": 5,
+    "rag_retrieval_value": 5,
+    "fine_tuning_value": 5,
+    "business_value": 3,
+    "estimated_file_count": 1,
+    "existing_coverage": "No",
+    "match_confidence": 30.0,
+    "technology_tags": [
+      "General Security"
+    ],
+    "operational_tags": [
+      "Forensics",
+      "Incident Response"
+    ],
+    "priority_score": 4.8
+  },
+  {
+    "scenario_title": "Response runbook: Remediating unauthorized access and compromised keys in litigation hold rules configuration",
+    "scenario_category": "Incident Response",
+    "domain": "purview",
+    "subdomain": "Retention Policies",
+    "is_cis": false,
+    "cis_type": "N/A",
+    "security_value": 5,
+    "rag_retrieval_value": 5,
+    "fine_tuning_value": 5,
+    "business_value": 3,
+    "estimated_file_count": 1,
+    "existing_coverage": "No",
+    "match_confidence": 0.0,
+    "technology_tags": [
+      "General Security"
+    ],
+    "operational_tags": [
+      "Forensics",
+      "Incident Response"
+    ],
+    "priority_score": 4.8
+  },
+  {
+    "scenario_title": "Response runbook: Remediating unauthorized access and compromised keys in forensic audit log retention policies",
+    "scenario_category": "Incident Response",
+    "domain": "purview",
+    "subdomain": "Audit Log Management",
+    "is_cis": false,
+    "cis_type": "N/A",
+    "security_value": 5,
+    "rag_retrieval_value": 5,
+    "fine_tuning_value": 5,
+    "business_value": 3,
+    "estimated_file_count": 1,
+    "existing_coverage": "No",
+    "match_confidence": 0.0,
+    "technology_tags": [
+      "General Security"
+    ],
+    "operational_tags": [
+      "Forensics",
+      "Incident Response"
+    ],
+    "priority_score": 4.8
+  },
+  {
+    "scenario_title": "Response runbook: Remediating unauthorized access and compromised keys in eDiscovery compliance cases export",
+    "scenario_category": "Incident Response",
+    "domain": "purview",
+    "subdomain": "eDiscovery",
+    "is_cis": false,
+    "cis_type": "N/A",
+    "security_value": 5,
+    "rag_retrieval_value": 5,
+    "fine_tuning_value": 5,
+    "business_value": 3,
+    "estimated_file_count": 1,
+    "existing_coverage": "No",
+    "match_confidence": 0.0,
+    "technology_tags": [
+      "General Security"
+    ],
+    "operational_tags": [
+      "Forensics",
+      "Incident Response"
+    ],
+    "priority_score": 4.8
+  },
+  {
+    "scenario_title": "Response runbook: Remediating unauthorized access and compromised keys in auto-classification rules configurations",
+    "scenario_category": "Incident Response",
+    "domain": "purview",
+    "subdomain": "Sensitivity Labels",
+    "is_cis": false,
+    "cis_type": "N/A",
+    "security_value": 5,
+    "rag_retrieval_value": 5,
+    "fine_tuning_value": 5,
+    "business_value": 3,
+    "estimated_file_count": 1,
+    "existing_coverage": "No",
+    "match_confidence": 0.0,
+    "technology_tags": [
+      "General Security"
+    ],
+    "operational_tags": [
+      "Forensics",
+      "Incident Response"
+    ],
+    "priority_score": 4.8
+  },
+  {
+    "scenario_title": "Response runbook: Remediating unauthorized access and compromised keys in DLP external sharing blocks",
+    "scenario_category": "Incident Response",
+    "domain": "purview",
+    "subdomain": "Data Loss Prevention (DLP)",
+    "is_cis": false,
+    "cis_type": "N/A",
+    "security_value": 5,
+    "rag_retrieval_value": 5,
+    "fine_tuning_value": 5,
+    "business_value": 3,
+    "estimated_file_count": 1,
+    "existing_coverage": "No",
+    "match_confidence": 0.0,
+    "technology_tags": [
+      "General Security"
+    ],
+    "operational_tags": [
+      "Forensics",
+      "Incident Response"
+    ],
+    "priority_score": 4.8
+  },
+  {
+    "scenario_title": "Troubleshooting device compliance status mismatches and evaluation loops",
+    "scenario_category": "Troubleshooting",
+    "domain": "intune",
+    "subdomain": "Compliance Policies",
+    "is_cis": false,
+    "cis_type": "N/A",
+    "security_value": 4,
+    "rag_retrieval_value": 5,
+    "fine_tuning_value": 5,
+    "business_value": 5,
+    "estimated_file_count": 1,
+    "existing_coverage": "No",
+    "match_confidence": 30.0,
+    "technology_tags": [
+      "Microsoft Security Baseline",
+      "Zero Trust"
+    ],
+    "operational_tags": [
+      "Day 2 Operations",
+      "Remediation",
+      "Validation"
+    ],
+    "priority_score": 4.7
+  },
+  {
+    "scenario_title": "Troubleshooting Win32 application installation failures and error code triaging",
+    "scenario_category": "Troubleshooting",
+    "domain": "intune",
+    "subdomain": "Application Deployment",
+    "is_cis": false,
+    "cis_type": "N/A",
+    "security_value": 4,
+    "rag_retrieval_value": 5,
+    "fine_tuning_value": 5,
+    "business_value": 5,
+    "estimated_file_count": 1,
+    "existing_coverage": "No",
+    "match_confidence": 30.0,
+    "technology_tags": [
+      "Microsoft Security Baseline",
+      "Zero Trust"
+    ],
+    "operational_tags": [
+      "Day 2 Operations",
+      "Remediation",
+      "Validation"
+    ],
+    "priority_score": 4.7
+  },
+  {
+    "scenario_title": "Troubleshooting Autopilot ESP timeout errors and device enrollment failures",
+    "scenario_category": "Troubleshooting",
+    "domain": "intune",
+    "subdomain": "Autopilot",
+    "is_cis": false,
+    "cis_type": "N/A",
+    "security_value": 4,
+    "rag_retrieval_value": 5,
+    "fine_tuning_value": 5,
+    "business_value": 5,
+    "estimated_file_count": 1,
+    "existing_coverage": "No",
+    "match_confidence": 0.0,
+    "technology_tags": [
+      "Microsoft Security Baseline",
+      "Zero Trust"
+    ],
+    "operational_tags": [
+      "Day 2 Operations",
+      "Remediation",
+      "Validation"
+    ],
+    "priority_score": 4.7
+  },
+  {
+    "scenario_title": "Resolving access denied errors and sync loops during stale device cleanup rules administration",
+    "scenario_category": "Troubleshooting",
+    "domain": "intune",
+    "subdomain": "Device Management",
+    "is_cis": false,
+    "cis_type": "N/A",
+    "security_value": 4,
+    "rag_retrieval_value": 5,
+    "fine_tuning_value": 5,
+    "business_value": 5,
+    "estimated_file_count": 1,
+    "existing_coverage": "No",
+    "match_confidence": 35.8,
+    "technology_tags": [
+      "Microsoft Security Baseline",
+      "Zero Trust"
+    ],
+    "operational_tags": [
+      "Day 2 Operations",
+      "Remediation",
+      "Validation"
+    ],
+    "priority_score": 4.7
+  },
+  {
+    "scenario_title": "Resolving access denied errors and sync loops during TPM version validation administration",
+    "scenario_category": "Troubleshooting",
+    "domain": "intune",
+    "subdomain": "Compliance Policies",
+    "is_cis": false,
+    "cis_type": "N/A",
+    "security_value": 4,
+    "rag_retrieval_value": 5,
+    "fine_tuning_value": 5,
+    "business_value": 5,
+    "estimated_file_count": 1,
+    "existing_coverage": "No",
+    "match_confidence": 30.0,
+    "technology_tags": [
+      "Microsoft Security Baseline",
+      "Zero Trust"
+    ],
+    "operational_tags": [
+      "Day 2 Operations",
+      "Remediation",
+      "Validation"
+    ],
+    "priority_score": 4.7
+  },
+  {
+    "scenario_title": "Resolving access denied errors and sync loops during SCEP certificate deployment profile administration",
+    "scenario_category": "Troubleshooting",
+    "domain": "intune",
+    "subdomain": "Configuration Profiles",
+    "is_cis": false,
+    "cis_type": "N/A",
+    "security_value": 4,
+    "rag_retrieval_value": 5,
+    "fine_tuning_value": 5,
+    "business_value": 5,
+    "estimated_file_count": 1,
+    "existing_coverage": "No",
+    "match_confidence": 35.8,
+    "technology_tags": [
+      "Microsoft Security Baseline",
+      "Zero Trust"
+    ],
+    "operational_tags": [
+      "Day 2 Operations",
+      "Remediation",
+      "Validation"
+    ],
+    "priority_score": 4.7
+  },
+  {
+    "scenario_title": "Resolving access denied errors and sync loops during SCCM co-management to cloud Autopilot migration administration",
+    "scenario_category": "Troubleshooting",
+    "domain": "intune",
+    "subdomain": "Autopilot",
+    "is_cis": false,
+    "cis_type": "N/A",
+    "security_value": 4,
+    "rag_retrieval_value": 5,
+    "fine_tuning_value": 5,
+    "business_value": 5,
+    "estimated_file_count": 1,
+    "existing_coverage": "No",
+    "match_confidence": 0.0,
+    "technology_tags": [
+      "Microsoft Security Baseline",
+      "Zero Trust"
+    ],
+    "operational_tags": [
+      "Day 2 Operations",
+      "Remediation",
+      "Validation"
+    ],
+    "priority_score": 4.7
+  },
+  {
+    "scenario_title": "Resolving access denied errors and sync loops during Microsoft Store app deployment administration",
+    "scenario_category": "Troubleshooting",
+    "domain": "intune",
+    "subdomain": "Application Deployment",
+    "is_cis": false,
+    "cis_type": "N/A",
+    "security_value": 4,
+    "rag_retrieval_value": 5,
+    "fine_tuning_value": 5,
+    "business_value": 5,
+    "estimated_file_count": 1,
+    "existing_coverage": "No",
+    "match_confidence": 35.8,
+    "technology_tags": [
+      "Microsoft Security Baseline",
+      "Zero Trust"
+    ],
+    "operational_tags": [
+      "Day 2 Operations",
+      "Remediation",
+      "Validation"
+    ],
+    "priority_score": 4.7
+  },
+  {
+    "scenario_title": "Resolving access denied errors and sync loops during Microsoft Defender Antivirus exclusions administration",
+    "scenario_category": "Troubleshooting",
+    "domain": "intune",
+    "subdomain": "Endpoint Security",
+    "is_cis": false,
+    "cis_type": "N/A",
+    "security_value": 4,
+    "rag_retrieval_value": 5,
+    "fine_tuning_value": 5,
+    "business_value": 5,
+    "estimated_file_count": 1,
+    "existing_coverage": "No",
+    "match_confidence": 30.0,
+    "technology_tags": [
+      "Microsoft Security Baseline",
+      "Zero Trust"
+    ],
+    "operational_tags": [
+      "Day 2 Operations",
+      "Remediation",
+      "Validation"
+    ],
+    "priority_score": 4.7
+  },
+  {
+    "scenario_title": "Resolving access denied errors and sync loops during Intune enrollment restrictions administration",
+    "scenario_category": "Troubleshooting",
+    "domain": "intune",
+    "subdomain": "Enrollment",
+    "is_cis": false,
+    "cis_type": "N/A",
+    "security_value": 4,
+    "rag_retrieval_value": 5,
+    "fine_tuning_value": 5,
+    "business_value": 5,
+    "estimated_file_count": 1,
+    "existing_coverage": "No",
+    "match_confidence": 30.0,
+    "technology_tags": [
+      "Microsoft Security Baseline",
+      "Zero Trust"
+    ],
+    "operational_tags": [
+      "Day 2 Operations",
+      "Remediation",
+      "Validation"
+    ],
+    "priority_score": 4.7
+  },
+  {
+    "scenario_title": "Diagnosing Intune profile conflicts and configuration delivery errors",
+    "scenario_category": "Troubleshooting",
+    "domain": "intune",
+    "subdomain": "Configuration Profiles",
+    "is_cis": false,
+    "cis_type": "N/A",
+    "security_value": 4,
+    "rag_retrieval_value": 5,
+    "fine_tuning_value": 5,
+    "business_value": 5,
+    "estimated_file_count": 1,
+    "existing_coverage": "No",
+    "match_confidence": 41.7,
+    "technology_tags": [
+      "Microsoft Security Baseline",
+      "Zero Trust"
+    ],
+    "operational_tags": [
+      "Day 2 Operations",
+      "Remediation",
+      "Validation"
+    ],
+    "priority_score": 4.7
+  },
+  {
+    "scenario_title": "Troubleshooting MDI sensor sync delays and domain controller service crashes",
+    "scenario_category": "Troubleshooting",
+    "domain": "defender",
+    "subdomain": "Defender for Identity",
+    "is_cis": false,
+    "cis_type": "N/A",
+    "security_value": 4,
+    "rag_retrieval_value": 5,
+    "fine_tuning_value": 5,
+    "business_value": 5,
+    "estimated_file_count": 1,
+    "existing_coverage": "No",
+    "match_confidence": 0.0,
+    "technology_tags": [
+      "Microsoft Security Baseline",
+      "Zero Trust"
+    ],
+    "operational_tags": [
+      "Day 2 Operations",
+      "Remediation",
+      "Validation"
+    ],
+    "priority_score": 4.7
+  },
+  {
+    "scenario_title": "Troubleshooting MDE client onboarding failures and telemetry connectivity errors",
+    "scenario_category": "Troubleshooting",
+    "domain": "defender",
+    "subdomain": "Defender for Endpoint",
+    "is_cis": false,
+    "cis_type": "N/A",
+    "security_value": 4,
+    "rag_retrieval_value": 5,
+    "fine_tuning_value": 5,
+    "business_value": 5,
+    "estimated_file_count": 1,
+    "existing_coverage": "No",
+    "match_confidence": 30.0,
+    "technology_tags": [
+      "Microsoft Security Baseline",
+      "Zero Trust"
+    ],
+    "operational_tags": [
+      "Day 2 Operations",
+      "Remediation",
+      "Validation"
+    ],
+    "priority_score": 4.7
+  },
+  {
+    "scenario_title": "Resolving access denied errors and sync loops during software inventory exposure scores administration",
+    "scenario_category": "Troubleshooting",
+    "domain": "defender",
+    "subdomain": "Vulnerability Management",
+    "is_cis": false,
+    "cis_type": "N/A",
+    "security_value": 4,
+    "rag_retrieval_value": 5,
+    "fine_tuning_value": 5,
+    "business_value": 5,
+    "estimated_file_count": 1,
+    "existing_coverage": "No",
+    "match_confidence": 0.0,
+    "technology_tags": [
+      "Microsoft Security Baseline",
+      "Zero Trust"
+    ],
+    "operational_tags": [
+      "Day 2 Operations",
+      "Remediation",
+      "Validation"
+    ],
+    "priority_score": 4.7
+  },
+  {
+    "scenario_title": "Resolving access denied errors and sync loops during mailbox intelligence settings administration",
+    "scenario_category": "Troubleshooting",
+    "domain": "defender",
+    "subdomain": "Defender for Office 365",
+    "is_cis": false,
+    "cis_type": "N/A",
+    "security_value": 4,
+    "rag_retrieval_value": 5,
+    "fine_tuning_value": 5,
+    "business_value": 5,
+    "estimated_file_count": 1,
+    "existing_coverage": "No",
+    "match_confidence": 0.0,
+    "technology_tags": [
+      "Microsoft Security Baseline",
+      "Zero Trust"
+    ],
+    "operational_tags": [
+      "Day 2 Operations",
+      "Remediation",
+      "Validation"
+    ],
+    "priority_score": 4.7
+  },
+  {
+    "scenario_title": "Resolving access denied errors and sync loops during automated investigation and remediation (AIR) administration",
+    "scenario_category": "Troubleshooting",
+    "domain": "defender",
+    "subdomain": "Defender for Endpoint",
+    "is_cis": false,
+    "cis_type": "N/A",
+    "security_value": 4,
+    "rag_retrieval_value": 5,
+    "fine_tuning_value": 5,
+    "business_value": 5,
+    "estimated_file_count": 1,
+    "existing_coverage": "No",
+    "match_confidence": 30.0,
+    "technology_tags": [
+      "Microsoft Security Baseline",
+      "Zero Trust"
+    ],
+    "operational_tags": [
+      "Day 2 Operations",
+      "Remediation",
+      "Validation"
+    ],
+    "priority_score": 4.7
+  },
+  {
+    "scenario_title": "Resolving access denied errors and sync loops during Defender XDR incident alerts containment administration",
+    "scenario_category": "Troubleshooting",
+    "domain": "defender",
+    "subdomain": "Threat Hunting",
+    "is_cis": false,
+    "cis_type": "N/A",
+    "security_value": 4,
+    "rag_retrieval_value": 5,
+    "fine_tuning_value": 5,
+    "business_value": 5,
+    "estimated_file_count": 1,
+    "existing_coverage": "No",
+    "match_confidence": 35.8,
+    "technology_tags": [
+      "Microsoft Security Baseline",
+      "Zero Trust"
+    ],
+    "operational_tags": [
+      "Day 2 Operations",
+      "Remediation",
+      "Validation"
+    ],
+    "priority_score": 4.7
+  },
+  {
+    "scenario_title": "Resolving access denied errors and sync loops during App governance rules administration",
+    "scenario_category": "Troubleshooting",
+    "domain": "defender",
+    "subdomain": "Defender for Cloud Apps",
+    "is_cis": false,
+    "cis_type": "N/A",
+    "security_value": 4,
+    "rag_retrieval_value": 5,
+    "fine_tuning_value": 5,
+    "business_value": 5,
+    "estimated_file_count": 1,
+    "existing_coverage": "No",
+    "match_confidence": 0.0,
+    "technology_tags": [
+      "Microsoft Security Baseline",
+      "Zero Trust"
+    ],
+    "operational_tags": [
+      "Day 2 Operations",
+      "Remediation",
+      "Validation"
+    ],
+    "priority_score": 4.7
+  },
+  {
+    "scenario_title": "Resolving access denied errors and sync loops during Active Directory domain controller sensors administration",
+    "scenario_category": "Troubleshooting",
+    "domain": "defender",
+    "subdomain": "Defender for Identity",
+    "is_cis": false,
+    "cis_type": "N/A",
+    "security_value": 4,
+    "rag_retrieval_value": 5,
+    "fine_tuning_value": 5,
+    "business_value": 5,
+    "estimated_file_count": 1,
+    "existing_coverage": "No",
+    "match_confidence": 0.0,
+    "technology_tags": [
+      "Microsoft Security Baseline",
+      "Zero Trust"
+    ],
+    "operational_tags": [
+      "Day 2 Operations",
+      "Remediation",
+      "Validation"
+    ],
+    "priority_score": 4.7
+  },
+  {
+    "scenario_title": "Troubleshooting expired client secrets and automating key rotations",
+    "scenario_category": "Troubleshooting",
+    "domain": "azure",
+    "subdomain": "Entra ID",
+    "is_cis": false,
+    "cis_type": "N/A",
+    "security_value": 4,
+    "rag_retrieval_value": 5,
+    "fine_tuning_value": 5,
+    "business_value": 5,
+    "estimated_file_count": 1,
+    "existing_coverage": "No",
+    "match_confidence": 41.7,
+    "technology_tags": [
+      "Azure Landing Zone",
+      "Hybrid Identity",
+      "Microsoft Security Baseline",
+      "Zero Trust"
+    ],
+    "operational_tags": [
+      "Day 2 Operations",
+      "Remediation",
+      "Validation"
+    ],
+    "priority_score": 4.7
+  },
+  {
+    "scenario_title": "Troubleshooting Conditional Access policy exclusion failures and user lockouts",
+    "scenario_category": "Troubleshooting",
+    "domain": "azure",
+    "subdomain": "Conditional Access",
+    "is_cis": false,
+    "cis_type": "N/A",
+    "security_value": 4,
+    "rag_retrieval_value": 5,
+    "fine_tuning_value": 5,
+    "business_value": 5,
+    "estimated_file_count": 1,
+    "existing_coverage": "No",
+    "match_confidence": 50.0,
+    "technology_tags": [
+      "Azure Landing Zone",
+      "Hybrid Identity",
+      "Microsoft Security Baseline",
+      "Zero Trust"
+    ],
+    "operational_tags": [
+      "Day 2 Operations",
+      "Remediation",
+      "Validation"
+    ],
+    "priority_score": 4.7
+  },
+  {
+    "scenario_title": "Resolving access denied errors and sync loops during device compliance CA rules administration",
+    "scenario_category": "Troubleshooting",
+    "domain": "azure",
+    "subdomain": "Conditional Access",
+    "is_cis": false,
+    "cis_type": "N/A",
+    "security_value": 4,
+    "rag_retrieval_value": 5,
+    "fine_tuning_value": 5,
+    "business_value": 5,
+    "estimated_file_count": 1,
+    "existing_coverage": "No",
+    "match_confidence": 35.8,
+    "technology_tags": [
+      "Azure Landing Zone",
+      "Hybrid Identity",
+      "Microsoft Security Baseline",
+      "Zero Trust"
+    ],
+    "operational_tags": [
+      "Day 2 Operations",
+      "Remediation",
+      "Validation"
+    ],
+    "priority_score": 4.7
+  },
+  {
+    "scenario_title": "Resolving access denied errors and sync loops during System-Assigned Managed Identities administration",
+    "scenario_category": "Troubleshooting",
+    "domain": "azure",
+    "subdomain": "Entra ID",
+    "is_cis": false,
+    "cis_type": "N/A",
+    "security_value": 4,
+    "rag_retrieval_value": 5,
+    "fine_tuning_value": 5,
+    "business_value": 5,
+    "estimated_file_count": 1,
+    "existing_coverage": "No",
+    "match_confidence": 41.7,
+    "technology_tags": [
+      "Azure Landing Zone",
+      "Hybrid Identity",
+      "Microsoft Security Baseline",
+      "Zero Trust"
+    ],
+    "operational_tags": [
+      "Day 2 Operations",
+      "Remediation",
+      "Validation"
+    ],
+    "priority_score": 4.7
+  },
+  {
+    "scenario_title": "Troubleshooting VM boot failures and serial console diagnostic logs",
+    "scenario_category": "Troubleshooting",
+    "domain": "azure",
+    "subdomain": "Virtual Machines",
+    "is_cis": false,
+    "cis_type": "N/A",
+    "security_value": 4,
+    "rag_retrieval_value": 5,
+    "fine_tuning_value": 5,
+    "business_value": 5,
+    "estimated_file_count": 1,
+    "existing_coverage": "No",
+    "match_confidence": 30.0,
+    "technology_tags": [
+      "Azure Landing Zone",
+      "Microsoft Security Baseline",
+      "Zero Trust"
+    ],
+    "operational_tags": [
+      "Day 2 Operations",
+      "Remediation",
+      "Validation"
+    ],
+    "priority_score": 4.7
+  },
+  {
+    "scenario_title": "Troubleshooting Storage Account access errors and resource firewalls restrictions",
+    "scenario_category": "Troubleshooting",
+    "domain": "azure",
+    "subdomain": "Storage",
+    "is_cis": false,
+    "cis_type": "N/A",
+    "security_value": 4,
+    "rag_retrieval_value": 5,
+    "fine_tuning_value": 5,
+    "business_value": 5,
+    "estimated_file_count": 1,
+    "existing_coverage": "No",
+    "match_confidence": 40.0,
+    "technology_tags": [
+      "Azure Landing Zone",
+      "Microsoft Security Baseline",
+      "Zero Trust"
+    ],
+    "operational_tags": [
+      "Day 2 Operations",
+      "Remediation",
+      "Validation"
+    ],
+    "priority_score": 4.7
+  },
+  {
+    "scenario_title": "Troubleshooting Key Vault secret retrieval errors and managed identity permissions",
+    "scenario_category": "Troubleshooting",
+    "domain": "azure",
+    "subdomain": "Key Vault",
+    "is_cis": false,
+    "cis_type": "N/A",
+    "security_value": 4,
+    "rag_retrieval_value": 5,
+    "fine_tuning_value": 5,
+    "business_value": 5,
+    "estimated_file_count": 1,
+    "existing_coverage": "No",
+    "match_confidence": 30.0,
+    "technology_tags": [
+      "Azure Landing Zone",
+      "Microsoft Security Baseline",
+      "Zero Trust"
+    ],
+    "operational_tags": [
+      "Day 2 Operations",
+      "Remediation",
+      "Validation"
+    ],
+    "priority_score": 4.7
+  },
+  {
+    "scenario_title": "Troubleshooting Azure Monitor alert rules and action group delivery failures",
+    "scenario_category": "Troubleshooting",
+    "domain": "azure",
+    "subdomain": "Monitoring",
+    "is_cis": false,
+    "cis_type": "N/A",
+    "security_value": 4,
+    "rag_retrieval_value": 5,
+    "fine_tuning_value": 5,
+    "business_value": 5,
+    "estimated_file_count": 1,
+    "existing_coverage": "No",
+    "match_confidence": 0.0,
+    "technology_tags": [
+      "Azure Landing Zone",
+      "Microsoft Security Baseline",
+      "Zero Trust"
+    ],
+    "operational_tags": [
+      "Day 2 Operations",
+      "Remediation",
+      "Validation"
+    ],
+    "priority_score": 4.7
+  },
+  {
+    "scenario_title": "Troubleshooting Azure ExpressRoute connection failures and BGP peering errors",
+    "scenario_category": "Troubleshooting",
+    "domain": "azure",
+    "subdomain": "Networking",
+    "is_cis": false,
+    "cis_type": "N/A",
+    "security_value": 4,
+    "rag_retrieval_value": 5,
+    "fine_tuning_value": 5,
+    "business_value": 5,
+    "estimated_file_count": 1,
+    "existing_coverage": "No",
+    "match_confidence": 41.7,
+    "technology_tags": [
+      "Azure Landing Zone",
+      "Microsoft Security Baseline",
+      "Zero Trust"
+    ],
+    "operational_tags": [
+      "Day 2 Operations",
+      "Remediation",
+      "Validation"
+    ],
+    "priority_score": 4.7
+  },
+  {
+    "scenario_title": "Resolving access denied errors and sync loops during subscription level assignments administration",
+    "scenario_category": "Troubleshooting",
+    "domain": "azure",
+    "subdomain": "RBAC",
+    "is_cis": false,
+    "cis_type": "N/A",
+    "security_value": 4,
+    "rag_retrieval_value": 5,
+    "fine_tuning_value": 5,
+    "business_value": 5,
+    "estimated_file_count": 1,
+    "existing_coverage": "No",
+    "match_confidence": 36.4,
+    "technology_tags": [
+      "Azure Landing Zone",
+      "Microsoft Security Baseline",
+      "Zero Trust"
+    ],
+    "operational_tags": [
+      "Day 2 Operations",
+      "Remediation",
+      "Validation"
+    ],
+    "priority_score": 4.7
+  },
+  {
+    "scenario_title": "Resolving access denied errors and sync loops during resource tagging compliance rules administration",
+    "scenario_category": "Troubleshooting",
+    "domain": "azure",
+    "subdomain": "Governance",
+    "is_cis": false,
+    "cis_type": "N/A",
+    "security_value": 4,
+    "rag_retrieval_value": 5,
+    "fine_tuning_value": 5,
+    "business_value": 5,
+    "estimated_file_count": 1,
+    "existing_coverage": "No",
+    "match_confidence": 35.8,
+    "technology_tags": [
+      "Azure Landing Zone",
+      "Microsoft Security Baseline",
+      "Zero Trust"
+    ],
+    "operational_tags": [
+      "Day 2 Operations",
+      "Remediation",
+      "Validation"
+    ],
+    "priority_score": 4.7
+  },
+  {
+    "scenario_title": "Resolving access denied errors and sync loops during backup encryption keys administration",
+    "scenario_category": "Troubleshooting",
+    "domain": "azure",
+    "subdomain": "Backup",
+    "is_cis": false,
+    "cis_type": "N/A",
+    "security_value": 4,
+    "rag_retrieval_value": 5,
+    "fine_tuning_value": 5,
+    "business_value": 5,
+    "estimated_file_count": 1,
+    "existing_coverage": "No",
+    "match_confidence": 30.0,
+    "technology_tags": [
+      "Azure Landing Zone",
+      "Microsoft Security Baseline",
+      "Zero Trust"
+    ],
+    "operational_tags": [
+      "Day 2 Operations",
+      "Remediation",
+      "Validation"
+    ],
+    "priority_score": 4.7
+  },
+  {
+    "scenario_title": "Resolving access denied errors and sync loops during Storage account soft delete protection administration",
+    "scenario_category": "Troubleshooting",
+    "domain": "azure",
+    "subdomain": "Storage",
+    "is_cis": false,
+    "cis_type": "N/A",
+    "security_value": 4,
+    "rag_retrieval_value": 5,
+    "fine_tuning_value": 5,
+    "business_value": 5,
+    "estimated_file_count": 1,
+    "existing_coverage": "No",
+    "match_confidence": 35.4,
+    "technology_tags": [
+      "Azure Landing Zone",
+      "Microsoft Security Baseline",
+      "Zero Trust"
+    ],
+    "operational_tags": [
+      "Day 2 Operations",
+      "Remediation",
+      "Validation"
+    ],
+    "priority_score": 4.7
+  },
+  {
+    "scenario_title": "Resolving access denied errors and sync loops during Network Security Groups NSGs administration",
+    "scenario_category": "Troubleshooting",
+    "domain": "azure",
+    "subdomain": "Networking",
+    "is_cis": false,
+    "cis_type": "N/A",
+    "security_value": 4,
+    "rag_retrieval_value": 5,
+    "fine_tuning_value": 5,
+    "business_value": 5,
+    "estimated_file_count": 1,
+    "existing_coverage": "No",
+    "match_confidence": 36.4,
+    "technology_tags": [
+      "Azure Landing Zone",
+      "Microsoft Security Baseline",
+      "Zero Trust"
+    ],
+    "operational_tags": [
+      "Day 2 Operations",
+      "Remediation",
+      "Validation"
+    ],
+    "priority_score": 4.7
+  },
+  {
+    "scenario_title": "Resolving access denied errors and sync loops during Key Vault firewall settings administration",
+    "scenario_category": "Troubleshooting",
+    "domain": "azure",
+    "subdomain": "Key Vault",
+    "is_cis": false,
+    "cis_type": "N/A",
+    "security_value": 4,
+    "rag_retrieval_value": 5,
+    "fine_tuning_value": 5,
+    "business_value": 5,
+    "estimated_file_count": 1,
+    "existing_coverage": "No",
+    "match_confidence": 35.8,
+    "technology_tags": [
+      "Azure Landing Zone",
+      "Microsoft Security Baseline",
+      "Zero Trust"
+    ],
+    "operational_tags": [
+      "Day 2 Operations",
+      "Remediation",
+      "Validation"
+    ],
+    "priority_score": 4.7
+  },
+  {
+    "scenario_title": "Resolving access denied errors and sync loops during Azure VM host-level security administration",
+    "scenario_category": "Troubleshooting",
+    "domain": "azure",
+    "subdomain": "Virtual Machines",
+    "is_cis": false,
+    "cis_type": "N/A",
+    "security_value": 4,
+    "rag_retrieval_value": 5,
+    "fine_tuning_value": 5,
+    "business_value": 5,
+    "estimated_file_count": 1,
+    "existing_coverage": "No",
+    "match_confidence": 36.4,
+    "technology_tags": [
+      "Azure Landing Zone",
+      "Microsoft Security Baseline",
+      "Zero Trust"
+    ],
+    "operational_tags": [
+      "Day 2 Operations",
+      "Remediation",
+      "Validation"
+    ],
+    "priority_score": 4.7
+  }
+]

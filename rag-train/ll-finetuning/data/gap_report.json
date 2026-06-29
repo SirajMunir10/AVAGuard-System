@@ -1,0 +1,98 @@
+{
+  "total_entries": 503,
+  "complete": 482,
+  "shallow": 0,
+  "skeleton": 0,
+  "off_topic": 21,
+  "gap_matrix": {
+    "Intune": {
+      "Troubleshooting": 34,
+      "Implementation": 9,
+      "Hardening": 6,
+      "Incident Response": 7,
+      "Governance": 7,
+      "Optimization": 7
+    },
+    "Entra ID": {
+      "Troubleshooting": 53,
+      "Implementation": 9,
+      "Hardening": 6,
+      "Incident Response": 7,
+      "Governance": 7,
+      "Optimization": 6
+    },
+    "Defender for Endpoint": {
+      "Troubleshooting": 31,
+      "Implementation": 7,
+      "Hardening": 5,
+      "Incident Response": 6,
+      "Governance": 7,
+      "Optimization": 7
+    },
+    "Defender XDR": {
+      "Troubleshooting": 7,
+      "Implementation": 7,
+      "Hardening": 4,
+      "Incident Response": 6,
+      "Governance": 7,
+      "Optimization": 7
+    },
+    "Sentinel": {
+      "Troubleshooting": 9,
+      "Implementation": 0,
+      "Hardening": 7,
+      "Incident Response": 6,
+      "Governance": 7,
+      "Optimization": 7
+    },
+    "Exchange Online": {
+      "Troubleshooting": 5,
+      "Implementation": 7,
+      "Hardening": 6,
+      "Incident Response": 7,
+      "Governance": 7,
+      "Optimization": 7
+    },
+    "Azure": {
+      "Troubleshooting": 30,
+      "Implementation": 4,
+      "Hardening": 6,
+      "Incident Response": 5,
+      "Governance": 7,
+      "Optimization": 7
+    },
+    "Purview": {
+      "Troubleshooting": 13,
+      "Implementation": 9,
+      "Hardening": 7,
+      "Incident Response": 7,
+      "Governance": 7,
+      "Optimization": 7
+    },
+    "Governance": {
+      "Troubleshooting": 7,
+      "Implementation": 6,
+      "Hardening": 6,
+      "Incident Response": 7,
+      "Governance": 6,
+      "Optimization": 7
+    }
+  },
+  "gaps": [
+    {
+      "domain": "Sentinel",
+      "incident_type": "Implementation",
+      "count": 0
+    },
+    {
+      "domain": "Defender XDR",
+      "incident_type": "Hardening",
+      "count": 4
+    },
+    {
+      "domain": "Azure",
+      "incident_type": "Implementation",
+      "count": 4
+    }
+  ]
+}

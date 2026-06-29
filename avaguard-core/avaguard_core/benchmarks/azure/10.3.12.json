@@ -1,0 +1,33 @@
+{
+  "control_id": "10.3.12",
+  "title": "Ensure Redundancy is set to 'geo-redundant storage (GRS)' on critical Azure Storage",
+  "version": "1.0.0",
+  "deprecated": false,
+  "profile_level": "Level 1",
+  "provider_compatibility": ["azure"],
+  "category": "Storage",
+  "framework_mappings": {
+    "NIST_800_53": ["CP-9", "CP-10"],
+    "ISO_27001": ["A.17.1.1", "A.17.1.2"]
+  },
+  "scan_query": {
+    "resource_type": "storage_accounts",
+    "fields": ["id", "name", "redundancy"]
+  },
+  "evaluation_rules": [
+    {
+      "field": "redundancy",
+      "operator": "equals",
+      "expected": "GRS",
+      "remedy_on_fail": true
+    }
+  ],
+  "remediation_metadata": {
+    "severity": "MEDIUM",
+    "impact_statement": "Storage without geo-redundant replication places critical business data at risk of total region outages.",
+    "validation_steps": "Verify redundancy is set to GRS in Azure Portal under Storage redundancy configurations or run az storage account show.",
+    "templates": {
+      "azure_cli": "az storage account update --name {{ resource.name }} --sku Standard_GRS"
+    }
+  }
+}

@@ -1,0 +1,148 @@
+{% extends 'ai_ops/base_ai_ops.html' %}
+{% load static %}
+
+{% block title %}AI Operations Audit Trail - AVAGuard{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'ai_ops/css/admin.css' %}?v=3.0">
+<link rel="stylesheet" href="{% static 'ai_ops/css/query.css' %}?v=3.0">
+<style>
+    .badge-confidence {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        font-size: 12px;
+        font-weight: 600;
+        color: var(--avag-text-primary);
+    }
+    .confidence-dot {
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        display: inline-block;
+    }
+    .dot-high { background-color: var(--avag-accent-success, #00ff88); }
+    .dot-medium { background-color: var(--avag-accent-warning, #ffd93d); }
+    .dot-low { background-color: var(--avag-accent-danger, #ff4b4b); }
+    .dot-none { background-color: var(--avag-text-secondary, #808080); }
+</style>
+{% endblock %}
+
+{% block ai_page_name %}Audit Logs{% endblock %}
+
+{% block ai_content %}
+<div class="ai-audit-container">
+
+    <!-- Filters Panel -->
+    <div class="ai-filter-bar stat-card avag-mb-24">
+        <!-- 1. Search email -->
+        <div class="ai-search-group">
+            <i data-lucide="search" class="ai-search-icon"></i>
+            <input type="text" id="ai-audit-user-search" placeholder="Filter audit trail by user email address...">
+        </div>
+        
+        <!-- 2. Flagged filter -->
+        <div class="ai-filter-group" style="display: flex; align-items: center; gap: 16px; flex-wrap: wrap;">
+            <label class="drawer-checkbox" style="margin: 0; display: flex; align-items: center;">
+                <input type="checkbox" id="ai-audit-flagged-only">
+                <span class="drawer-checkbox-mark"></span>
+                <span>Flagged Violations Only</span>
+            </label>
+            
+            <div style="display: flex; align-items: center; gap: 8px;">
+                <label for="ai-audit-mode-filter" style="font-size: 13px; color: var(--avag-text-secondary); font-weight: 500;">Mode:</label>
+                <select id="ai-audit-mode-filter" class="inspector-dropdown" style="padding: 6px 12px; font-size: 13px; max-width: 140px; background: rgba(255, 255, 255, 0.03); border: 1px solid var(--avag-border-color); color: var(--avag-text-primary);" onchange="filterAuditLogs()">
+                    <option value="">All Modes</option>
+                    <option value="ai">AI Retrieval</option>
+                    <option value="mock">Mock Sandbox</option>
+                </select>
+            </div>
+
+            <div style="display: flex; align-items: center; gap: 8px;">
+                <label for="ai-audit-confidence-filter" style="font-size: 13px; color: var(--avag-text-secondary); font-weight: 500;">Confidence:</label>
+                <select id="ai-audit-confidence-filter" class="inspector-dropdown" style="padding: 6px 12px; font-size: 13px; max-width: 140px; background: rgba(255, 255, 255, 0.03); border: 1px solid var(--avag-border-color); color: var(--avag-text-primary);" onchange="filterAuditLogs()">
+                    <option value="">All Confidence</option>
+                    <option value="high">High</option>
+                    <option value="medium">Medium</option>
+                    <option value="low">Low</option>
+                    <option value="none">None</option>
+                </select>
+            </div>
+            
+            <button class="btn btn-secondary" id="ai-audit-reset-btn" onclick="resetAuditFilters()">
+                <i data-lucide="refresh-cw"></i> Reset
+            </button>
+        </div>
+    </div>
+
+    <!-- Audit Timeline Table -->
+    <div class="stat-card" style="padding: 0; overflow: hidden;">
+        <div class="ai-panel-header" style="padding: 20px 24px; border-bottom: 1px solid var(--avag-border-color); display: flex; justify-content: space-between; align-items: center;">
+            <h3 class="ai-panel-title">
+                <i data-lucide="shield-check"></i> Immutable Query Audit Record
+            </h3>
+            <span class="ai-security-indicator animate-pulse">
+                <i data-lucide="shield"></i> Immutable Storage Active
+            </span>
+        </div>
+
+        <div class="table-container" style="overflow-x: auto;">
+            <table class="avag-table" id="ai-audit-table" style="width: 100%; border-collapse: collapse; text-align: left;">
+                <thead>
+                    <tr style="border-bottom: 1px solid var(--avag-border-color); color: var(--avag-text-secondary);">
+                        <th style="padding: 16px 24px;">User Account</th>
+                        <th style="padding: 16px 24px;">Question Submitted</th>
+                        <th style="padding: 16px 24px;">Mode</th>
+                        <th style="padding: 16px 24px;">Confidence</th>
+                        <th style="padding: 16px 24px;">Status / Security</th>
+                        <th style="padding: 16px 24px;">Model & Provider</th>
+                        <th style="padding: 16px 24px;">Match Count</th>
+                        <th style="padding: 16px 24px;">Total Latency</th>
+                        <th style="padding: 16px 24px;">Timestamp</th>
+                        <th style="padding: 16px 24px; text-align: right;">Auditing</th>
+                    </tr>
+                </thead>
+                <tbody id="ai-audit-tbody">
+                    <!-- Dynamic rendering via admin.js AJAX call -->
+                    <tr id="audit-loading-row">
+                        <td colspan="10" style="padding: 30px; text-align: center; color: var(--avag-text-secondary);">
+                            <span class="spinner-small" style="margin-right: 8px;"></span>
+                            Reading immutable audit logs from database...
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Pagination bar -->
+        <div class="ai-pagination-bar" id="ai-audit-pagination">
+            <!-- Populated via Javascript -->
+        </div>
+    </div>
+
+</div>
+
+<!-- Citations Details modal -->
+{% include 'ai_ops/partials/ai_source_modal.html' %}
+
+<!-- Query Card View Overlay Modal -->
+<div id="ai-card-view-modal-container" class="ai-source-modal-container">
+    <div class="ai-source-modal-overlay" onclick="closeCardModal()"></div>
+    <div class="ai-source-modal" style="max-width: 700px;">
+        <div class="ai-source-modal-header" style="border-bottom: none; padding-bottom: 0;">
+            <h3 class="ai-source-modal-title">AI Compliance Record</h3>
+            <button class="ai-source-modal-close" onclick="closeCardModal()" aria-label="Close">&times;</button>
+        </div>
+        <div class="ai-source-modal-body" id="ai-card-modal-content">
+            <!-- Loaded via Javascript -->
+        </div>
+        <div class="ai-source-modal-footer">
+            <button class="btn btn-secondary" onclick="closeCardModal()">Dismiss Record</button>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script src="{% static 'ai_ops/js/admin.js' %}?v=3.0"></script>
+{% endblock %}

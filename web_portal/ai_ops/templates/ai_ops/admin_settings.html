@@ -1,0 +1,117 @@
+{% extends 'ai_ops/base_ai_ops.html' %}
+{% load static %}
+
+{% block title %}AI Global Settings - AVAGuard{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'ai_ops/css/admin.css' %}?v=3.0">
+{% endblock %}
+
+{% block ai_page_name %}Settings{% endblock %}
+
+{% block ai_content %}
+<div class="ai-settings-container">
+    
+    <!-- Super Admin vs IT Admin Info Banner -->
+    {% if user.role != 'SUPER_ADMIN' %}
+        <div class="ai-info-banner warning avag-mb-24">
+            <div class="ai-info-icon">
+                <i data-lucide="info"></i>
+            </div>
+            <div class="ai-info-text">
+                <strong>read-only operational visibility</strong>
+                <p>You have access to these settings as an IT Administrator. However, editing and applying updates requires a Super Administrator role.</p>
+            </div>
+        </div>
+    {% endif %}
+
+    <div class="stat-card" style="max-width: 800px; margin: 0 auto; padding: 32px;">
+        <div class="ai-panel-header avag-mb-24" style="border-bottom: 1px solid var(--avag-border-color); padding-bottom: 16px;">
+            <h3 class="ai-panel-title"><i data-lucide="sliders"></i> Configure AI Compliance Pipelines</h3>
+            <p class="ai-subtitle-text">Manage the global compliance pipeline parameters and security models.</p>
+        </div>
+
+        <form id="ai-settings-form" class="ai-settings-form">
+            {% csrf_token %}
+            
+            <!-- 1. Enable/Disable AI globally -->
+            <div class="ai-form-switch-row avag-mb-24">
+                <div class="ai-switch-details">
+                    <label class="ai-switch-label" for="is_enabled">Enable AI Compliance Engine</label>
+                    <span class="ai-switch-desc">Toggle the interactive grounded similarity Q&A search console for your organization.</span>
+                </div>
+                <label class="drawer-toggle">
+                    <input type="checkbox" id="is_enabled" name="is_enabled" {% if ai_settings.is_enabled %}checked{% endif %} {% if user.role != 'SUPER_ADMIN' %}disabled{% endif %}>
+                    <span class="drawer-toggle-slider"></span>
+                </label>
+            </div>
+
+            <div class="ai-divider avag-mb-24"></div>
+
+            <!-- Settings Fields Grid -->
+            <div class="ai-form-grid">
+                
+                <!-- LLM Provider -->
+                <div class="drawer-form-group">
+                    <label for="llm_provider">LLM Provider Selection</label>
+                    <select id="llm_provider" name="llm_provider" class="drawer-input" {% if user.role != 'SUPER_ADMIN' %}disabled{% endif %}>
+                        {% for choice in provider_choices %}
+                            <option value="{{ choice.0 }}" {% if ai_settings.llm_provider == choice.0 %}selected{% endif %}>{{ choice.1 }}</option>
+                        {% endfor %}
+                    </select>
+                    <span class="drawer-help-text">Choose the backing provider. Mock mode works fully offline.</span>
+                </div>
+
+                <!-- Model Name -->
+                <div class="drawer-form-group">
+                    <label for="model_name">Active Generation Model</label>
+                    <input type="text" id="model_name" name="model_name" class="drawer-input" value="{{ ai_settings.model_name }}" placeholder="e.g. deepseek-chat or gpt-4o-mini" {% if user.role != 'SUPER_ADMIN' %}disabled{% endif %} required>
+                    <span class="drawer-help-text">Model identifier passed to the LLM service connector.</span>
+                </div>
+
+                <!-- Daily Query Limit -->
+                <div class="drawer-form-group">
+                    <label for="daily_query_limit">Daily Queries Ceiling</label>
+                    <input type="number" id="daily_query_limit" name="daily_query_limit" class="drawer-input" value="{{ ai_settings.daily_query_limit }}" min="1" max="10000" {% if user.role != 'SUPER_ADMIN' %}disabled{% endif %} required>
+                    <span class="drawer-help-text">Max total queries permitted across the organization per day (1 - 10000).</span>
+                </div>
+
+                <!-- Top-k results -->
+                <div class="drawer-form-group">
+                    <label for="top_k_results">Vector Source Depth (Top-k)</label>
+                    <input type="number" id="top_k_results" name="top_k_results" class="drawer-input" value="{{ ai_settings.top_k_results }}" min="1" max="20" {% if user.role != 'SUPER_ADMIN' %}disabled{% endif %} required>
+                    <span class="drawer-help-text">The number of matching similarity chunks extracted from FAISS (1 - 20).</span>
+                </div>
+
+                <!-- Max Tokens -->
+                <div class="drawer-form-group">
+                    <label for="max_tokens">Maximum Generation Tokens</label>
+                    <input type="number" id="max_tokens" name="max_tokens" class="drawer-input" value="{{ ai_settings.max_tokens }}" min="64" max="4096" {% if user.role != 'SUPER_ADMIN' %}disabled{% endif %} required>
+                    <span class="drawer-help-text">Max response size limits. Larger limits support longer summaries.</span>
+                </div>
+
+                <!-- Temperature -->
+                <div class="drawer-form-group">
+                    <label for="temperature">LLM Temperature Slider (<span id="temp-val-display">{{ ai_settings.temperature }}</span>)</label>
+                    <input type="range" id="temperature" name="temperature" class="drawer-input" min="0" max="1" step="0.05" value="{{ ai_settings.temperature }}" {% if user.role != 'SUPER_ADMIN' %}disabled{% endif %}>
+                    <span class="drawer-help-text">Lower temperature yields highly grounded compliance answers. (0.0 = deterministic).</span>
+                </div>
+
+            </div>
+
+            {% if user.role == 'SUPER_ADMIN' %}
+                <div class="ai-form-actions avag-mt-24">
+                    <button type="submit" class="btn btn-primary" id="save-settings-btn">
+                        <span class="btn-text">Apply System Changes</span>
+                        <span class="spinner-small avag-hide" id="save-settings-spinner"></span>
+                    </button>
+                </div>
+            {% endif %}
+        </form>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script src="{% static 'ai_ops/js/admin.js' %}?v=2.0"></script>
+{% endblock %}

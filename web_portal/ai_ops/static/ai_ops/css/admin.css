@@ -1,0 +1,405 @@
+/* =====================================================================
+   AVAGuard AI Operations — Administrative Settings & Audit Stylesheet
+   ===================================================================== */
+
+.ai-settings-container, .ai-audit-container {
+    padding: 0;
+}
+
+/* ── Info Banners ── */
+.ai-info-banner {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    background: linear-gradient(135deg, rgba(0, 212, 255, 0.05) 0%, rgba(26, 26, 46, 0.3) 100%);
+    border: 1px solid rgba(0, 212, 255, 0.2);
+    border-radius: var(--radius-lg);
+    padding: 16px 20px;
+}
+
+.ai-info-banner.warning {
+    background: linear-gradient(135deg, rgba(255, 217, 61, 0.05) 0%, rgba(26, 26, 46, 0.3) 100%);
+    border-color: rgba(255, 217, 61, 0.2);
+}
+
+.ai-info-banner.warning .ai-info-icon {
+    color: var(--avag-accent-warning);
+}
+
+.ai-info-icon {
+    color: var(--avag-accent-primary);
+    font-size: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.ai-info-icon svg {
+    width: 24px;
+    height: 24px;
+}
+
+.ai-info-text strong {
+    display: block;
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: var(--avag-text-primary);
+    margin-bottom: 4px;
+}
+
+.ai-info-text p {
+    font-size: 13px;
+    color: var(--avag-text-secondary);
+    line-height: 1.5;
+    margin: 0;
+}
+
+/* ── Settings Form ── */
+.ai-settings-form {
+    margin-top: 16px;
+}
+
+.ai-form-switch-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 24px;
+}
+
+.ai-switch-details {
+    flex: 1;
+}
+
+.ai-switch-label {
+    display: block;
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--avag-text-primary);
+    margin-bottom: 4px;
+}
+
+.ai-switch-desc {
+    display: block;
+    font-size: 13px;
+    color: var(--avag-text-secondary);
+    line-height: 1.4;
+}
+
+.ai-divider {
+    border-top: 1px solid var(--avag-border-color);
+}
+
+.ai-form-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 24px;
+}
+
+.ai-form-actions {
+    display: flex;
+    justify-content: flex-end;
+    border-top: 1px solid var(--avag-border-color);
+    padding-top: 24px;
+}
+
+/* Range input alignment override */
+input[type="range"].drawer-input {
+    padding: 0;
+    height: 42px;
+    cursor: pointer;
+    background: transparent;
+    border: none;
+}
+
+input[type="range"].drawer-input:focus {
+    box-shadow: none;
+}
+
+/* ── Audit Logs Panel Header ── */
+.ai-panel-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+
+.ai-panel-title {
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--avag-text-primary);
+    margin: 0;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.ai-panel-title svg {
+    color: var(--avag-accent-primary);
+}
+
+.ai-subtitle-text {
+    font-size: 13px;
+    color: var(--avag-text-secondary);
+}
+
+.ai-security-indicator {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--avag-accent-success);
+    background: rgba(0, 255, 136, 0.08);
+    padding: 4px 10px;
+    border-radius: 4px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.ai-security-indicator svg {
+    width: 12px;
+    height: 12px;
+}
+
+/* Filter bar styles */
+.ai-filter-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px 24px;
+    flex-wrap: wrap;
+    gap: 16px;
+}
+
+.ai-search-group {
+    position: relative;
+    flex: 1;
+    min-width: 260px;
+}
+
+.ai-search-icon {
+    position: absolute;
+    left: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 18px;
+    height: 18px;
+    color: var(--avag-text-secondary);
+    pointer-events: none;
+}
+
+.ai-search-group input {
+    width: 100%;
+    padding: 10px 14px 10px 40px;
+    background: var(--avag-bg-input);
+    border: 1px solid var(--avag-border-color);
+    border-radius: 8px;
+    color: var(--avag-text-primary);
+    font-size: 14px;
+    transition: all var(--transition-fast);
+}
+
+.ai-search-group input:focus {
+    outline: none;
+    border-color: var(--avag-accent-primary);
+    box-shadow: 0 0 0 3px rgba(0, 212, 255, 0.08);
+}
+.avag-mb-24 {
+    margin-bottom: 24px !important;
+}
+.avag-mb-16 {
+    margin-bottom: 16px !important;
+}
+.avag-mt-24 {
+    margin-top: 24px !important;
+}
+
+/* ── Premium Citations Excerpt & Card Modals ── */
+.ai-source-modal-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 10000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.25s cubic-bezier(0.4, 0, 0.2, 1), visibility 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.ai-source-modal-container.visible {
+    opacity: 1;
+    visibility: visible;
+}
+
+.ai-source-modal-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(8, 8, 16, 0.78);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+}
+
+.ai-source-modal {
+    position: relative;
+    background: var(--avag-bg-card, #121224);
+    border: 1px solid var(--avag-border-color, rgba(255, 255, 255, 0.08));
+    border-radius: 14px;
+    width: 90%;
+    max-width: 580px;
+    max-height: 85vh;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    box-shadow: 0 24px 60px rgba(0, 0, 0, 0.65), 0 0 40px rgba(0, 212, 255, 0.08);
+    transform: scale(0.95) translateY(12px);
+    transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
+    z-index: 10001;
+}
+
+.ai-source-modal-container.visible .ai-source-modal {
+    transform: scale(1) translateY(0);
+}
+
+.ai-source-modal-header {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 20px 24px;
+    border-bottom: 1px solid var(--avag-border-color, rgba(255, 255, 255, 0.08));
+    background: linear-gradient(180deg, rgba(0, 212, 255, 0.04) 0%, transparent 100%);
+}
+
+.ai-source-modal-icon {
+    width: 44px;
+    height: 44px;
+    border-radius: 10px;
+    background: rgba(0, 212, 255, 0.12);
+    color: var(--avag-accent-primary, #00d4ff);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    box-shadow: 0 0 15px rgba(0, 212, 255, 0.15);
+}
+
+.ai-source-modal-icon svg {
+    width: 20px;
+    height: 20px;
+}
+
+.ai-source-modal-title-group {
+    flex: 1;
+    min-width: 0;
+}
+
+.ai-source-modal-title {
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--avag-text-primary, #ffffff);
+    margin: 0;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    letter-spacing: 0.3px;
+}
+
+.ai-source-modal-subtitle {
+    font-size: 12px;
+    color: var(--avag-accent-primary, #00d4ff);
+    font-weight: 500;
+}
+
+.ai-source-modal-close {
+    width: 32px;
+    height: 32px;
+    border: none;
+    background: transparent;
+    color: var(--avag-text-secondary, #a0a0c0);
+    font-size: 24px;
+    cursor: pointer;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease;
+}
+
+.ai-source-modal-close:hover {
+    background: var(--avag-bg-input, rgba(255, 255, 255, 0.04));
+    color: var(--avag-text-primary, #ffffff);
+}
+
+.ai-source-modal-body {
+    padding: 24px;
+    overflow-y: auto;
+    color: var(--avag-text-primary, #ffffff);
+    flex: 1;
+}
+
+.ai-source-body-title {
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--avag-text-secondary, #a0a0c0);
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    margin-bottom: 12px;
+}
+
+.ai-source-snippet-box {
+    background: var(--avag-bg-input, rgba(0, 0, 0, 0.2));
+    border: 1px solid var(--avag-border-color, rgba(255, 255, 255, 0.08));
+    border-radius: 8px;
+    padding: 18px;
+    font-family: inherit;
+    font-size: 14px;
+    line-height: 1.6;
+    white-space: pre-wrap;
+    word-break: break-word;
+    color: var(--avag-text-primary, #ffffff);
+    max-height: 45vh;
+    overflow-y: auto;
+}
+
+.ai-source-modal-footer {
+    display: flex;
+    justify-content: flex-end;
+    padding: 16px 24px;
+    border-top: 1px solid var(--avag-border-color, rgba(255, 255, 255, 0.08));
+    background: var(--avag-bg-input, rgba(0, 0, 0, 0.15));
+}
+
+/* Hide helper */
+.avag-hide {
+    display: none !important;
+}
+
+/* ── Source Modal Navigation & Badge Additions ── */
+#ai-source-type {
+    background: rgba(var(--avag-accent-primary-rgb, 0, 212, 255), 0.15);
+    color: var(--avag-accent-primary);
+    border: 1px solid rgba(var(--avag-accent-primary-rgb, 0, 212, 255), 0.3);
+}
+
+#ai-source-nav-group button:hover {
+    background: rgba(var(--avag-accent-primary-rgb, 0, 212, 255), 0.15) !important;
+    color: var(--avag-accent-primary) !important;
+}
+
+#ai-source-nav-group button:disabled {
+    opacity: 0.3 !important;
+    cursor: not-allowed !important;
+    color: var(--avag-text-muted) !important;
+}
+
+

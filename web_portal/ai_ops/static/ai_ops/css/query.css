@@ -1,0 +1,1004 @@
+/* =====================================================================
+   AVAGuard AI Operations — Query and History Stylesheet
+   ===================================================================== */
+
+.ai-query-container {
+    padding: 0;
+}
+
+/* ── Alert Banners ── */
+.ai-alert-banner {
+    display: none;
+    align-items: center;
+    gap: 16px;
+    background: linear-gradient(135deg, rgba(255, 217, 61, 0.08) 0%, rgba(26, 26, 46, 0.3) 100%);
+    border: 1px solid rgba(255, 217, 61, 0.2);
+    border-radius: var(--radius-lg);
+    padding: 16px 20px;
+    margin-bottom: 24px;
+}
+
+.ai-alert-banner.visible {
+    display: flex;
+}
+
+.ai-alert-icon {
+    color: var(--avag-accent-warning);
+    font-size: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.ai-alert-icon svg {
+    width: 28px;
+    height: 28px;
+}
+
+.ai-alert-content strong {
+    display: block;
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: var(--avag-text-primary);
+    margin-bottom: 4px;
+}
+
+.ai-alert-content p {
+    font-size: 13px;
+    color: var(--avag-text-secondary);
+    line-height: 1.5;
+    margin: 0;
+}
+
+/* ── Workspace Layout ── */
+.ai-workspace {
+    display: grid;
+    grid-template-columns: 1fr 340px;
+    gap: 24px;
+    align-items: start;
+}
+
+@media (max-width: 1024px) {
+    .ai-workspace {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* ── Console Form Pane ── */
+.ai-console-card {
+    background: var(--avag-bg-card);
+    border: 1px solid var(--avag-border-color);
+    border-radius: var(--radius-lg);
+    padding: 24px;
+    box-shadow: var(--avag-shadow-card);
+    margin-bottom: 24px;
+}
+
+.ai-console-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+
+.ai-console-header h3 {
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--avag-text-primary);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 0;
+}
+
+.ai-console-header h3 i {
+    color: var(--avag-accent-primary);
+    display: flex;
+    align-items: center;
+}
+
+.ai-console-limits {
+    font-size: 12px;
+    color: var(--avag-text-secondary);
+}
+
+.ai-query-form textarea {
+    width: 100%;
+    background: var(--avag-bg-input);
+    border: 1px solid var(--avag-border-input);
+    border-radius: var(--radius-md);
+    color: var(--avag-text-primary);
+    padding: 16px;
+    font-family: inherit;
+    font-size: 14px;
+    line-height: 1.6;
+    resize: none;
+    transition: all var(--transition-fast);
+}
+
+.ai-query-form textarea:focus {
+    outline: none;
+    border-color: var(--avag-accent-primary);
+    box-shadow: 0 0 0 3px rgba(0, 212, 255, 0.08);
+}
+
+.ai-input-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 12px;
+}
+
+.ai-char-counter {
+    font-size: 12px;
+    color: var(--avag-text-secondary);
+}
+
+/* ── Response Pane & Placeholders ── */
+.ai-response-board {
+    min-height: 200px;
+}
+
+.ai-placeholder-card {
+    background: var(--avag-bg-card);
+    border: 1px solid var(--avag-border-color);
+    border-radius: var(--radius-lg);
+    padding: 40px;
+    text-align: center;
+    box-shadow: var(--avag-shadow-card);
+}
+
+.ai-placeholder-icon {
+    font-size: 48px;
+    color: rgba(0, 212, 255, 0.15);
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: center;
+}
+
+.ai-placeholder-icon svg {
+    width: 48px;
+    height: 48px;
+}
+
+.ai-placeholder-card h4 {
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--avag-text-primary);
+    margin-bottom: 8px;
+}
+
+.ai-placeholder-card p {
+    font-size: 13px;
+    color: var(--avag-text-secondary);
+    max-width: 460px;
+    margin: 0 auto;
+    line-height: 1.6;
+}
+
+/* ── AI Compliance Q&A Cards ── */
+.ai-query-card {
+    background: var(--avag-bg-card);
+    border: 1px solid var(--avag-border-color);
+    border-radius: var(--radius-lg);
+    padding: 24px;
+    box-shadow: var(--avag-shadow-card);
+    margin-bottom: 24px;
+    animation: ai-slide-up 0.3s ease-out;
+}
+
+@keyframes ai-slide-up {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.ai-query-card.flagged {
+    border-left: 4px solid var(--avag-accent-danger);
+}
+
+.ai-query-card.fallback {
+    border-left: 4px solid var(--avag-accent-warning);
+}
+
+.ai-card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid var(--avag-border-color);
+    padding-bottom: 12px;
+    margin-bottom: 16px;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+
+.ai-user-meta {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    font-size: 12px;
+    color: var(--avag-text-secondary);
+}
+
+.ai-user-email, .ai-timestamp {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.ai-meta-icon {
+    width: 14px;
+    height: 14px;
+}
+
+.ai-badges {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+.ai-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    font-size: 11px;
+    font-weight: 600;
+    padding: 3px 8px;
+    border-radius: 4px;
+}
+
+.ai-badge svg {
+    width: 12px;
+    height: 12px;
+}
+
+.ai-badge-warning { background: rgba(255, 217, 61, 0.08); color: var(--avag-accent-warning); }
+.ai-badge-danger { background: rgba(255, 107, 107, 0.08); color: var(--avag-accent-danger); }
+.ai-badge-info { background: rgba(0, 212, 255, 0.08); color: var(--avag-accent-primary); }
+.ai-badge-success { background: rgba(0, 255, 136, 0.08); color: var(--avag-accent-success); }
+
+/* Card Content Body */
+.ai-query-question {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 16px;
+    background: rgba(255, 255, 255, 0.02);
+    padding: 12px 16px;
+    border-radius: var(--radius-sm);
+}
+
+.ai-q-indicator, .ai-a-indicator {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    font-size: 11px;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.ai-q-indicator { background: rgba(0, 212, 255, 0.15); color: var(--avag-accent-primary); }
+.ai-a-indicator { background: rgba(0, 255, 136, 0.15); color: var(--avag-accent-success); }
+
+.ai-question-text {
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--avag-text-primary);
+    margin: 0;
+    align-self: center;
+}
+
+.ai-query-answer {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 20px;
+    padding: 0 4px;
+}
+
+.ai-answer-text {
+    font-size: 14px;
+    color: var(--avag-text-primary);
+    line-height: 1.6;
+    flex: 1;
+}
+
+/* ── Safety Flags Pane ── */
+.ai-flagged-message {
+    display: flex;
+    gap: 16px;
+    background: rgba(255, 107, 107, 0.05);
+    border: 1px solid rgba(255, 107, 107, 0.15);
+    border-radius: var(--radius-md);
+    padding: 16px;
+    margin-bottom: 16px;
+}
+
+.ai-flagged-icon {
+    font-size: 24px;
+    color: var(--avag-accent-danger);
+    display: flex;
+    align-items: center;
+}
+
+.ai-flagged-icon svg {
+    width: 28px;
+    height: 28px;
+}
+
+.ai-flagged-text strong {
+    display: block;
+    font-size: 14px;
+    color: var(--avag-text-primary);
+    margin-bottom: 4px;
+}
+
+.ai-flagged-text p {
+    font-size: 13px;
+    color: var(--avag-text-secondary);
+    margin: 0;
+}
+
+/* ── Citations & Sources ── */
+.ai-query-sources {
+    border-top: 1px solid var(--avag-border-color);
+    padding-top: 16px;
+    margin-top: 16px;
+}
+
+.ai-sources-label {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--avag-text-secondary);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 10px;
+}
+
+.ai-sources-label svg {
+    width: 14px;
+    height: 14px;
+    color: var(--avag-accent-primary);
+}
+
+.ai-sources-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.ai-source-badge {
+    background: var(--avag-bg-input);
+    border: 1px solid var(--avag-border-color);
+    color: var(--avag-text-primary);
+    border-radius: 6px;
+    padding: 6px 12px;
+    font-size: 12px;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    transition: all var(--transition-fast);
+}
+
+.ai-source-badge:hover {
+    border-color: var(--avag-accent-primary);
+    background: rgba(0, 212, 255, 0.05);
+}
+
+.ai-source-badge svg {
+    width: 13px;
+    height: 13px;
+    color: var(--avag-text-secondary);
+}
+
+.ai-src-name {
+    max-width: 180px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.ai-src-score {
+    background: rgba(0, 212, 255, 0.1);
+    color: var(--avag-accent-primary);
+    font-size: 10px;
+    font-weight: 700;
+    padding: 1px 4px;
+    border-radius: 3px;
+}
+
+/* ── Sidebar Recent Items Pane ── */
+.ai-history-sidebar {
+    background: var(--avag-bg-card);
+    border: 1px solid var(--avag-border-color);
+    border-radius: var(--radius-lg);
+    padding: 20px;
+    box-shadow: var(--avag-shadow-card);
+}
+
+.ai-sidebar-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid var(--avag-border-color);
+    padding-bottom: 12px;
+    margin-bottom: 16px;
+}
+
+.ai-sidebar-header h3 {
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--avag-text-secondary);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin: 0;
+}
+
+.ai-sidebar-header h3 svg {
+    width: 16px;
+    height: 16px;
+    color: var(--avag-accent-primary);
+}
+
+.ai-history-link {
+    font-size: 12px;
+    color: var(--avag-accent-primary);
+    font-weight: 500;
+}
+
+.ai-history-link:hover {
+    text-decoration: underline;
+}
+
+.ai-sidebar-item {
+    padding: 12px;
+    border-radius: var(--radius-sm);
+    border-bottom: 1px solid var(--avag-border-color);
+    cursor: pointer;
+    transition: all var(--transition-fast);
+}
+
+.ai-sidebar-item:last-child {
+    border-bottom: none;
+}
+
+.ai-sidebar-item:hover {
+    background: var(--avag-bg-input);
+}
+
+.ai-sidebar-item-q {
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--avag-text-primary);
+    margin-bottom: 4px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.ai-sidebar-item-meta {
+    display: flex;
+    justify-content: space-between;
+    font-size: 11px;
+    color: var(--avag-text-secondary);
+}
+
+.ai-sidebar-loading {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 20px 0;
+    color: var(--avag-text-secondary);
+    font-size: 13px;
+}
+
+/* ── Premium Citations Excerpt & Card Modals ── */
+.ai-source-modal-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 10000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.25s cubic-bezier(0.4, 0, 0.2, 1), visibility 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.ai-source-modal-container.visible {
+    opacity: 1;
+    visibility: visible;
+}
+
+.ai-source-modal-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(8, 8, 16, 0.78);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+}
+
+.ai-source-modal {
+    position: relative;
+    background: var(--avag-bg-card, #121224);
+    border: 1px solid var(--avag-border-color, rgba(255, 255, 255, 0.08));
+    border-radius: 14px;
+    width: 90%;
+    max-width: 580px;
+    max-height: 85vh;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    box-shadow: 0 24px 60px rgba(0, 0, 0, 0.65), 0 0 40px rgba(0, 212, 255, 0.08);
+    transform: scale(0.95) translateY(12px);
+    transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
+    z-index: 10001;
+}
+
+.ai-source-modal-container.visible .ai-source-modal {
+    transform: scale(1) translateY(0);
+}
+
+.ai-source-modal-header {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 20px 24px;
+    border-bottom: 1px solid var(--avag-border-color, rgba(255, 255, 255, 0.08));
+    background: linear-gradient(180deg, rgba(0, 212, 255, 0.04) 0%, transparent 100%);
+}
+
+.ai-source-modal-icon {
+    width: 44px;
+    height: 44px;
+    border-radius: 10px;
+    background: rgba(0, 212, 255, 0.12);
+    color: var(--avag-accent-primary, #00d4ff);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    box-shadow: 0 0 15px rgba(0, 212, 255, 0.15);
+}
+
+.ai-source-modal-icon svg {
+    width: 20px;
+    height: 20px;
+}
+
+.ai-source-modal-title-group {
+    flex: 1;
+    min-width: 0;
+}
+
+.ai-source-modal-title {
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--avag-text-primary, #ffffff);
+    margin: 0;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    letter-spacing: 0.3px;
+}
+
+.ai-source-modal-subtitle {
+    font-size: 12px;
+    color: var(--avag-accent-primary, #00d4ff);
+    font-weight: 500;
+}
+
+.ai-source-modal-close {
+    width: 32px;
+    height: 32px;
+    border: none;
+    background: transparent;
+    color: var(--avag-text-secondary, #a0a0c0);
+    font-size: 24px;
+    cursor: pointer;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease;
+}
+
+.ai-source-modal-close:hover {
+    background: var(--avag-bg-input, rgba(255, 255, 255, 0.04));
+    color: var(--avag-text-primary, #ffffff);
+}
+
+.ai-source-modal-body {
+    padding: 24px;
+    overflow-y: auto;
+    color: var(--avag-text-primary, #ffffff);
+    flex: 1;
+}
+
+.ai-source-body-title {
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--avag-text-secondary, #a0a0c0);
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    margin-bottom: 12px;
+}
+
+.ai-source-snippet-box {
+    background: var(--avag-bg-input, rgba(0, 0, 0, 0.2));
+    border: 1px solid var(--avag-border-color, rgba(255, 255, 255, 0.08));
+    border-radius: 8px;
+    padding: 18px;
+    font-family: inherit;
+    font-size: 14px;
+    line-height: 1.6;
+    white-space: pre-wrap;
+    word-break: break-word;
+    color: var(--avag-text-primary, #ffffff);
+    max-height: 45vh;
+    overflow-y: auto;
+}
+
+.ai-source-modal-footer {
+    display: flex;
+    justify-content: flex-end;
+    padding: 16px 24px;
+    border-top: 1px solid var(--avag-border-color, rgba(255, 255, 255, 0.08));
+    background: var(--avag-bg-input, rgba(0, 0, 0, 0.15));
+}
+
+/* ── Pagination UI Styles ── */
+.ai-pagination-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px 24px;
+    border-top: 1px solid var(--avag-border-color);
+    flex-wrap: wrap;
+    gap: 12px;
+}
+
+.ai-pagination-info {
+    font-size: 13px;
+    color: var(--avag-text-secondary);
+}
+
+.ai-pagination-controls {
+    display: flex;
+    gap: 8px;
+}
+
+/* Filter bar styles */
+.ai-filter-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px 24px;
+    flex-wrap: wrap;
+    gap: 16px;
+}
+
+.ai-search-group {
+    position: relative;
+    flex: 1;
+    min-width: 260px;
+}
+
+.ai-search-icon {
+    position: absolute;
+    left: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 18px;
+    height: 18px;
+    color: var(--avag-text-secondary);
+    pointer-events: none;
+}
+
+.ai-search-group input {
+    width: 100%;
+    padding: 10px 14px 10px 40px;
+    background: var(--avag-bg-input);
+    border: 1px solid var(--avag-border-color);
+    border-radius: 8px;
+    color: var(--avag-text-primary);
+    font-size: 14px;
+    transition: all var(--transition-fast);
+}
+
+.ai-search-group input:focus {
+    outline: none;
+    border-color: var(--avag-accent-primary);
+    box-shadow: 0 0 0 3px rgba(0, 212, 255, 0.08);
+}
+
+/* =====================================================================
+   Phase 2: Framework Selector, Feedback, Copy, Framework Badges
+   ===================================================================== */
+
+/* ── Framework Selector Controls ── */
+.ai-query-controls {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 12px;
+}
+
+.ai-framework-selector {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.ai-framework-selector label {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: var(--avag-text-secondary, #808080);
+    white-space: nowrap;
+}
+
+.ai-framework-selector label svg {
+    width: 14px;
+    height: 14px;
+}
+
+.ai-framework-selector select {
+    padding: 6px 28px 6px 10px;
+    background: var(--avag-bg-input, rgba(255, 255, 255, 0.04));
+    border: 1px solid var(--avag-border-color, rgba(255, 255, 255, 0.08));
+    border-radius: 6px;
+    color: var(--avag-text-primary, #e0e0e0);
+    font-size: 13px;
+    appearance: none;
+    -webkit-appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%23808080' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 8px center;
+    cursor: pointer;
+    min-width: 160px;
+    transition: all var(--transition-fast, 0.15s);
+}
+
+.ai-framework-selector select:hover {
+    border-color: var(--avag-accent-primary, #00d4ff);
+}
+
+.ai-framework-selector select:focus {
+    outline: none;
+    border-color: var(--avag-accent-primary, #00d4ff);
+    box-shadow: 0 0 0 3px rgba(0, 212, 255, 0.08);
+}
+
+/* ── Card Actions Row (Feedback + Copy) ── */
+.ai-card-actions {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 8px 0;
+    margin-top: 8px;
+    border-top: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+/* ── Feedback Buttons ── */
+.ai-feedback-group {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.ai-feedback-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 6px;
+    background: transparent;
+    cursor: pointer;
+    color: var(--avag-text-secondary, #808080);
+    transition: all 0.2s ease;
+}
+
+.ai-feedback-btn svg {
+    width: 14px;
+    height: 14px;
+}
+
+.ai-feedback-btn:hover:not(.ai-fb-disabled) {
+    border-color: rgba(255, 255, 255, 0.2);
+    background: rgba(255, 255, 255, 0.04);
+}
+
+.ai-fb-up:hover:not(.ai-fb-disabled) {
+    color: var(--avag-accent-success, #00ff88);
+    border-color: rgba(0, 255, 136, 0.3);
+    background: rgba(0, 255, 136, 0.06);
+}
+
+.ai-fb-down:hover:not(.ai-fb-disabled) {
+    color: var(--avag-accent-danger, #ff4b4b);
+    border-color: rgba(255, 75, 75, 0.3);
+    background: rgba(255, 75, 75, 0.06);
+}
+
+.ai-feedback-btn.ai-fb-selected.ai-fb-up {
+    color: var(--avag-accent-success, #00ff88);
+    border-color: rgba(0, 255, 136, 0.5);
+    background: rgba(0, 255, 136, 0.12);
+}
+
+.ai-feedback-btn.ai-fb-selected.ai-fb-down {
+    color: var(--avag-accent-danger, #ff4b4b);
+    border-color: rgba(255, 75, 75, 0.5);
+    background: rgba(255, 75, 75, 0.12);
+}
+
+.ai-feedback-btn.ai-fb-disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+}
+
+/* ── Copy Button ── */
+.ai-copy-btn {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    padding: 6px 12px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 6px;
+    background: transparent;
+    color: var(--avag-text-secondary, #808080);
+    font-size: 12px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.ai-copy-btn svg {
+    width: 13px;
+    height: 13px;
+}
+
+.ai-copy-btn:hover {
+    border-color: var(--avag-accent-primary, #00d4ff);
+    color: var(--avag-accent-primary, #00d4ff);
+    background: rgba(0, 212, 255, 0.06);
+}
+
+.ai-copy-btn.ai-copy-done {
+    color: var(--avag-accent-success, #00ff88);
+    border-color: rgba(0, 255, 136, 0.3);
+}
+
+/* ── Framework Badges on Citations ── */
+.ai-fw-badge {
+    display: inline-flex;
+    align-items: center;
+    padding: 1px 6px;
+    border-radius: 3px;
+    font-size: 9px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-right: 4px;
+    background: rgba(0, 212, 255, 0.12);
+    color: var(--avag-accent-primary, #00d4ff);
+    border: 1px solid rgba(0, 212, 255, 0.2);
+}
+
+/* Framework-specific badge colors */
+.ai-fw-cis {
+    background: rgba(147, 51, 234, 0.12);
+    color: #a78bfa;
+    border-color: rgba(147, 51, 234, 0.25);
+}
+
+.ai-fw-nist {
+    background: rgba(59, 130, 246, 0.12);
+    color: #93c5fd;
+    border-color: rgba(59, 130, 246, 0.25);
+}
+
+.ai-fw-awssecurity {
+    background: rgba(251, 146, 60, 0.12);
+    color: #fdba74;
+    border-color: rgba(251, 146, 60, 0.25);
+}
+
+.ai-fw-azuresecurity {
+    background: rgba(56, 189, 248, 0.12);
+    color: #7dd3fc;
+    border-color: rgba(56, 189, 248, 0.25);
+}
+
+.ai-fw-gcpsecurity {
+    background: rgba(52, 211, 153, 0.12);
+    color: #6ee7b7;
+    border-color: rgba(52, 211, 153, 0.25);
+}
+
+.ai-fw-mitreattck, .ai-fw-mitreattack {
+    background: rgba(244, 63, 94, 0.12);
+    color: #fda4af;
+    border-color: rgba(244, 63, 94, 0.25);
+}
+
+.ai-fw-incidentresponse {
+    background: rgba(234, 179, 8, 0.12);
+    color: #fde047;
+    border-color: rgba(234, 179, 8, 0.25);
+}
+
+.ai-fw-applicationsecurity {
+    background: rgba(168, 85, 247, 0.12);
+    color: #c4b5fd;
+    border-color: rgba(168, 85, 247, 0.25);
+}
+
+.ai-fw-networksecurity {
+    background: rgba(6, 182, 212, 0.12);
+    color: #67e8f9;
+    border-color: rgba(6, 182, 212, 0.25);
+}
+
+.ai-fw-linuxsecurity {
+    background: rgba(34, 197, 94, 0.12);
+    color: #86efac;
+    border-color: rgba(34, 197, 94, 0.25);
+}
+
+.ai-fw-windowssecurity {
+    background: rgba(99, 102, 241, 0.12);
+    color: #a5b4fc;
+    border-color: rgba(99, 102, 241, 0.25);
+}
+
+.ai-fw-general {
+    background: rgba(148, 163, 184, 0.12);
+    color: #cbd5e1;
+    border-color: rgba(148, 163, 184, 0.25);
+}
+
+/* ── Source Modal Navigation & Badge Additions ── */
+#ai-source-type {
+    background: rgba(var(--avag-accent-primary-rgb, 0, 212, 255), 0.15);
+    color: var(--avag-accent-primary);
+    border: 1px solid rgba(var(--avag-accent-primary-rgb, 0, 212, 255), 0.3);
+}
+
+#ai-source-nav-group button:hover {
+    background: rgba(var(--avag-accent-primary-rgb, 0, 212, 255), 0.15) !important;
+    color: var(--avag-accent-primary) !important;
+}
+
+#ai-source-nav-group button:disabled {
+    opacity: 0.3 !important;
+    cursor: not-allowed !important;
+    color: var(--avag-text-muted) !important;
+}
+

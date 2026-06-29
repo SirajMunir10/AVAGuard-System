@@ -1,0 +1,775 @@
+{% extends 'ai_ops/base_ai_ops.html' %}
+{% load static %}
+
+{% block title %}Compliance Assistant — AVAGuard AI{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'ai_ops/css/dashboard.css' %}?v=4.0">
+<link rel="stylesheet" href="{% static 'ai_ops/css/query.css' %}?v=3.0">
+<style>
+  /* ── AI Query Interface Styles ──────────────────────────────────────── */
+  .query-layout {
+    display: grid;
+    grid-template-columns: 1fr 340px;
+    gap: 24px;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 8px;
+    align-items: start;
+  }
+  @media (max-width: 1024px) { .query-layout { grid-template-columns: 1fr; } .query-history-panel { display: none; } }
+
+  /* ── Query Input Panel ── */
+  .query-main { display: flex; flex-direction: column; gap: 20px; }
+
+  /* ── Mode Status Bar (read-only — switch via the global navbar toggle) ── */
+  .mode-status-bar {
+    display: flex; align-items: center; gap: 10px;
+    background: var(--avag-bg-card);
+    border: 1px solid var(--avag-border-color);
+    border-radius: 12px; padding: 10px 16px;
+    box-shadow: var(--avag-shadow-card);
+  }
+  .mode-status-label { font-size: 0.78rem; color: var(--avag-text-secondary); font-weight: 600; }
+  .mode-status-value {
+    display: flex; align-items: center; gap: 6px;
+    font-size: 0.78rem; font-weight: 700;
+  }
+  .mode-status-value.ai  { color: var(--avag-accent-primary); }
+  .mode-status-value.mock { color: var(--avag-accent-warning); }
+  .mode-dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
+  .mode-dot.ai   { background: var(--avag-accent-primary); box-shadow: 0 0 8px var(--avag-accent-primary); }
+  .mode-dot.mock { background: var(--avag-accent-warning); box-shadow: 0 0 8px var(--avag-accent-warning); }
+  .mode-status-hint {
+    margin-left: auto; font-size: 0.72rem; color: var(--avag-text-muted);
+    opacity: 0.6;
+  }
+
+  .query-input-card {
+    background: var(--avag-bg-card);
+    border: 1px solid var(--avag-border-color);
+    border-radius: 16px; padding: 24px;
+    box-shadow: var(--avag-shadow-card);
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  }
+  .query-input-card:focus-within { border-color: var(--avag-accent-primary); box-shadow: 0 0 0 2px rgba(var(--avag-accent-primary-rgb), 0.1); }
+
+  .query-textarea {
+    width: 100%; min-height: 100px; max-height: 240px;
+    background: transparent; border: none; outline: none; resize: none;
+    color: var(--avag-text-primary);
+    font-size: 1rem; line-height: 1.6;
+    font-family: inherit;
+    caret-color: var(--avag-accent-primary);
+  }
+  .query-textarea::placeholder { color: var(--avag-text-muted); opacity: 0.6; }
+
+  .query-controls {
+    display: flex; align-items: center; gap: 10px; margin-top: 14px;
+    padding-top: 14px; border-top: 1px solid var(--avag-border-color);
+    flex-wrap: wrap;
+  }
+  .framework-select {
+    background: var(--avag-bg-input); border: 1px solid var(--avag-border-color);
+    border-radius: 8px; padding: 7px 12px; font-size: 0.82rem;
+    color: var(--avag-text-primary); cursor: pointer;
+    outline: none; transition: border-color 0.2s ease;
+  }
+  .framework-select:focus { border-color: var(--avag-accent-primary); }
+  .framework-select option { background: var(--avag-bg-card); color: var(--avag-text-primary); }
+
+  .char-count { font-size: 0.72rem; color: var(--avag-text-secondary); margin-left: auto; }
+
+  .send-btn {
+    padding: 9px 24px; border-radius: 8px;
+    background: linear-gradient(135deg, var(--avag-accent-primary), var(--avag-accent-hover));
+    color: var(--avag-text-inverse, #ffffff); border: none; font-size: 0.88rem; font-weight: 600;
+    cursor: pointer; display: flex; align-items: center; gap: 8px;
+    transition: all 0.2s ease; box-shadow: 0 4px 12px rgba(var(--avag-accent-primary-rgb), 0.25);
+  }
+  .send-btn:hover { transform: translateY(-1px); box-shadow: 0 6px 16px rgba(var(--avag-accent-primary-rgb), 0.35); }
+  .send-btn:disabled { opacity: 0.5; cursor: not-allowed; transform: none; box-shadow: none; }
+  .send-btn svg { width: 14px; height: 14px; }
+
+  /* ── Response Panel ── */
+  .response-card {
+    background: var(--avag-bg-card);
+    border: 1px solid var(--avag-border-color);
+    border-radius: 16px; overflow: hidden;
+    box-shadow: var(--avag-shadow-card);
+    transition: border-color 0.3s ease;
+  }
+  .response-card.has-response { border-color: var(--avag-accent-primary); }
+
+  .response-header {
+    padding: 16px 20px; border-bottom: 1px solid var(--avag-border-color);
+    display: flex; align-items: center; gap: 10px;
+  }
+  .response-header-title { font-size: 0.82rem; font-weight: 600; color: var(--avag-text-secondary); text-transform: uppercase; letter-spacing: 0.05em; }
+
+  .confidence-badge {
+    padding: 3px 10px; border-radius: 12px; font-size: 0.72rem; font-weight: 700;
+    letter-spacing: 0.04em; text-transform: uppercase;
+  }
+  .confidence-badge.high { background: rgba(var(--avag-accent-success-rgb), 0.12); color: var(--avag-accent-success); border: 1px solid rgba(var(--avag-accent-success-rgb), 0.25); }
+  .confidence-badge.medium { background: rgba(var(--avag-accent-warning-rgb), 0.12); color: var(--avag-accent-warning); border: 1px solid rgba(var(--avag-accent-warning-rgb), 0.25); }
+  .confidence-badge.low { background: rgba(var(--avag-accent-danger-rgb), 0.12); color: var(--avag-accent-danger); border: 1px solid rgba(var(--avag-accent-danger-rgb), 0.25); }
+  .confidence-badge.none { background: rgba(148, 163, 184, 0.1); color: var(--avag-text-secondary); border: 1px solid var(--avag-border-color); }
+
+  .response-body { padding: 20px; min-height: 120px; }
+  .response-placeholder {
+    text-align: center; padding: 40px 20px;
+    color: var(--avag-text-secondary); font-size: 0.88rem;
+  }
+  .response-placeholder svg { width: 40px; height: 40px; opacity: 0.3; margin: 0 auto 12px; display: block; color: var(--avag-accent-primary); }
+
+  .response-text {
+    color: var(--avag-text-primary); line-height: 1.75;
+    font-size: 0.92rem; white-space: pre-wrap;
+  }
+
+  .response-meta {
+    display: flex; align-items: center; gap: 16px; flex-wrap: wrap;
+    padding: 10px 20px; border-top: 1px solid var(--avag-border-color);
+    font-size: 0.75rem; color: var(--avag-text-secondary);
+  }
+  .response-meta span { display: flex; align-items: center; gap: 4px; }
+  .response-meta svg { width: 12px; height: 12px; }
+
+  /* ── Feedback ── */
+  .feedback-row {
+    padding: 12px 20px; border-top: 1px solid var(--avag-border-color);
+    display: flex; align-items: center; gap: 10px;
+  }
+  .feedback-label { font-size: 0.78rem; color: var(--avag-text-secondary); }
+  .feedback-btn {
+    padding: 6px 14px; border-radius: 8px; border: 1px solid var(--avag-border-color);
+    background: transparent; cursor: pointer; font-size: 0.8rem; font-weight: 600;
+    color: var(--avag-text-secondary);
+    display: flex; align-items: center; gap: 5px; transition: all 0.2s ease;
+  }
+  .feedback-btn.up:hover, .feedback-btn.up.active { background: rgba(var(--avag-accent-success-rgb), 0.1); color: var(--avag-accent-success); border-color: var(--avag-accent-success); }
+  .feedback-btn.down:hover, .feedback-btn.down.active { background: rgba(var(--avag-accent-danger-rgb), 0.1); color: var(--avag-accent-danger); border-color: var(--avag-accent-danger); }
+  .feedback-btn svg { width: 13px; height: 13px; }
+  .feedback-comment { display: none; flex: 1; }
+  .feedback-comment input {
+    width: 100%; background: var(--avag-bg-input); border: 1px solid var(--avag-border-color);
+    border-radius: 8px; padding: 6px 12px; font-size: 0.8rem; color: var(--avag-text-primary);
+    outline: none;
+  }
+  .feedback-comment input:focus { border-color: var(--avag-accent-danger); }
+
+  /* ── Source Cards ── */
+  .sources-section { margin-top: 20px; }
+  .sources-title {
+    font-size: 0.75rem; font-weight: 600; color: var(--avag-text-secondary);
+    text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 12px;
+    display: flex; align-items: center; gap: 6px;
+  }
+  .source-cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 10px; }
+  .source-card {
+    background: var(--avag-bg-input); border: 1px solid var(--avag-border-color);
+    border-radius: 10px; padding: 12px 14px;
+    transition: border-color 0.2s ease, background 0.2s ease, transform 0.2s ease;
+  }
+  .source-card:hover { border-color: var(--avag-accent-primary); background: rgba(var(--avag-accent-primary-rgb), 0.05); transform: translateY(-1px); }
+  .source-card-name { font-size: 0.78rem; font-weight: 600; color: var(--avag-accent-primary); font-family: monospace; margin-bottom: 6px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .source-card-score { font-size: 0.72rem; color: var(--avag-text-secondary); margin-bottom: 6px; }
+  .source-card-snippet { font-size: 0.76rem; color: var(--avag-text-secondary); line-height: 1.5; display: -webkit-box; -webkit-line-clamp: 3; line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
+
+  /* ── Spinner ── */
+  .loading-spinner {
+    display: none; align-items: center; gap: 10px;
+    color: var(--avag-text-secondary); font-size: 0.85rem;
+  }
+  .spinner { width: 18px; height: 18px; border: 2px solid rgba(var(--avag-accent-primary-rgb), 0.3); border-top-color: var(--avag-accent-primary); border-radius: 50%; animation: spin 0.7s linear infinite; }
+  @keyframes spin { to { transform: rotate(360deg); } }
+
+  /* ── History Sidebar ── */
+  .query-history-panel {
+    background: var(--avag-bg-card);
+    border: 1px solid var(--avag-border-color);
+    border-radius: 14px; padding: 16px;
+    position: sticky; top: 20px;
+    box-shadow: var(--avag-shadow-card);
+  }
+  .history-title {
+    font-size: 0.78rem; font-weight: 700; color: var(--avag-text-secondary);
+    text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 14px;
+    display: flex; align-items: center; gap: 6px;
+  }
+  .history-item {
+    padding: 10px 12px; border-radius: 8px; margin-bottom: 8px;
+    border: 1px solid transparent; cursor: pointer; transition: all 0.15s ease;
+  }
+  .history-item:hover { background: rgba(var(--avag-accent-primary-rgb), 0.08); border-color: rgba(var(--avag-accent-primary-rgb), 0.2); }
+  .history-item-query { font-size: 0.8rem; color: var(--avag-text-primary); font-weight: 500; margin-bottom: 4px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .history-item-meta { font-size: 0.7rem; color: var(--avag-text-secondary); display: flex; align-items: center; gap: 8px; }
+  .history-no-items { text-align: center; padding: 24px 0; color: var(--avag-text-secondary); font-size: 0.82rem; }
+
+  /* ── Premium Citations Excerpt & Card Modals ── */
+  .ai-source-modal {
+    max-width: 750px;
+    max-height: 90vh;
+  }
+  .highlight-chunk {
+    background: rgba(0, 212, 255, 0.15) !important;
+    border-left: 3px solid var(--avag-accent-primary) !important;
+    padding: 2px 4px;
+    border-radius: 4px;
+    color: inherit;
+    font-weight: 500;
+  }
+</style>
+{% endblock %}
+
+{% block ai_page_name %}Compliance Assistant{% endblock %}
+
+{% block ai_content %}
+<div class="query-layout">
+
+  {# ── Main Query Column ─────────────────────────────────────────────── #}
+  <div class="query-main">
+
+    {# Mode Status (read-only) — use the global navbar toggle top-right to change mode #}
+    <div class="mode-status-bar" id="modeStatusBar">
+      <span class="mode-status-label">Mode:</span>
+      <span class="mode-status-value {% if mode == 'ai' %}ai{% else %}mock{% endif %}" id="modeStatusValue">
+        <span class="mode-dot {% if mode == 'ai' %}ai{% else %}mock{% endif %}" id="modeDot"></span>
+        <span id="modeLabel">{% if mode == 'ai' %}AI (RAG){% else %}Mock{% endif %}</span>
+      </span>
+      <span class="mode-status-hint">Switch mode using the toggle in the top navigation bar</span>
+    </div>
+
+    {# Query Input #}
+    <div class="query-input-card">
+      <textarea
+        id="queryInput"
+        class="query-textarea"
+        placeholder="Ask about any compliance requirement, security control, or framework guideline…&#10;&#10;Examples:&#10;• What are the CIS password complexity requirements for Windows 11?&#10;• How should BitLocker be configured per CIS guidelines?&#10;• What NIST 800-53 controls apply to access management?"
+        rows="5"
+        maxlength="1500"
+      ></textarea>
+
+      <div class="query-controls">
+        <select class="framework-select" id="frameworkFilter">
+          <option value="">All Frameworks</option>
+          {% for fw in available_frameworks %}
+          <option value="{{ fw }}">{{ fw }}</option>
+          {% endfor %}
+        </select>
+
+        <span class="char-count"><span id="charCount">0</span> / 1500</span>
+
+        <div class="loading-spinner" id="spinner">
+          <div class="spinner"></div>
+          <span>Searching corpus…</span>
+        </div>
+
+        <button class="send-btn" id="sendBtn" onclick="submitQuery()">
+          <i data-lucide="send"></i> Ask AI
+        </button>
+      </div>
+    </div>
+
+    {# Response Panel #}
+    <div class="response-card" id="responseCard">
+      <div class="response-header">
+        <i data-lucide="message-square" style="width:15px;height:15px;color:var(--avag-accent-primary);"></i>
+        <span class="response-header-title">Response</span>
+        <span class="confidence-badge none" id="confidenceBadge" style="display:none;"></span>
+        <span style="margin-left:auto; font-size:0.72rem; color:var(--avag-text-secondary);" id="latencyDisplay"></span>
+      </div>
+
+      <div class="response-body" id="responseBody">
+        <div class="response-placeholder">
+          <i data-lucide="message-circle"></i>
+          <p>Your answer will appear here.</p>
+          <p style="font-size:0.78rem; margin-top:4px;">Type a question above and press <strong>Ask AI</strong>.</p>
+        </div>
+      </div>
+
+      {# Source Documents #}
+      <div id="sourcesSection" style="display:none; padding: 0 20px 20px;">
+        <div class="sources-title">
+          <i data-lucide="book-open" style="width:13px;height:13px;"></i>
+          Retrieved Source Documents
+        </div>
+        <div class="source-cards" id="sourceCards"></div>
+      </div>
+
+      {# Latency metadata #}
+      <div class="response-meta" id="responseMeta" style="display:none;">
+        <span><i data-lucide="search"></i> <span id="metaRetrieval"></span></span>
+        <span><i data-lucide="filter"></i> <span id="metaRerank"></span></span>
+        <span><i data-lucide="layers"></i> <span id="metaCandidates"></span></span>
+        <span><i data-lucide="cpu"></i> <span id="metaModel"></span></span>
+      </div>
+
+      {# Feedback row #}
+      <div class="feedback-row" id="feedbackRow" style="display:none;">
+        <span class="feedback-label">Was this helpful?</span>
+        <button class="feedback-btn up" id="thumbUp" onclick="submitFeedback('up')">
+          <i data-lucide="thumbs-up"></i> Yes
+        </button>
+        <button class="feedback-btn down" id="thumbDown" onclick="toggleDownFeedback()">
+          <i data-lucide="thumbs-down"></i> No
+        </button>
+        <div class="feedback-comment" id="commentRow">
+          <input type="text" id="feedbackComment" placeholder="Optional: what was wrong? (Enter to submit)" maxlength="500">
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  {# ── History Sidebar ─────────────────────────────────────────────────── #}
+  <div class="query-history-panel">
+    <div class="history-title">
+      <i data-lucide="history" style="width:14px;height:14px;"></i>
+      Recent Queries
+    </div>
+    <div id="historyList">
+      {% if recent_queries %}
+        {% for q in recent_queries %}
+        <div class="history-item" onclick="loadHistoryQuery('{{ q.id }}')">
+          <div class="history-item-query">{{ q.query_text|truncatechars:60 }}</div>
+          <div class="history-item-meta">
+            <span class="confidence-badge {{ q.confidence_level }}" style="font-size:0.65rem; padding:2px 7px;">{{ q.confidence_level|upper }}</span>
+            <span>{{ q.created_at|timesince }} ago</span>
+          </div>
+        </div>
+        {% endfor %}
+      {% else %}
+        <div class="history-no-items">
+          <i data-lucide="inbox" style="width:28px;height:28px;opacity:0.3;margin:0 auto 8px;display:block;"></i>
+          No queries yet
+        </div>
+      {% endif %}
+    </div>
+  </div>
+</div>
+
+{% include 'ai_ops/partials/ai_source_modal.html' %}
+{% endblock %}
+
+{% block extra_js %}
+<script>
+const CSRF_TOKEN = '{{ csrf_token }}';
+let currentQueryId = null;
+let currentMode = '{{ mode|default:"ai" }}';
+
+document.addEventListener('DOMContentLoaded', function () {
+  if (window.lucide) lucide.createIcons();
+
+  const input = document.getElementById('queryInput');
+  input.addEventListener('input', function () {
+    document.getElementById('charCount').textContent = this.value.length;
+  });
+
+  // Enter to submit (Shift+Enter for newline)
+  input.addEventListener('keydown', function (e) {
+    if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); submitQuery(); }
+  });
+
+  // Feedback comment submit on Enter
+  document.getElementById('feedbackComment').addEventListener('keydown', function (e) {
+    if (e.key === 'Enter') submitFeedback('down');
+  });
+});
+
+/**
+ * updateModeIndicator — Updates the read-only mode status bar on this page.
+ * Called when loading a historical query so the indicator reflects the mode
+ * that was active when that query ran. Does NOT change session state.
+ * To change the active mode, use the global toggle in the navbar.
+ */
+function updateModeIndicator(mode) {
+  currentMode = mode;
+  const dot        = document.getElementById('modeDot');
+  const label      = document.getElementById('modeLabel');
+  const statusVal  = document.getElementById('modeStatusValue');
+  if (!dot || !label) return;
+
+  if (mode === 'ai') {
+    dot.className       = 'mode-dot ai';
+    label.textContent   = 'AI (RAG)';
+    if (statusVal) { statusVal.className = 'mode-status-value ai'; }
+  } else {
+    dot.className       = 'mode-dot mock';
+    label.textContent   = 'Mock';
+    if (statusVal) { statusVal.className = 'mode-status-value mock'; }
+  }
+}
+
+// Legacy alias used by loadHistoryQuery — updates indicator only, no session write
+function setMode(mode, persist = false) {
+  updateModeIndicator(mode);
+  // 'persist' parameter is intentionally ignored — the page no longer owns mode state.
+}
+
+async function submitQuery() {
+  const query = document.getElementById('queryInput').value.trim();
+  if (!query) return;
+
+  const framework = document.getElementById('frameworkFilter').value;
+  const sendBtn   = document.getElementById('sendBtn');
+  const spinner   = document.getElementById('spinner');
+
+  sendBtn.disabled = true;
+  spinner.style.display = 'flex';
+  clearResponse();
+
+  try {
+    const resp = await fetch('{% url "ai_ops:query" %}', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'X-CSRFToken': CSRF_TOKEN },
+      body: JSON.stringify({ query, framework, mode: currentMode })
+    });
+
+    const data = await resp.json();
+    if (!resp.ok) {
+      renderError(data.error || `Request failed with status ${resp.status}`);
+      return;
+    }
+
+    currentQueryId = data.query_id || null;
+    renderResponse(data);
+    addToHistorySidebar(query, data.confidence || 'none');
+
+  } catch (e) {
+    renderError('Request failed. Please try again.');
+  } finally {
+    sendBtn.disabled = false;
+    spinner.style.display = 'none';
+  }
+}
+
+function clearResponse() {
+  document.getElementById('responseBody').innerHTML = '<div class="response-placeholder"><i data-lucide="loader-2" style="animation:spin 0.7s linear infinite;width:28px;height:28px;opacity:0.4;margin:0 auto 10px;display:block;"></i><p>Searching corpus…</p></div>';
+  document.getElementById('sourcesSection').style.display = 'none';
+  document.getElementById('responseMeta').style.display = 'none';
+  document.getElementById('feedbackRow').style.display = 'none';
+  document.getElementById('confidenceBadge').style.display = 'none';
+  document.getElementById('latencyDisplay').textContent = '';
+  document.getElementById('responseCard').classList.remove('has-response');
+  document.getElementById('responseCard').style.borderColor = '';
+  document.getElementById('responseCard').style.boxShadow = '';
+  if (window.lucide) lucide.createIcons();
+}
+
+function renderResponse(data) {
+  const card = document.getElementById('responseCard');
+  card.classList.add('has-response');
+
+  // Set border to red and glow if flagged
+  if (data.flagged) {
+    card.style.borderColor = '#ef4444';
+    card.style.boxShadow = '0 0 15px rgba(239, 68, 68, 0.2)';
+  } else {
+    card.style.borderColor = '';
+    card.style.boxShadow = '';
+  }
+
+  // Confidence badge
+  const badge = document.getElementById('confidenceBadge');
+  badge.className = `confidence-badge ${data.confidence || 'none'}`;
+  badge.textContent = (data.confidence || 'none').toUpperCase();
+  badge.style.display = 'inline-flex';
+
+  // Latency & Timestamp
+  let latencyText = '';
+  if (data.latency_ms) {
+    latencyText = `${Math.round(data.latency_ms)}ms total`;
+  }
+  if (data.created_at) {
+    const dateObj = new Date(data.created_at);
+    latencyText += (latencyText ? ' · ' : '') + `${dateObj.toLocaleString()}`;
+  }
+  document.getElementById('latencyDisplay').textContent = latencyText;
+
+  // Response text or safety warning
+  const responseBody = document.getElementById('responseBody');
+  if (data.flagged) {
+    responseBody.innerHTML = `
+      <div class="response-placeholder" style="color:#ef4444; text-align: left; padding: 20px;">
+        <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 12px;">
+          <i data-lucide="shield-alert" style="width:28px;height:28px;color:#ef4444;"></i>
+          <h4 style="margin: 0; font-size: 16px; font-weight: 600;">Safety Flag Triggered</h4>
+        </div>
+        <p style="margin: 0 0 8px 0; font-size: 0.9rem; line-height: 1.5; color: var(--avag-text-primary);">
+          This query was blocked by the safety classifier filters.
+        </p>
+        ${data.flag_reason ? `<div style="background: rgba(239, 68, 68, 0.1); border: 1px solid rgba(239, 68, 68, 0.2); border-radius: 6px; padding: 10px; font-family: monospace; font-size: 0.8rem; color: #f87171;">Reason: ${escapeHtml(data.flag_reason)}</div>` : ''}
+      </div>
+    `;
+    document.getElementById('sourcesSection').style.display = 'none';
+    document.getElementById('responseMeta').style.display = 'none';
+  } else {
+    const responseText = data.response || data.answer || 'No response generated.';
+    responseBody.innerHTML = `<div class="response-text">${escapeHtml(responseText)}</div>`;
+
+    // Meta row
+    if (data.retrieval_ms !== undefined) {
+      document.getElementById('metaRetrieval').textContent = `Retrieval: ${Math.round(data.retrieval_ms)}ms`;
+      document.getElementById('metaRerank').textContent = `Rerank: ${Math.round(data.rerank_ms || 0)}ms`;
+      const sourcesList = data.sources || data.retrieved_sources || [];
+      document.getElementById('metaCandidates').textContent = `${data.total_candidates || data.candidate_count || sourcesList.length} candidates`;
+      document.getElementById('metaModel').textContent = data.model_used || 'AI';
+      document.getElementById('responseMeta').style.display = 'flex';
+    }
+
+    // Source cards
+    const sources = data.sources || data.retrieved_sources || [];
+    currentSources = sources;
+    if (sources.length > 0) {
+      const container = document.getElementById('sourceCards');
+      container.innerHTML = sources.map((s, idx) => `
+        <div class="source-card" onclick="openSourceDoc(${idx})" style="cursor: pointer;">
+          <div class="source-card-name" title="${escapeHtml(s.filename || s.relative_path || s)}">${escapeHtml(s.filename || s.relative_path || s)}</div>
+          ${s.reranker_score !== undefined ? `<div class="source-card-score">Score: ${parseFloat(s.reranker_score).toFixed(4)} &nbsp;·&nbsp; Rank #${s.final_rank || (idx + 1)}</div>` : ''}
+          ${s.snippet ? `<div class="source-card-snippet">${escapeHtml(s.snippet)}</div>` : ''}
+        </div>
+      `).join('');
+      document.getElementById('sourcesSection').style.display = 'block';
+    } else {
+      document.getElementById('sourcesSection').style.display = 'none';
+    }
+  }
+
+  // Feedback
+  if (currentQueryId) {
+    document.getElementById('feedbackRow').style.display = 'flex';
+    document.getElementById('thumbUp').className = 'feedback-btn up';
+    document.getElementById('thumbDown').className = 'feedback-btn down';
+    document.getElementById('commentRow').style.display = 'none';
+    document.getElementById('feedbackComment').value = '';
+  }
+
+  if (window.lucide) lucide.createIcons();
+}
+
+// openSourceDoc(idx) opens the source document viewer modal for the given chunk index.
+async function openSourceDoc(idx) {
+  if (idx < 0 || idx >= currentSources.length) return;
+  const src = currentSources[idx];
+  
+  // 1. Populating basic metadata in header
+  document.getElementById('ai-source-title').textContent = src.metadata?.title || src.filename || 'Untitled Document';
+  document.getElementById('ai-source-score').textContent = 'Match Score: ' + (src.reranker_score !== undefined ? parseFloat(src.reranker_score).toFixed(4) : 'N/A');
+  document.getElementById('ai-source-path').textContent = src.relative_path || '';
+  
+  const ext = src.relative_path ? src.relative_path.split('.').pop().toUpperCase() : 'TXT';
+  document.getElementById('ai-source-type').textContent = ext;
+  
+  const lastIndexed = src.metadata?.last_indexed || src.metadata?.last_modified || '';
+  const dateSep = document.getElementById('ai-source-date-sep');
+  const dateVal = document.getElementById('ai-source-date');
+  if (lastIndexed && dateVal && dateSep) {
+    dateVal.textContent = 'Indexed: ' + lastIndexed;
+    dateVal.style.display = 'inline';
+    dateSep.style.display = 'inline';
+  } else if (dateVal && dateSep) {
+    dateVal.style.display = 'none';
+    dateSep.style.display = 'none';
+  }
+  
+  // 2. Set standalone view page link
+  const standaloneLink = document.getElementById('ai-source-standalone-link');
+  if (standaloneLink) {
+    standaloneLink.href = `/ai/document/${encodeURIComponent(src.relative_path)}/`;
+  }
+  
+  // 3. Show loader inside the snippet box
+  const snippetBox = document.getElementById('ai-source-snippet');
+  snippetBox.innerHTML = '<span style="color:var(--avag-text-secondary);">Fetching full document content...</span>';
+  
+  // 4. Show modal container
+  const container = document.getElementById('ai-source-modal-container');
+  container.classList.add('visible');
+  
+  // 5. Setup multi-chunk document navigation
+  const documentChunks = currentSources.map((s, i) => ({source: s, index: i}))
+                                        .filter(item => item.source.relative_path === src.relative_path);
+  const chunkIndicator = document.getElementById('ai-source-chunk-id');
+  const navGroup = document.getElementById('ai-source-nav-group');
+  const prevBtn = document.getElementById('ai-source-prev-btn');
+  const nextBtn = document.getElementById('ai-source-next-btn');
+  
+  const currentSubIdx = documentChunks.findIndex(item => item.index === idx);
+  if (documentChunks.length > 1) {
+    if (chunkIndicator) chunkIndicator.textContent = `Chunk ${currentSubIdx + 1} of ${documentChunks.length}`;
+    if (navGroup) navGroup.style.display = 'inline-flex';
+    
+    if (prevBtn) {
+      if (currentSubIdx > 0) {
+        prevBtn.disabled = false;
+        prevBtn.style.opacity = '1';
+        prevBtn.onclick = () => openSourceDoc(documentChunks[currentSubIdx - 1].index);
+      } else {
+        prevBtn.disabled = true;
+        prevBtn.style.opacity = '0.5';
+        prevBtn.onclick = null;
+      }
+    }
+    
+    if (nextBtn) {
+      if (currentSubIdx < documentChunks.length - 1) {
+        nextBtn.disabled = false;
+        nextBtn.style.opacity = '1';
+        nextBtn.onclick = () => openSourceDoc(documentChunks[currentSubIdx + 1].index);
+      } else {
+        nextBtn.disabled = true;
+        nextBtn.style.opacity = '0.5';
+        nextBtn.onclick = null;
+      }
+    }
+  } else {
+    if (chunkIndicator) chunkIndicator.textContent = `Chunk 1 of 1`;
+    if (navGroup) navGroup.style.display = 'none';
+  }
+  
+  // 6. Populate footer metadata details
+  const metaSpan = document.getElementById('ai-source-metadata');
+  if (metaSpan) {
+    let metaHTML = '';
+    if (src.metadata?.category) {
+      metaHTML += `<span style="background:rgba(255,255,255,0.05); padding:2px 6px; border-radius:4px; margin-right:8px;">Category: ${escapeHtml(src.metadata.category)}</span>`;
+    }
+    if (src.metadata?.framework) {
+      metaHTML += `<span style="background:rgba(255,255,255,0.05); padding:2px 6px; border-radius:4px;">Framework: ${escapeHtml(src.metadata.framework)}</span>`;
+    }
+    metaSpan.innerHTML = metaHTML;
+  }
+  
+  // 7. Fetch full document content on-demand
+  try {
+    const resp = await fetch(`/api/ai/document/content/?relative_path=${encodeURIComponent(src.relative_path)}`);
+    if (!resp.ok) throw new Error(`Status ${resp.status}`);
+    const data = await resp.json();
+    const fullContent = data.content || '';
+    
+    // Highlight the chunk text in the full content
+    const escapedContent = escapeHtml(fullContent);
+    const escapedChunk = escapeHtml(src.text);
+    
+    if (escapedChunk && escapedContent.includes(escapedChunk)) {
+      const idxOfChunk = escapedContent.indexOf(escapedChunk);
+      snippetBox.innerHTML = 
+        escapedContent.substring(0, idxOfChunk) + 
+        '<mark class="highlight-chunk" id="active-highlight">' + 
+        escapedChunk + 
+        '</mark>' + 
+        escapedContent.substring(idxOfChunk + escapedChunk.length);
+        
+      // Scroll to the highlighted element
+      setTimeout(() => {
+        const highlightEl = document.getElementById('active-highlight');
+        if (highlightEl) {
+          highlightEl.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }
+      }, 50);
+    } else {
+      snippetBox.innerHTML = escapedContent;
+    }
+  } catch (err) {
+    snippetBox.innerHTML = `<span style="color:#ef4444;">Failed to load full document: ${escapeHtml(err.message)}. Displaying cached chunk snippet below:</span><br/><br/>${escapeHtml(src.text)}`;
+  }
+  
+  if (window.lucide) lucide.createIcons();
+}
+
+function closeSourceModal() {
+  const container = document.getElementById('ai-source-modal-container');
+  if (container) container.classList.remove('visible');
+}
+
+function renderError(msg) {
+  document.getElementById('responseBody').innerHTML =
+    `<div class="response-placeholder" style="color:#ef4444;">
+      <i data-lucide="alert-circle" style="width:32px;height:32px;opacity:0.5;margin:0 auto 10px;display:block;"></i>
+      <p>${escapeHtml(msg)}</p>
+    </div>`;
+  if (window.lucide) lucide.createIcons();
+}
+
+function toggleDownFeedback() {
+  const commentRow = document.getElementById('commentRow');
+  commentRow.style.display = commentRow.style.display === 'flex' ? 'none' : 'flex';
+  if (commentRow.style.display === 'flex') document.getElementById('feedbackComment').focus();
+}
+
+async function submitFeedback(rating) {
+  if (!currentQueryId) return;
+  const comment = document.getElementById('feedbackComment').value.trim();
+
+  const upBtn   = document.getElementById('thumbUp');
+  const downBtn = document.getElementById('thumbDown');
+
+  try {
+    await fetch('{% url "ai_ops:feedback" %}', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'X-CSRFToken': CSRF_TOKEN },
+      body: JSON.stringify({ query_id: currentQueryId, rating, comment })
+    });
+
+    if (rating === 'up') {
+      upBtn.classList.add('active');
+      downBtn.disabled = true;
+    } else {
+      downBtn.classList.add('active');
+      upBtn.disabled = true;
+      document.getElementById('commentRow').style.display = 'none';
+    }
+
+    upBtn.disabled   = true;
+    downBtn.disabled = true;
+  } catch (e) {
+    console.error('Feedback error:', e);
+  }
+}
+
+async function loadHistoryQuery(queryId) {
+  try {
+    const resp = await fetch(`{% url "ai_ops:admin_inspect" %}?query_id=${queryId}`);
+    const data = await resp.json();
+    if (data.query) {
+      document.getElementById('queryInput').value = data.query;
+      document.getElementById('charCount').textContent = data.query.length;
+      currentQueryId = queryId;
+      if (data.mode) {
+        updateModeIndicator(data.mode); // Reflect historical query's mode in status bar
+      }
+      renderResponse(data);
+    }
+  } catch (e) {
+    console.error('Failed to load history:', e);
+  }
+}
+
+function addToHistorySidebar(query, confidence) {
+  const list = document.getElementById('historyList');
+  const noItems = list.querySelector('.history-no-items');
+  if (noItems) noItems.remove();
+
+  const item = document.createElement('div');
+  item.className = 'history-item';
+  item.innerHTML = `
+    <div class="history-item-query">${escapeHtml(query.substring(0, 60))}${query.length > 60 ? '…' : ''}</div>
+    <div class="history-item-meta">
+      <span class="confidence-badge ${confidence}" style="font-size:0.65rem;padding:2px 7px;">${confidence.toUpperCase()}</span>
+      <span>Just now</span>
+    </div>`;
+  list.insertBefore(item, list.firstChild);
+
+  // Keep max 10
+  const items = list.querySelectorAll('.history-item');
+  if (items.length > 10) items[items.length - 1].remove();
+}
+
+function escapeHtml(text) {
+  if (!text) return '';
+  return String(text).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+}
+</script>
+{% endblock %}

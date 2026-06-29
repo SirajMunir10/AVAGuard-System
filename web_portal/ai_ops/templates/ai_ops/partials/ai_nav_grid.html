@@ -1,0 +1,152 @@
+<div class="ai-navigation-grouped-grid avag-mt-24">
+    <!-- Navigation -->
+    <div class="ai-nav-group-section">
+        <div class="ai-nav-group-header">
+            <i data-lucide="compass"></i>
+            <span>Navigation</span>
+        </div>
+        <div class="ai-nav-group-body">
+            {% if request.resolver_match.url_name != 'dashboard' %}
+            <a href="{% url 'ai_ops_ui:dashboard' %}" class="ai-nav-card-small">
+                <div class="ai-nav-card-icon-small" style="background: rgba(0, 212, 255, 0.1); color: var(--avag-accent-primary);">
+                    <i data-lucide="layout-dashboard"></i>
+                </div>
+                <div class="ai-nav-card-details-small">
+                    <h4>Dashboard</h4>
+                    <p>AI telemetry &amp; health overview.</p>
+                </div>
+            </a>
+            {% endif %}
+
+            {% if request.resolver_match.url_name != 'query' %}
+            <a href="{% url 'ai_ops_ui:query' %}" class="ai-nav-card-small">
+                <div class="ai-nav-card-icon-small query">
+                    <i data-lucide="message-square"></i>
+                </div>
+                <div class="ai-nav-card-details-small">
+                    <h4>Compliance Assistant</h4>
+                    <p>Grounded Q&amp;A query workspace.</p>
+                </div>
+            </a>
+            {% endif %}
+
+            {% if request.resolver_match.url_name != 'history' %}
+            <a href="{% url 'ai_ops_ui:history' %}" class="ai-nav-card-small">
+                <div class="ai-nav-card-icon-small" style="background: rgba(99, 102, 241, 0.1); color: #6366f1;">
+                    <i data-lucide="clock"></i>
+                </div>
+                <div class="ai-nav-card-details-small">
+                    <h4>Query History</h4>
+                    <p>Full audit trail of past queries.</p>
+                </div>
+            </a>
+            {% endif %}
+            
+            {% if request.resolver_match.url_name != 'admin_settings' %}
+            <a href="{% url 'ai_ops_ui:admin_settings' %}" class="ai-nav-card-small">
+                <div class="ai-nav-card-icon-small" style="background: rgba(100, 116, 139, 0.1); color: #94a3b8;">
+                    <i data-lucide="settings"></i>
+                </div>
+                <div class="ai-nav-card-details-small">
+                    <h4>Settings</h4>
+                    <p>Configure model &amp; system parameters.</p>
+                </div>
+            </a>
+            {% endif %}
+        </div>
+    </div>
+
+    <!-- Diagnostics -->
+    <div class="ai-nav-group-section">
+        <div class="ai-nav-group-header">
+            <i data-lucide="activity"></i>
+            <span>Diagnostics</span>
+        </div>
+        <div class="ai-nav-group-body">
+            {% if request.resolver_match.url_name != 'retrieval_inspector' %}
+            <a href="{% url 'ai_ops_ui:retrieval_inspector' %}" class="ai-nav-card-small">
+                <div class="ai-nav-card-icon-small" style="background: rgba(168, 85, 247, 0.1); color: #a855f7;">
+                    <i data-lucide="microscope"></i>
+                </div>
+                <div class="ai-nav-card-details-small">
+                    <h4>Retrieval Inspector</h4>
+                    <p>Debug RAG FAISS chunks &amp; scores.</p>
+                </div>
+            </a>
+            {% endif %}
+
+            {% if request.resolver_match.url_name != 'rag_status' %}
+            <a href="{% url 'ai_ops_ui:rag_status' %}" class="ai-nav-card-small">
+                <div class="ai-nav-card-icon-small" style="background: rgba(16, 185, 129, 0.1); color: #10b981;">
+                    <i data-lucide="database"></i>
+                </div>
+                <div class="ai-nav-card-details-small">
+                    <h4>Corpus Explorer</h4>
+                    <p>FAISS index, knowledge base &amp; rebuild tools.</p>
+                </div>
+            </a>
+            {% endif %}
+        </div>
+    </div>
+    
+    <!-- Governance & Safety -->
+    <div class="ai-nav-group-section">
+        <div class="ai-nav-group-header">
+            <i data-lucide="shield-check"></i>
+            <span>Governance &amp; Safety</span>
+        </div>
+        <div class="ai-nav-group-body">
+            {% if request.resolver_match.url_name != 'admin_audit' %}
+            <a href="{% url 'ai_ops_ui:admin_audit' %}" class="ai-nav-card-small">
+                <div class="ai-nav-card-icon-small" style="background: rgba(239, 68, 68, 0.1); color: #ef4444;">
+                    <i data-lucide="shield-alert"></i>
+                </div>
+                <div class="ai-nav-card-details-small">
+                    <h4>Audit Logs</h4>
+                    <p>System security &amp; safety logs.</p>
+                </div>
+            </a>
+            {% endif %}
+            
+            {% if request.resolver_match.url_name != 'admin_feedback' %}
+            <a href="{% url 'ai_ops_ui:admin_feedback' %}" class="ai-nav-card-small">
+                <div class="ai-nav-card-icon-small" style="background: rgba(236, 72, 153, 0.1); color: #ec4899;">
+                    <i data-lucide="thumbs-down"></i>
+                </div>
+                <div class="ai-nav-card-details-small">
+                    <h4>User Feedback</h4>
+                    <p>Review flagged AI responses.</p>
+                </div>
+            </a>
+            {% endif %}
+        </div>
+    </div>
+
+    <!-- Maintenance -->
+    <div class="ai-nav-group-section">
+        <div class="ai-nav-group-header">
+            <i data-lucide="wrench"></i>
+            <span>Maintenance</span>
+        </div>
+        <div class="ai-nav-group-body">
+            <a href="javascript:void(0);" onclick="typeof refreshRetrieverStatus === 'function' ? refreshRetrieverStatus() : alert('Not available on this page.');" class="ai-nav-card-small">
+                <div class="ai-nav-card-icon-small" style="background: rgba(16, 185, 129, 0.1); color: #10b981;">
+                    <i data-lucide="rotate-cw"></i>
+                </div>
+                <div class="ai-nav-card-details-small">
+                    <h4>Refresh Retriever</h4>
+                    <p>Reload index parameter cache layer.</p>
+                </div>
+            </a>
+            <a href="javascript:void(0);" onclick="typeof clearQueryCache === 'function' ? clearQueryCache() : alert('Not available on this page.');" class="ai-nav-card-small">
+                <div class="ai-nav-card-icon-small" style="background: rgba(239, 68, 68, 0.1); color: var(--avag-accent-danger);">
+                    <i data-lucide="trash-2"></i>
+                </div>
+                <div class="ai-nav-card-details-small">
+                    <h4>Clear Query Cache</h4>
+                    <p>Invalidate AI API response cache.</p>
+                </div>
+            </a>
+        </div>
+    </div>
+</div>

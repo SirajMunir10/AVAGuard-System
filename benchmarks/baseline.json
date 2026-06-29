@@ -1,0 +1,153 @@
+{
+  "metadata": {
+    "os": "Windows",
+    "os_release": "10",
+    "python_version": "3.13.12",
+    "cpu_architecture": "AMD64",
+    "cpu_count": 4,
+    "timestamp": "2026-05-24T01:34:41"
+  },
+  "benchmarks": {
+    "bench_evidence_store/compression_ratios": {
+      "mean_ms": 0.0,
+      "p50_ms": 0.0,
+      "p95_ms": 0.0,
+      "p99_ms": 0.0,
+      "zlib_ratio": 86.29815498154981,
+      "zstd_ratio": 0.0,
+      "lz4_ratio": 0.0,
+      "description": "Adaptive compression ratios achieved on mixed payloads",
+      "system_cpu_utilization_pct": 72.93434824259921,
+      "system_peak_ram_bytes": 23315525
+    },
+    "bench_evidence_store/encrypted_insert": {
+      "mean_ms": 1.4209074989776127,
+      "p50_ms": 0.5890000029467046,
+      "p95_ms": 7.912200002465397,
+      "p99_ms": 11.253500008024275,
+      "throughput_ops_sec": 696.0380816710641,
+      "description": "Encrypted evidence batch database insert latency",
+      "system_cpu_utilization_pct": 72.93434824259921,
+      "system_peak_ram_bytes": 23315525
+    },
+    "bench_evidence_store/evidence_retrieval": {
+      "mean_ms": 0.6100069999229163,
+      "p50_ms": 0.43299997923895717,
+      "p95_ms": 2.047699992544949,
+      "p99_ms": 3.5330000100657344,
+      "description": "Integrity hash verification, decryption, and decompression retrieval latency",
+      "system_cpu_utilization_pct": 72.93434824259921,
+      "system_peak_ram_bytes": 23315525
+    },
+    "bench_evidence_store/bloom_lookup_speed": {
+      "mean_ms": 0.04750350344693288,
+      "p50_ms": 0.04449998959898949,
+      "p95_ms": 0.05660002352669835,
+      "p99_ms": 0.1221999991685152,
+      "description": "In-memory Bloom filter membership query latency",
+      "system_cpu_utilization_pct": 72.93434824259921,
+      "system_peak_ram_bytes": 23315525
+    },
+    "bench_evidence_store/db_lookup_speed": {
+      "mean_ms": 0.046917997824493796,
+      "p50_ms": 0.041199964471161366,
+      "p95_ms": 0.05690002581104636,
+      "p99_ms": 0.1286999904550612,
+      "description": "SQLite indexed content-hash query lookup latency",
+      "system_cpu_utilization_pct": 72.93434824259921,
+      "system_peak_ram_bytes": 23315525
+    },
+    "bench_evidence_store/retention_pruning": {
+      "mean_ms": 17.920599959325045,
+      "p50_ms": 17.920599959325045,
+      "p95_ms": 17.920599959325045,
+      "p99_ms": 17.920599959325045,
+      "records_pruned": 50,
+      "description": "Indexed database cursor bounding expired records pruning latency",
+      "system_cpu_utilization_pct": 72.93434824259921,
+      "system_peak_ram_bytes": 23315525
+    },
+    "bench_scan_queue/insertion_throughput": {
+      "mean_ms": 83.21735639998224,
+      "p50_ms": 83.21735639998224,
+      "p95_ms": 99.86082767997868,
+      "p99_ms": 124.82603459997335,
+      "throughput_ops_sec": 12.016723953516667,
+      "description": "Scan queue insertion latency and throughput",
+      "system_cpu_utilization_pct": 95.39062610089849,
+      "system_peak_ram_bytes": 878268
+    },
+    "bench_scan_queue/priority_recalculation": {
+      "mean_ms": 4.480253997026011,
+      "p50_ms": 4.7848999965935946,
+      "p95_ms": 7.525699969846755,
+      "p99_ms": 10.67339995643124,
+      "description": "Starvation-prevention heap aging recalculation latency",
+      "system_cpu_utilization_pct": 95.39062610089849,
+      "system_peak_ram_bytes": 878268
+    },
+    "bench_scan_queue/work_stealing": {
+      "mean_ms": 73.223099698636,
+      "p50_ms": 68.0152999702841,
+      "p95_ms": 148.09240004979074,
+      "p99_ms": 247.52790003549308,
+      "description": "Cross-provider schedule work stealing dequeue latency",
+      "system_cpu_utilization_pct": 95.39062610089849,
+      "system_peak_ram_bytes": 878268
+    },
+    "bench_scan_queue/aimd_convergence": {
+      "mean_ms": 0.012590967854785343,
+      "p50_ms": 0.012590967854785343,
+      "p95_ms": 0.013850064640263879,
+      "p99_ms": 0.016368258211220947,
+      "description": "AIMD rate throttling step computation speed",
+      "system_cpu_utilization_pct": 95.39062610089849,
+      "system_peak_ram_bytes": 878268
+    },
+    "bench_ui_responsiveness/cancellation_latency": {
+      "mean_ms": 0.13679999392479658,
+      "p50_ms": 0.13679999392479658,
+      "p95_ms": 0.13679999392479658,
+      "p99_ms": 0.13679999392479658,
+      "description": "Scan cancellation signal propagation and queue clear latency",
+      "system_cpu_utilization_pct": 40.9454036363995,
+      "system_peak_ram_bytes": 34533025
+    },
+    "bench_ui_responsiveness/pause_reactivity": {
+      "mean_ms": 0.0038999714888632298,
+      "p50_ms": 0.0038999714888632298,
+      "p95_ms": 0.0038999714888632298,
+      "p99_ms": 0.0038999714888632298,
+      "description": "Cooperative thread state transition to pause state latency",
+      "system_cpu_utilization_pct": 40.9454036363995,
+      "system_peak_ram_bytes": 34533025
+    },
+    "bench_ui_responsiveness/resume_reactivity": {
+      "mean_ms": 0.002800021320581436,
+      "p50_ms": 0.002800021320581436,
+      "p95_ms": 0.002800021320581436,
+      "p99_ms": 0.002800021320581436,
+      "description": "Cooperative thread state transition to resume state latency",
+      "system_cpu_utilization_pct": 40.9454036363995,
+      "system_peak_ram_bytes": 34533025
+    },
+    "bench_ui_responsiveness/shutdown_drain": {
+      "mean_ms": 127.97999999020249,
+      "p50_ms": 127.97999999020249,
+      "p95_ms": 127.97999999020249,
+      "p99_ms": 127.97999999020249,
+      "description": "Background writer thread shutdown queue drain and flush latency",
+      "system_cpu_utilization_pct": 40.9454036363995,
+      "system_peak_ram_bytes": 34533025
+    },
+    "bench_ui_responsiveness/event_loop_starvation": {
+      "mean_ms": 0.30741997761651874,
+      "p50_ms": 0.19319995772093534,
+      "p95_ms": 1.235899981111288,
+      "p99_ms": 1.235899981111288,
+      "description": "Headless PyQt Qt event loop processing lag",
+      "system_cpu_utilization_pct": 40.9454036363995,
+      "system_peak_ram_bytes": 34533025
+    }
+  }
+}

@@ -1,0 +1,106 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}AI Compliance Q&A - AVAGuard{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'ai_ops/css/query.css' %}?v=3.0">
+{% endblock %}
+
+{% block page_title %}AI Compliance Assistant{% endblock %}
+
+{% block content %}
+<div class="ai-query-container">
+    
+    <!-- Fallback Warning Alert (Dynamic & Server-side check) -->
+    <div class="ai-alert-banner {% if ai_settings.llm_provider == 'mock' %}visible{% endif %}" id="ai-fallback-warning">
+        <div class="ai-alert-icon">
+            <i data-lucide="alert-triangle"></i>
+        </div>
+        <div class="ai-alert-content">
+            <strong>degraded operation: active mock fallback</strong>
+            <p>The AVAGuard LLM compliance generator is currently operating in offline Mock mode. Grounded retrieval matches are simulated and compliance logic is generated synthetically.</p>
+        </div>
+    </div>
+
+    <!-- Main Workspace -->
+    <div class="ai-workspace">
+        <!-- Left: Query console panel -->
+        <div class="ai-console-pane">
+            <div class="ai-console-card">
+                <div class="ai-console-header">
+                    <h3><i data-lucide="terminal"></i> Ask a Compliance Question</h3>
+                    <span class="ai-console-limits">Daily Queries Limit: {{ ai_settings.daily_query_limit }}</span>
+                </div>
+                
+                <form id="ai-query-form" class="ai-query-form">
+                    {% csrf_token %}
+                    <div class="ai-query-controls">
+                        <div class="ai-framework-selector">
+                            <label for="ai-framework-filter">
+                                <i data-lucide="filter"></i> Framework
+                            </label>
+                            <select id="ai-framework-filter" name="framework">
+                                <option value="">All Frameworks</option>
+                                <!-- Populated dynamically from /api/ai/admin/stats/ -->
+                            </select>
+                        </div>
+                    </div>
+                    <div class="ai-input-group">
+                        <textarea 
+                            id="ai-query-input" 
+                            name="query" 
+                            placeholder="Ask a natural-language compliance question (e.g., 'How do I restrict administrative access in Azure?' or 'What are the password length requirements under CIS?')..."
+                            rows="4" 
+                            maxlength="2000" 
+                            required></textarea>
+                        
+                        <div class="ai-input-footer">
+                            <span class="ai-char-counter"><span id="char-count">0</span> / 2000 characters</span>
+                            <button type="submit" class="btn btn-primary" id="ai-submit-btn">
+                                <span class="btn-text">Submit Query</span>
+                                <span class="spinner-small avag-hide" id="ai-btn-spinner"></span>
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            
+            <!-- Response Board -->
+            <div class="ai-response-board" id="ai-response-board">
+                <!-- Welcome/Placeholder Board -->
+                <div class="ai-placeholder-card" id="ai-response-placeholder">
+                    <div class="ai-placeholder-icon animate-float">
+                        <i data-lucide="message-square-code"></i>
+                    </div>
+                    <h4>Interactive AI Compliance Engine</h4>
+                    <p>Submit a grounded similarity question. AVAGuard will retrieve relevant security parameters from the local FAISS compliance index and generate a source-cited answer.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Right: Recent Queries panel -->
+        <div class="ai-history-sidebar">
+            <div class="ai-sidebar-header">
+                <h3><i data-lucide="history"></i> Recent Queries</h3>
+                <a href="{% url 'ai_ops_ui:history' %}" class="ai-history-link">View All</a>
+            </div>
+            <div class="ai-sidebar-content" id="ai-sidebar-history-list">
+                <!-- Loaded via AJAX on DOMContentLoaded -->
+                <div class="ai-sidebar-loading">
+                    <span class="spinner-small"></span>
+                    <span>Retrieving recent log timeline...</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Embed Citations Details Overlay Modal -->
+{% include 'ai_ops/partials/ai_source_modal.html' %}
+
+{% endblock %}
+
+{% block extra_js %}
+<script src="{% static 'ai_ops/js/query.js' %}?v=3.0"></script>
+{% endblock %}

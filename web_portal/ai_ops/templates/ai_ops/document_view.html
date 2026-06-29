@@ -1,0 +1,162 @@
+{% extends 'ai_ops/base_ai_ops.html' %}
+{% load static %}
+
+{% block title %}{{ filename }} — Document Viewer{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'ai_ops/css/query.css' %}?v=4.0">
+<style>
+  .doc-viewer-container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 24px 8px;
+  }
+  .doc-viewer-card {
+    background: var(--avag-bg-card);
+    border: 1px solid var(--avag-border-color);
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: var(--avag-shadow-card);
+  }
+  .doc-viewer-header {
+    padding: 24px;
+    border-bottom: 1px solid var(--avag-border-color);
+    background: linear-gradient(180deg, rgba(var(--avag-accent-primary-rgb), 0.04) 0%, transparent 100%);
+    display: flex;
+    align-items: center;
+    gap: 20px;
+  }
+  .doc-icon {
+    width: 48px;
+    height: 48px;
+    border-radius: 12px;
+    background: rgba(var(--avag-accent-primary-rgb), 0.12);
+    color: var(--avag-accent-primary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+  .doc-icon svg { width: 22px; height: 22px; }
+  .doc-meta-title-group { flex: 1; min-width: 0; }
+  .doc-title {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--avag-text-primary);
+    margin: 0 0 6px 0;
+    word-break: break-all;
+  }
+  .doc-path {
+    font-size: 0.8rem;
+    color: var(--avag-text-secondary);
+    font-family: monospace;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .doc-viewer-body {
+    padding: 28px 24px;
+    color: var(--avag-text-primary);
+    line-height: 1.8;
+    font-size: 0.95rem;
+  }
+  .doc-content-box {
+    background: var(--avag-bg-input, rgba(0, 0, 0, 0.15));
+    border: 1px solid var(--avag-border-color);
+    border-radius: 12px;
+    padding: 24px;
+    white-space: pre-wrap;
+    word-break: break-word;
+    font-family: inherit;
+    max-height: 70vh;
+    overflow-y: auto;
+  }
+  .doc-viewer-footer {
+    padding: 18px 24px;
+    border-top: 1px solid var(--avag-border-color);
+    background: rgba(0, 0, 0, 0.15);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+  .metadata-badge-group {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+  .meta-badge {
+    background: rgba(var(--avag-accent-primary-rgb), 0.08);
+    color: var(--avag-accent-primary);
+    border: 1px solid rgba(var(--avag-accent-primary-rgb), 0.2);
+    padding: 3px 10px;
+    border-radius: 6px;
+    font-size: 0.75rem;
+    font-weight: 600;
+  }
+</style>
+{% endblock %}
+
+{% block ai_page_name %}Document View{% endblock %}
+
+{% block ai_content %}
+<div class="doc-viewer-container">
+  <div class="doc-viewer-card">
+    <div class="doc-viewer-header">
+      <div class="doc-icon">
+        <i data-lucide="file-text"></i>
+      </div>
+      <div class="doc-meta-title-group">
+        <h2 class="doc-title">{{ filename }}</h2>
+        <div class="doc-path">
+          <i data-lucide="folder-git-2" style="width: 14px; height: 14px;"></i>
+          <span>{{ relative_path }}</span>
+        </div>
+      </div>
+      <a href="{% url 'ai_ops_ui:query' %}" class="btn btn-secondary btn-small">
+        <i data-lucide="arrow-left" style="width: 14px; height: 14px; vertical-align: middle; margin-right: 4px;"></i> Back to Console
+      </a>
+    </div>
+
+    <div class="doc-viewer-body">
+      <div class="doc-content-box">
+        {{ content }}
+      </div>
+    </div>
+
+    <div class="doc-viewer-footer">
+      <div class="metadata-badge-group">
+        {% if metadata.framework %}
+        <span class="meta-badge">Framework: {{ metadata.framework }}</span>
+        {% endif %}
+        {% if metadata.category %}
+        <span class="meta-badge">Category: {{ metadata.category }}</span>
+        {% endif %}
+        {% if total_matching_chunks %}
+        <span class="meta-badge">Total Chunks: {{ total_matching_chunks }}</span>
+        {% endif %}
+        {% if metadata.source_type %}
+        <span class="meta-badge">Type: {{ metadata.source_type }}</span>
+        {% endif %}
+      </div>
+      <button class="btn btn-secondary btn-small" onclick="window.close();" style="display: none;" id="windowCloseBtn">
+        Close Window
+      </button>
+    </div>
+  </div>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    if (window.lucide) lucide.createIcons();
+    // If opened in a new tab/window, show the close button
+    if (window.opener) {
+      document.getElementById('windowCloseBtn').style.display = 'inline-flex';
+    }
+  });
+</script>
+{% endblock %}

@@ -1,0 +1,398 @@
+{
+  "metadata": {
+    "generated_at": "2026-06-03 00:10:18",
+    "total_existing_files": 770,
+    "total_catalog_scenarios": 1032,
+    "total_covered_scenarios": 3,
+    "total_missing_scenarios": 1029,
+    "primary_milestone_target": 10000,
+    "secondary_milestone_target": 25000
+  },
+  "domain_summaries": {
+    "intune": {
+      "existing_count": 380,
+      "catalog_scenarios_count": 122,
+      "covered_scenarios_count": 0,
+      "uncovered_scenarios_count": 122,
+      "subdomains": {
+        "Device Management": 120,
+        "Application Deployment": 89,
+        "Configuration Profiles": 134,
+        "Endpoint Security": 33,
+        "Compliance Policies": 2,
+        "Enrollment": 2
+      },
+      "scenarios": {
+        "Implementation": 0,
+        "Administration": 0,
+        "Troubleshooting": 52,
+        "Security Hardening": 158,
+        "Monitoring": 16,
+        "Incident Response": 78,
+        "Governance": 72,
+        "Compliance": 2,
+        "Migration": 0,
+        "Upgrade": 0,
+        "Operational Runbooks": 2,
+        "Best Practices": 0
+      }
+    },
+    "defender": {
+      "existing_count": 23,
+      "catalog_scenarios_count": 103,
+      "covered_scenarios_count": 0,
+      "uncovered_scenarios_count": 103,
+      "subdomains": {
+        "Threat Hunting": 19,
+        "Defender for Endpoint": 4
+      },
+      "scenarios": {
+        "Implementation": 0,
+        "Administration": 2,
+        "Troubleshooting": 5,
+        "Security Hardening": 5,
+        "Monitoring": 1,
+        "Incident Response": 10,
+        "Governance": 0,
+        "Compliance": 0,
+        "Migration": 0,
+        "Upgrade": 0,
+        "Operational Runbooks": 0,
+        "Best Practices": 0
+      }
+    },
+    "azure": {
+      "existing_count": 148,
+      "catalog_scenarios_count": 183,
+      "covered_scenarios_count": 2,
+      "uncovered_scenarios_count": 181,
+      "subdomains": {
+        "Entra ID": 67,
+        "RBAC": 8,
+        "Conditional Access": 16,
+        "Governance": 28,
+        "Networking": 16,
+        "Virtual Machines": 3,
+        "Backup": 3,
+        "Storage": 2,
+        "Key Vault": 5
+      },
+      "scenarios": {
+        "Implementation": 2,
+        "Administration": 9,
+        "Troubleshooting": 18,
+        "Security Hardening": 30,
+        "Monitoring": 14,
+        "Incident Response": 60,
+        "Governance": 10,
+        "Compliance": 2,
+        "Migration": 0,
+        "Upgrade": 3,
+        "Operational Runbooks": 0,
+        "Best Practices": 0
+      }
+    },
+    "windows": {
+      "existing_count": 49,
+      "catalog_scenarios_count": 215,
+      "covered_scenarios_count": 1,
+      "uncovered_scenarios_count": 214,
+      "subdomains": {
+        "DNS": 4,
+        "Windows Security": 19,
+        "WSUS": 2,
+        "PKI / ADCS": 2,
+        "PowerShell": 2,
+        "Authentication": 8,
+        "Event Logging": 12
+      },
+      "scenarios": {
+        "Implementation": 1,
+        "Administration": 0,
+        "Troubleshooting": 7,
+        "Security Hardening": 1,
+        "Monitoring": 5,
+        "Incident Response": 31,
+        "Governance": 0,
+        "Compliance": 1,
+        "Migration": 1,
+        "Upgrade": 1,
+        "Operational Runbooks": 1,
+        "Best Practices": 0
+      }
+    },
+    "sentinel": {
+      "existing_count": 1,
+      "catalog_scenarios_count": 82,
+      "covered_scenarios_count": 0,
+      "uncovered_scenarios_count": 82,
+      "subdomains": {
+        "Data Connectors": 1
+      },
+      "scenarios": {
+        "Implementation": 0,
+        "Administration": 0,
+        "Troubleshooting": 0,
+        "Security Hardening": 0,
+        "Monitoring": 0,
+        "Incident Response": 1,
+        "Governance": 0,
+        "Compliance": 0,
+        "Migration": 0,
+        "Upgrade": 0,
+        "Operational Runbooks": 0,
+        "Best Practices": 0
+      }
+    },
+    "exchange_online": {
+      "existing_count": 1,
+      "catalog_scenarios_count": 82,
+      "covered_scenarios_count": 0,
+      "uncovered_scenarios_count": 82,
+      "subdomains": {
+        "Threat Protection": 1
+      },
+      "scenarios": {
+        "Implementation": 0,
+        "Administration": 0,
+        "Troubleshooting": 0,
+        "Security Hardening": 1,
+        "Monitoring": 0,
+        "Incident Response": 0,
+        "Governance": 0,
+        "Compliance": 0,
+        "Migration": 0,
+        "Upgrade": 0,
+        "Operational Runbooks": 0,
+        "Best Practices": 0
+      }
+    },
+    "sharepoint": {
+      "existing_count": 0,
+      "catalog_scenarios_count": 67,
+      "covered_scenarios_count": 0,
+      "uncovered_scenarios_count": 67,
+      "subdomains": {},
+      "scenarios": {
+        "Implementation": 0,
+        "Administration": 0,
+        "Troubleshooting": 0,
+        "Security Hardening": 0,
+        "Monitoring": 0,
+        "Incident Response": 0,
+        "Governance": 0,
+        "Compliance": 0,
+        "Migration": 0,
+        "Upgrade": 0,
+        "Operational Runbooks": 0,
+        "Best Practices": 0
+      }
+    },
+    "teams": {
+      "existing_count": 7,
+      "catalog_scenarios_count": 96,
+      "covered_scenarios_count": 0,
+      "uncovered_scenarios_count": 96,
+      "subdomains": {
+        "Administration": 5,
+        "Voice/Calling": 1,
+        "App Management": 1
+      },
+      "scenarios": {
+        "Implementation": 0,
+        "Administration": 0,
+        "Troubleshooting": 2,
+        "Security Hardening": 0,
+        "Monitoring": 0,
+        "Incident Response": 3,
+        "Governance": 0,
+        "Compliance": 1,
+        "Migration": 0,
+        "Upgrade": 1,
+        "Operational Runbooks": 0,
+        "Best Practices": 0
+      }
+    },
+    "purview": {
+      "existing_count": 0,
+      "catalog_scenarios_count": 82,
+      "covered_scenarios_count": 0,
+      "uncovered_scenarios_count": 82,
+      "subdomains": {},
+      "scenarios": {
+        "Implementation": 0,
+        "Administration": 0,
+        "Troubleshooting": 0,
+        "Security Hardening": 0,
+        "Monitoring": 0,
+        "Incident Response": 0,
+        "Governance": 0,
+        "Compliance": 0,
+        "Migration": 0,
+        "Upgrade": 0,
+        "Operational Runbooks": 0,
+        "Best Practices": 0
+      }
+    }
+  },
+  "other_domains": {
+    "other": {
+      "total_files": 18,
+      "subdomains": {
+        "General": 18
+      },
+      "scenarios": {
+        "Administration": 2,
+        "Incident Response": 8,
+        "Troubleshooting": 3,
+        "Migration": 1,
+        "Security Hardening": 3,
+        "Upgrade": 1
+      }
+    },
+    "application_security": {
+      "total_files": 16,
+      "subdomains": {
+        "General": 16
+      },
+      "scenarios": {
+        "Troubleshooting": 4,
+        "Incident Response": 11,
+        "Security Hardening": 1
+      }
+    },
+    "aws": {
+      "total_files": 11,
+      "subdomains": {
+        "General": 11
+      },
+      "scenarios": {
+        "Governance": 1,
+        "Implementation": 2,
+        "Monitoring": 1,
+        "Incident Response": 4,
+        "Security Hardening": 3
+      }
+    },
+    "compliance": {
+      "total_files": 37,
+      "subdomains": {
+        "General": 37
+      },
+      "scenarios": {
+        "Incident Response": 10,
+        "Operational Runbooks": 3,
+        "Troubleshooting": 6,
+        "Security Hardening": 10,
+        "Compliance": 3,
+        "Monitoring": 4,
+        "Governance": 1
+      }
+    },
+    "emerging_tech": {
+      "total_files": 11,
+      "subdomains": {
+        "General": 11
+      },
+      "scenarios": {
+        "Incident Response": 5,
+        "Monitoring": 2,
+        "Troubleshooting": 2,
+        "Security Hardening": 1,
+        "Governance": 1
+      }
+    },
+    "gcp": {
+      "total_files": 9,
+      "subdomains": {
+        "General": 9
+      },
+      "scenarios": {
+        "Implementation": 2,
+        "Incident Response": 5,
+        "Security Hardening": 2
+      }
+    },
+    "incident_response": {
+      "total_files": 9,
+      "subdomains": {
+        "General": 9
+      },
+      "scenarios": {
+        "Incident Response": 6,
+        "Troubleshooting": 3
+      }
+    },
+    "linux": {
+      "total_files": 11,
+      "subdomains": {
+        "General": 11
+      },
+      "scenarios": {
+        "Incident Response": 5,
+        "Security Hardening": 1,
+        "Monitoring": 1,
+        "Upgrade": 1,
+        "Troubleshooting": 3
+      }
+    },
+    "malware": {
+      "total_files": 8,
+      "subdomains": {
+        "General": 8
+      },
+      "scenarios": {
+        "Troubleshooting": 5,
+        "Incident Response": 2,
+        "Governance": 1
+      }
+    },
+    "mitre_attack": {
+      "total_files": 11,
+      "subdomains": {
+        "General": 11
+      },
+      "scenarios": {
+        "Incident Response": 11
+      }
+    },
+    "network_security": {
+      "total_files": 6,
+      "subdomains": {
+        "General": 6
+      },
+      "scenarios": {
+        "Troubleshooting": 1,
+        "Governance": 1,
+        "Monitoring": 2,
+        "Incident Response": 1,
+        "Security Hardening": 1
+      }
+    },
+    "siem": {
+      "total_files": 7,
+      "subdomains": {
+        "General": 7
+      },
+      "scenarios": {
+        "Incident Response": 3,
+        "Monitoring": 1,
+        "Troubleshooting": 1,
+        "Implementation": 1,
+        "Administration": 1
+      }
+    },
+    "vulnerability_management": {
+      "total_files": 7,
+      "subdomains": {
+        "General": 7
+      },
+      "scenarios": {
+        "Troubleshooting": 2,
+        "Governance": 2,
+        "Administration": 1,
+        "Incident Response": 2
+      }
+    }
+  }
+}

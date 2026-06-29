@@ -1,0 +1,131 @@
+# ============================================
+# AVAGuard Security AI - Hardware Training Profiles
+# ============================================
+# Optimized training configurations for different GPUs
+# Used by train_lora.py to auto-detect optimal settings
+
+profiles:
+  rtx_3070:
+    name: "NVIDIA RTX 3070 (8GB VRAM)"
+    gpu_memory_gb: 8
+    settings:
+      max_model_size: "3.8B"
+      per_device_train_batch_size: 1
+      gradient_accumulation_steps: 16
+      max_seq_length: 1024
+      lora_r: 16
+      lora_alpha: 32
+      lora_dropout: 0.05
+      learning_rate: 2e-4
+      fp16: true
+      bf16: false
+      gradient_checkpointing: true
+      optim: "paged_adamw_8bit"
+      load_in_4bit: true
+    recommended_models:
+      - "Qwen/Qwen2.5-1.5B-Instruct"
+      - "microsoft/phi-2"
+      - "TinyLlama/TinyLlama-1.1B-Chat-v1.0"
+
+  rtx_4090:
+    name: "NVIDIA RTX 4090 (24GB VRAM)"
+    gpu_memory_gb: 24
+    settings:
+      max_model_size: "14B"
+      per_device_train_batch_size: 4
+      gradient_accumulation_steps: 4
+      max_seq_length: 2048
+      lora_r: 32
+      lora_alpha: 64
+      lora_dropout: 0.05
+      learning_rate: 1e-4
+      fp16: false
+      bf16: true
+      gradient_checkpointing: true
+      optim: "paged_adamw_8bit"
+      load_in_4bit: true
+    recommended_models:
+      - "Qwen/Qwen2.5-7B-Instruct"
+      - "meta-llama/Llama-3.1-8B-Instruct"
+      - "mistralai/Mistral-7B-Instruct-v0.3"
+      - "Qwen/Qwen2.5-14B-Instruct"
+
+  colab_t4:
+    name: "Google Colab T4 (16GB VRAM)"
+    gpu_memory_gb: 16
+    settings:
+      max_model_size: "8B"
+      per_device_train_batch_size: 2
+      gradient_accumulation_steps: 8
+      max_seq_length: 1536
+      lora_r: 16
+      lora_alpha: 32
+      lora_dropout: 0.05
+      learning_rate: 2e-4
+      fp16: true
+      bf16: false
+      gradient_checkpointing: true
+      optim: "paged_adamw_8bit"
+      load_in_4bit: true
+    recommended_models:
+      - "Qwen/Qwen2.5-3B-Instruct"
+      - "microsoft/Phi-3.5-mini-instruct"
+      - "meta-llama/Llama-3.1-8B-Instruct"
+
+  kaggle_p100:
+    name: "Kaggle P100 (16GB VRAM)"
+    gpu_memory_gb: 16
+    settings:
+      max_model_size: "8B"
+      per_device_train_batch_size: 2
+      gradient_accumulation_steps: 8
+      max_seq_length: 1536
+      lora_r: 16
+      lora_alpha: 32
+      lora_dropout: 0.05
+      learning_rate: 2e-4
+      fp16: true
+      bf16: false
+      gradient_checkpointing: true
+      optim: "paged_adamw_8bit"
+      load_in_4bit: true
+    recommended_models:
+      - "Qwen/Qwen2.5-3B-Instruct"
+      - "microsoft/Phi-3.5-mini-instruct"
+
+# ============================================
+# Progressive Training Strategy
+# ============================================
+# Start small, then scale up as the dataset grows
+training_progression:
+  stage_1:
+    name: "Foundation (Week 2-3)"
+    model: "Qwen/Qwen2.5-1.5B-Instruct"
+    dataset_size: "5,000 Q&A (pilot)"
+    hardware: "rtx_3070 or colab_t4"
+    epochs: 3
+    expected_time: "2-3 hours"
+    
+  stage_2:
+    name: "Growth (Week 4-5)"
+    model: "Qwen/Qwen2.5-7B-Instruct"
+    dataset_size: "25,000 Q&A"
+    hardware: "rtx_4090 or colab_t4"
+    epochs: 2
+    expected_time: "8-12 hours"
+    
+  stage_3:
+    name: "Scale (Week 6-7)"
+    model: "meta-llama/Llama-3.1-8B-Instruct"
+    dataset_size: "50,000 Q&A"
+    hardware: "rtx_4090"
+    epochs: 2
+    expected_time: "12-18 hours"
+    
+  stage_4:
+    name: "Advanced (Week 8+)"
+    model: "Qwen/Qwen2.5-14B-Instruct"
+    dataset_size: "100,000 Q&A"
+    hardware: "rtx_4090"
+    epochs: 1
+    expected_time: "24-36 hours"

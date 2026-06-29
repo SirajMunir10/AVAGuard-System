@@ -1,0 +1,76 @@
+<div class="ai-query-card {% if log.flagged %}flagged{% endif %} {% if log.is_fallback %}fallback{% endif %}" id="query-card-{{ log.id|default:'template' }}">
+    <div class="ai-card-header">
+        <div class="ai-user-meta">
+            <span class="ai-user-email">
+                <i data-lucide="user" class="ai-meta-icon"></i>
+                {{ log.user.email|default:'Current User' }}
+            </span>
+            <span class="ai-timestamp" data-utc="{{ log.created_at.isoformat }}">
+                <i data-lucide="clock" class="ai-meta-icon"></i>
+                {{ log.created_at|date:"M d, Y H:i"|default:'Just now' }}
+            </span>
+        </div>
+        <div class="ai-badges">
+            {% if log.is_fallback %}
+                <span class="ai-badge ai-badge-warning animate-pulse">
+                    <i data-lucide="alert-triangle"></i> Fallback Mode
+                </span>
+            {% endif %}
+            {% if log.flagged %}
+                <span class="ai-badge ai-badge-danger">
+                    <i data-lucide="shield-alert"></i> Flagged
+                </span>
+            {% else %}
+                <span class="ai-badge ai-badge-info">
+                    <i data-lucide="cpu"></i> {{ log.model_used }}
+                </span>
+                <span class="ai-badge ai-badge-success">
+                    <i data-lucide="gauge"></i> {{ log.latency_ms|floatformat:0 }}ms
+                </span>
+            {% endif %}
+        </div>
+    </div>
+    <div class="ai-card-body">
+        <div class="ai-query-question">
+            <span class="ai-q-indicator">Q</span>
+            <p class="ai-question-text">{{ log.query_text }}</p>
+        </div>
+        
+        {% if log.flagged %}
+            <div class="ai-flagged-message">
+                <div class="ai-flagged-icon">
+                    <i data-lucide="shield-x"></i>
+                </div>
+                <div class="ai-flagged-text">
+                    <strong>Query Blocked by Safety Filters</strong>
+                    <p>Reason: {{ log.flag_reason|default:"Potential injection or security boundary violation." }}</p>
+                </div>
+            </div>
+        {% else %}
+            <div class="ai-query-answer">
+                <span class="ai-a-indicator">A</span>
+                <div class="ai-answer-text">{{ log.response_text|linebreaksbr }}</div>
+            </div>
+            
+            {% if log.retrieved_sources %}
+                <div class="ai-query-sources">
+                    <span class="ai-sources-label">
+                        <i data-lucide="bookmark-check"></i> Grounded Citations:
+                    </span>
+                    <div class="ai-sources-list">
+                        {% for src in log.retrieved_sources %}
+                            <button class="ai-source-badge" 
+                                    data-filename="{{ src.filename }}" 
+                                    data-score="{{ src.score }}" 
+                                    data-snippet="{{ src.snippet }}">
+                                <i data-lucide="file-text"></i>
+                                <span class="ai-src-name">{{ src.filename }}</span>
+                                <span class="ai-src-score">{{ src.score|floatformat:3 }}</span>
+                            </button>
+                        {% endfor %}
+                    </div>
+                </div>
+            {% endif %}
+        {% endif %}
+    </div>
+</div>

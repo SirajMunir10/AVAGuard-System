@@ -1,0 +1,2447 @@
+[
+  {
+    "scenario_title": "Response runbook: Remediating unauthorized access and compromised keys in remote wipe and retire commands",
+    "scenario_category": "Incident Response",
+    "domain": "intune",
+    "subdomain": "Device Management",
+    "is_cis": false,
+    "cis_type": "N/A",
+    "security_value": 5,
+    "rag_retrieval_value": 5,
+    "fine_tuning_value": 5,
+    "business_value": 5,
+    "estimated_file_count": 1,
+    "existing_coverage": "No",
+    "match_confidence": 36.4,
+    "technology_tags": [
+      "Microsoft Security Baseline",
+      "Zero Trust"
+    ],
+    "operational_tags": [
+      "Forensics",
+      "Incident Response"
+    ],
+    "priority_score": 5.0
+  },
+  {
+    "scenario_title": "Response runbook: Remediating unauthorized access and compromised keys in Windows Autopilot profiles",
+    "scenario_category": "Incident Response",
+    "domain": "intune",
+    "subdomain": "Autopilot",
+    "is_cis": false,
+    "cis_type": "N/A",
+    "security_value": 5,
+    "rag_retrieval_value": 5,
+    "fine_tuning_value": 5,
+    "business_value": 5,
+    "estimated_file_count": 1,
+    "existing_coverage": "No",
+    "match_confidence": 0.0,
+    "technology_tags": [
+      "Microsoft Security Baseline",
+      "Zero Trust"
+    ],
+    "operational_tags": [
+      "Forensics",
+      "Incident Response"
+    ],
+    "priority_score": 5.0
+  },
+  {
+    "scenario_title": "Response runbook: Remediating unauthorized access and compromised keys in Win32 applications packaging",
+    "scenario_category": "Incident Response",
+    "domain": "intune",
+    "subdomain": "Application Deployment",
+    "is_cis": false,
+    "cis_type": "N/A",
+    "security_value": 5,
+    "rag_retrieval_value": 5,
+    "fine_tuning_value": 5,
+    "business_value": 5,
+    "estimated_file_count": 1,
+    "existing_coverage": "No",
+    "match_confidence": 37.0,
+    "technology_tags": [
+      "Microsoft Security Baseline",
+      "Zero Trust"
+    ],
+    "operational_tags": [
+      "Forensics",
+      "Incident Response"
+    ],
+    "priority_score": 5.0
+  },
+  {
+    "scenario_title": "Response runbook: Remediating unauthorized access and compromised keys in Intune compliance policy settings",
+    "scenario_category": "Incident Response",
+    "domain": "intune",
+    "subdomain": "Compliance Policies",
+    "is_cis": false,
+    "cis_type": "N/A",
+    "security_value": 5,
+    "rag_retrieval_value": 5,
+    "fine_tuning_value": 5,
+    "business_value": 5,
+    "estimated_file_count": 1,
+    "existing_coverage": "No",
+    "match_confidence": 30.0,
+    "technology_tags": [
+      "Microsoft Security Baseline",
+      "Zero Trust"
+    ],
+    "operational_tags": [
+      "Forensics",
+      "Incident Response"
+    ],
+    "priority_score": 5.0
+  },
+  {
+    "scenario_title": "Response runbook: Remediating unauthorized access and compromised keys in Intune Administrative Templates ADMX",
+    "scenario_category": "Incident Response",
+    "domain": "intune",
+    "subdomain": "Configuration Profiles",
+    "is_cis": false,
+    "cis_type": "N/A",
+    "security_value": 5,
+    "rag_retrieval_value": 5,
+    "fine_tuning_value": 5,
+    "business_value": 5,
+    "estimated_file_count": 1,
+    "existing_coverage": "No",
+    "match_confidence": 37.0,
+    "technology_tags": [
+      "Microsoft Security Baseline",
+      "Zero Trust"
+    ],
+    "operational_tags": [
+      "Forensics",
+      "Incident Response"
+    ],
+    "priority_score": 5.0
+  },
+  {
+    "scenario_title": "Response runbook: Remediating unauthorized access and compromised keys in Apple ADE enrollment profiles",
+    "scenario_category": "Incident Response",
+    "domain": "intune",
+    "subdomain": "Enrollment",
+    "is_cis": false,
+    "cis_type": "N/A",
+    "security_value": 5,
+    "rag_retrieval_value": 5,
+    "fine_tuning_value": 5,
+    "business_value": 5,
+    "estimated_file_count": 1,
+    "existing_coverage": "No",
+    "match_confidence": 30.0,
+    "technology_tags": [
+      "Microsoft Security Baseline",
+      "Zero Trust"
+    ],
+    "operational_tags": [
+      "Forensics",
+      "Incident Response"
+    ],
+    "priority_score": 5.0
+  },
+  {
+    "scenario_title": "Response runbook: Remediating unauthorized access and compromised keys in ASR rules via Intune",
+    "scenario_category": "Incident Response",
+    "domain": "intune",
+    "subdomain": "Endpoint Security",
+    "is_cis": false,
+    "cis_type": "N/A",
+    "security_value": 5,
+    "rag_retrieval_value": 5,
+    "fine_tuning_value": 5,
+    "business_value": 5,
+    "estimated_file_count": 1,
+    "existing_coverage": "No",
+    "match_confidence": 30.0,
+    "technology_tags": [
+      "Microsoft Security Baseline",
+      "Zero Trust"
+    ],
+    "operational_tags": [
+      "Forensics",
+      "Incident Response"
+    ],
+    "priority_score": 5.0
+  },
+  {
+    "scenario_title": "Triage and containment playbook for ransomware alerts in Defender XDR",
+    "scenario_category": "Incident Response",
+    "domain": "defender",
+    "subdomain": "Threat Hunting",
+    "is_cis": false,
+    "cis_type": "N/A",
+    "security_value": 5,
+    "rag_retrieval_value": 5,
+    "fine_tuning_value": 5,
+    "business_value": 5,
+    "estimated_file_count": 1,
+    "existing_coverage": "No",
+    "match_confidence": 30.0,
+    "technology_tags": [
+      "Microsoft Security Baseline",
+      "Zero Trust"
+    ],
+    "operational_tags": [
+      "Forensics",
+      "Incident Response"
+    ],
+    "priority_score": 5.0
+  },
+  {
+    "scenario_title": "Response runbook: Remediating unauthorized access and compromised keys in MDI directory service accounts",
+    "scenario_category": "Incident Response",
+    "domain": "defender",
+    "subdomain": "Defender for Identity",
+    "is_cis": false,
+    "cis_type": "N/A",
+    "security_value": 5,
+    "rag_retrieval_value": 5,
+    "fine_tuning_value": 5,
+    "business_value": 5,
+    "estimated_file_count": 1,
+    "existing_coverage": "No",
+    "match_confidence": 0.0,
+    "technology_tags": [
+      "Microsoft Security Baseline",
+      "Zero Trust"
+    ],
+    "operational_tags": [
+      "Forensics",
+      "Incident Response"
+    ],
+    "priority_score": 5.0
+  },
+  {
+    "scenario_title": "Response runbook: Remediating unauthorized access and compromised keys in MDE security recommendations remediation",
+    "scenario_category": "Incident Response",
+    "domain": "defender",
+    "subdomain": "Vulnerability Management",
+    "is_cis": false,
+    "cis_type": "N/A",
+    "security_value": 5,
+    "rag_retrieval_value": 5,
+    "fine_tuning_value": 5,
+    "business_value": 5,
+    "estimated_file_count": 1,
+    "existing_coverage": "No",
+    "match_confidence": 0.0,
+    "technology_tags": [
+      "Microsoft Security Baseline",
+      "Zero Trust"
+    ],
+    "operational_tags": [
+      "Forensics",
+      "Incident Response"
+    ],
+    "priority_score": 5.0
+  },
+  {
+    "scenario_title": "Troubleshooting device compliance status mismatches and evaluation loops",
+    "scenario_category": "Troubleshooting",
+    "domain": "intune",
+    "subdomain": "Compliance Policies",
+    "is_cis": false,
+    "cis_type": "N/A",
+    "security_value": 4,
+    "rag_retrieval_value": 5,
+    "fine_tuning_value": 5,
+    "business_value": 5,
+    "estimated_file_count": 1,
+    "existing_coverage": "No",
+    "match_confidence": 30.0,
+    "technology_tags": [
+      "Microsoft Security Baseline",
+      "Zero Trust"
+    ],
+    "operational_tags": [
+      "Day 2 Operations",
+      "Remediation",
+      "Validation"
+    ],
+    "priority_score": 4.7
+  },
+  {
+    "scenario_title": "Troubleshooting Win32 application installation failures and error code triaging",
+    "scenario_category": "Troubleshooting",
+    "domain": "intune",
+    "subdomain": "Application Deployment",
+    "is_cis": false,
+    "cis_type": "N/A",
+    "security_value": 4,
+    "rag_retrieval_value": 5,
+    "fine_tuning_value": 5,
+    "business_value": 5,
+    "estimated_file_count": 1,
+    "existing_coverage": "No",
+    "match_confidence": 30.0,
+    "technology_tags": [
+      "Microsoft Security Baseline",
+      "Zero Trust"
+    ],
+    "operational_tags": [
+      "Day 2 Operations",
+      "Remediation",
+      "Validation"
+    ],
+    "priority_score": 4.7
+  },
+  {
+    "scenario_title": "Troubleshooting Autopilot ESP timeout errors and device enrollment failures",
+    "scenario_category": "Troubleshooting",
+    "domain": "intune",
+    "subdomain": "Autopilot",
+    "is_cis": false,
+    "cis_type": "N/A",
+    "security_value": 4,
+    "rag_retrieval_value": 5,
+    "fine_tuning_value": 5,
+    "business_value": 5,
+    "estimated_file_count": 1,
+    "existing_coverage": "No",
+    "match_confidence": 0.0,
+    "technology_tags": [
+      "Microsoft Security Baseline",
+      "Zero Trust"
+    ],
+    "operational_tags": [
+      "Day 2 Operations",
+      "Remediation",
+      "Validation"
+    ],
+    "priority_score": 4.7
+  },
+  {
+    "scenario_title": "Resolving access denied errors and sync loops during stale device cleanup rules administration",
+    "scenario_category": "Troubleshooting",
+    "domain": "intune",
+    "subdomain": "Device Management",
+    "is_cis": false,
+    "cis_type": "N/A",
+    "security_value": 4,
+    "rag_retrieval_value": 5,
+    "fine_tuning_value": 5,
+    "business_value": 5,
+    "estimated_file_count": 1,
+    "existing_coverage": "No",
+    "match_confidence": 35.8,
+    "technology_tags": [
+      "Microsoft Security Baseline",
+      "Zero Trust"
+    ],
+    "operational_tags": [
+      "Day 2 Operations",
+      "Remediation",
+      "Validation"
+    ],
+    "priority_score": 4.7
+  },
+  {
+    "scenario_title": "Resolving access denied errors and sync loops during TPM version validation administration",
+    "scenario_category": "Troubleshooting",
+    "domain": "intune",
+    "subdomain": "Compliance Policies",
+    "is_cis": false,
+    "cis_type": "N/A",
+    "security_value": 4,
+    "rag_retrieval_value": 5,
+    "fine_tuning_value": 5,
+    "business_value": 5,
+    "estimated_file_count": 1,
+    "existing_coverage": "No",
+    "match_confidence": 30.0,
+    "technology_tags": [
+      "Microsoft Security Baseline",
+      "Zero Trust"
+    ],
+    "operational_tags": [
+      "Day 2 Operations",
+      "Remediation",
+      "Validation"
+    ],
+    "priority_score": 4.7
+  },
+  {
+    "scenario_title": "Resolving access denied errors and sync loops during SCEP certificate deployment profile administration",
+    "scenario_category": "Troubleshooting",
+    "domain": "intune",
+    "subdomain": "Configuration Profiles",
+    "is_cis": false,
+    "cis_type": "N/A",
+    "security_value": 4,
+    "rag_retrieval_value": 5,
+    "fine_tuning_value": 5,
+    "business_value": 5,
+    "estimated_file_count": 1,
+    "existing_coverage": "No",
+    "match_confidence": 35.8,
+    "technology_tags": [
+      "Microsoft Security Baseline",
+      "Zero Trust"
+    ],
+    "operational_tags": [
+      "Day 2 Operations",
+      "Remediation",
+      "Validation"
+    ],
+    "priority_score": 4.7
+  },
+  {
+    "scenario_title": "Resolving access denied errors and sync loops during SCCM co-management to cloud Autopilot migration administration",
+    "scenario_category": "Troubleshooting",
+    "domain": "intune",
+    "subdomain": "Autopilot",
+    "is_cis": false,
+    "cis_type": "N/A",
+    "security_value": 4,
+    "rag_retrieval_value": 5,
+    "fine_tuning_value": 5,
+    "business_value": 5,
+    "estimated_file_count": 1,
+    "existing_coverage": "No",
+    "match_confidence": 0.0,
+    "technology_tags": [
+      "Microsoft Security Baseline",
+      "Zero Trust"
+    ],
+    "operational_tags": [
+      "Day 2 Operations",
+      "Remediation",
+      "Validation"
+    ],
+    "priority_score": 4.7
+  },
+  {
+    "scenario_title": "Resolving access denied errors and sync loops during Microsoft Store app deployment administration",
+    "scenario_category": "Troubleshooting",
+    "domain": "intune",
+    "subdomain": "Application Deployment",
+    "is_cis": false,
+    "cis_type": "N/A",
+    "security_value": 4,
+    "rag_retrieval_value": 5,
+    "fine_tuning_value": 5,
+    "business_value": 5,
+    "estimated_file_count": 1,
+    "existing_coverage": "No",
+    "match_confidence": 35.8,
+    "technology_tags": [
+      "Microsoft Security Baseline",
+      "Zero Trust"
+    ],
+    "operational_tags": [
+      "Day 2 Operations",
+      "Remediation",
+      "Validation"
+    ],
+    "priority_score": 4.7
+  },
+  {
+    "scenario_title": "Resolving access denied errors and sync loops during Microsoft Defender Antivirus exclusions administration",
+    "scenario_category": "Troubleshooting",
+    "domain": "intune",
+    "subdomain": "Endpoint Security",
+    "is_cis": false,
+    "cis_type": "N/A",
+    "security_value": 4,
+    "rag_retrieval_value": 5,
+    "fine_tuning_value": 5,
+    "business_value": 5,
+    "estimated_file_count": 1,
+    "existing_coverage": "No",
+    "match_confidence": 30.0,
+    "technology_tags": [
+      "Microsoft Security Baseline",
+      "Zero Trust"
+    ],
+    "operational_tags": [
+      "Day 2 Operations",
+      "Remediation",
+      "Validation"
+    ],
+    "priority_score": 4.7
+  },
+  {
+    "scenario_title": "Resolving access denied errors and sync loops during Intune enrollment restrictions administration",
+    "scenario_category": "Troubleshooting",
+    "domain": "intune",
+    "subdomain": "Enrollment",
+    "is_cis": false,
+    "cis_type": "N/A",
+    "security_value": 4,
+    "rag_retrieval_value": 5,
+    "fine_tuning_value": 5,
+    "business_value": 5,
+    "estimated_file_count": 1,
+    "existing_coverage": "No",
+    "match_confidence": 30.0,
+    "technology_tags": [
+      "Microsoft Security Baseline",
+      "Zero Trust"
+    ],
+    "operational_tags": [
+      "Day 2 Operations",
+      "Remediation",
+      "Validation"
+    ],
+    "priority_score": 4.7
+  },
+  {
+    "scenario_title": "Diagnosing Intune profile conflicts and configuration delivery errors",
+    "scenario_category": "Troubleshooting",
+    "domain": "intune",
+    "subdomain": "Configuration Profiles",
+    "is_cis": false,
+    "cis_type": "N/A",
+    "security_value": 4,
+    "rag_retrieval_value": 5,
+    "fine_tuning_value": 5,
+    "business_value": 5,
+    "estimated_file_count": 1,
+    "existing_coverage": "No",
+    "match_confidence": 41.7,
+    "technology_tags": [
+      "Microsoft Security Baseline",
+      "Zero Trust"
+    ],
+    "operational_tags": [
+      "Day 2 Operations",
+      "Remediation",
+      "Validation"
+    ],
+    "priority_score": 4.7
+  },
+  {
+    "scenario_title": "Troubleshooting MDI sensor sync delays and domain controller service crashes",
+    "scenario_category": "Troubleshooting",
+    "domain": "defender",
+    "subdomain": "Defender for Identity",
+    "is_cis": false,
+    "cis_type": "N/A",
+    "security_value": 4,
+    "rag_retrieval_value": 5,
+    "fine_tuning_value": 5,
+    "business_value": 5,
+    "estimated_file_count": 1,
+    "existing_coverage": "No",
+    "match_confidence": 0.0,
+    "technology_tags": [
+      "Microsoft Security Baseline",
+      "Zero Trust"
+    ],
+    "operational_tags": [
+      "Day 2 Operations",
+      "Remediation",
+      "Validation"
+    ],
+    "priority_score": 4.7
+  },
+  {
+    "scenario_title": "Troubleshooting MDE client onboarding failures and telemetry connectivity errors",
+    "scenario_category": "Troubleshooting",
+    "domain": "defender",
+    "subdomain": "Defender for Endpoint",
+    "is_cis": false,
+    "cis_type": "N/A",
+    "security_value": 4,
+    "rag_retrieval_value": 5,
+    "fine_tuning_value": 5,
+    "business_value": 5,
+    "estimated_file_count": 1,
+    "existing_coverage": "No",
+    "match_confidence": 30.0,
+    "technology_tags": [
+      "Microsoft Security Baseline",
+      "Zero Trust"
+    ],
+    "operational_tags": [
+      "Day 2 Operations",
+      "Remediation",
+      "Validation"
+    ],
+    "priority_score": 4.7
+  },
+  {
+    "scenario_title": "Resolving access denied errors and sync loops during software inventory exposure scores administration",
+    "scenario_category": "Troubleshooting",
+    "domain": "defender",
+    "subdomain": "Vulnerability Management",
+    "is_cis": false,
+    "cis_type": "N/A",
+    "security_value": 4,
+    "rag_retrieval_value": 5,
+    "fine_tuning_value": 5,
+    "business_value": 5,
+    "estimated_file_count": 1,
+    "existing_coverage": "No",
+    "match_confidence": 0.0,
+    "technology_tags": [
+      "Microsoft Security Baseline",
+      "Zero Trust"
+    ],
+    "operational_tags": [
+      "Day 2 Operations",
+      "Remediation",
+      "Validation"
+    ],
+    "priority_score": 4.7
+  },
+  {
+    "scenario_title": "Resolving access denied errors and sync loops during mailbox intelligence settings administration",
+    "scenario_category": "Troubleshooting",
+    "domain": "defender",
+    "subdomain": "Defender for Office 365",
+    "is_cis": false,
+    "cis_type": "N/A",
+    "security_value": 4,
+    "rag_retrieval_value": 5,
+    "fine_tuning_value": 5,
+    "business_value": 5,
+    "estimated_file_count": 1,
+    "existing_coverage": "No",
+    "match_confidence": 0.0,
+    "technology_tags": [
+      "Microsoft Security Baseline",
+      "Zero Trust"
+    ],
+    "operational_tags": [
+      "Day 2 Operations",
+      "Remediation",
+      "Validation"
+    ],
+    "priority_score": 4.7
+  },
+  {
+    "scenario_title": "Resolving access denied errors and sync loops during automated investigation and remediation (AIR) administration",
+    "scenario_category": "Troubleshooting",
+    "domain": "defender",
+    "subdomain": "Defender for Endpoint",
+    "is_cis": false,
+    "cis_type": "N/A",
+    "security_value": 4,
+    "rag_retrieval_value": 5,
+    "fine_tuning_value": 5,
+    "business_value": 5,
+    "estimated_file_count": 1,
+    "existing_coverage": "No",
+    "match_confidence": 30.0,
+    "technology_tags": [
+      "Microsoft Security Baseline",
+      "Zero Trust"
+    ],
+    "operational_tags": [
+      "Day 2 Operations",
+      "Remediation",
+      "Validation"
+    ],
+    "priority_score": 4.7
+  },
+  {
+    "scenario_title": "Resolving access denied errors and sync loops during Defender XDR incident alerts containment administration",
+    "scenario_category": "Troubleshooting",
+    "domain": "defender",
+    "subdomain": "Threat Hunting",
+    "is_cis": false,
+    "cis_type": "N/A",
+    "security_value": 4,
+    "rag_retrieval_value": 5,
+    "fine_tuning_value": 5,
+    "business_value": 5,
+    "estimated_file_count": 1,
+    "existing_coverage": "No",
+    "match_confidence": 35.8,
+    "technology_tags": [
+      "Microsoft Security Baseline",
+      "Zero Trust"
+    ],
+    "operational_tags": [
+      "Day 2 Operations",
+      "Remediation",
+      "Validation"
+    ],
+    "priority_score": 4.7
+  },
+  {
+    "scenario_title": "Resolving access denied errors and sync loops during App governance rules administration",
+    "scenario_category": "Troubleshooting",
+    "domain": "defender",
+    "subdomain": "Defender for Cloud Apps",
+    "is_cis": false,
+    "cis_type": "N/A",
+    "security_value": 4,
+    "rag_retrieval_value": 5,
+    "fine_tuning_value": 5,
+    "business_value": 5,
+    "estimated_file_count": 1,
+    "existing_coverage": "No",
+    "match_confidence": 0.0,
+    "technology_tags": [
+      "Microsoft Security Baseline",
+      "Zero Trust"
+    ],
+    "operational_tags": [
+      "Day 2 Operations",
+      "Remediation",
+      "Validation"
+    ],
+    "priority_score": 4.7
+  },
+  {
+    "scenario_title": "Resolving access denied errors and sync loops during Active Directory domain controller sensors administration",
+    "scenario_category": "Troubleshooting",
+    "domain": "defender",
+    "subdomain": "Defender for Identity",
+    "is_cis": false,
+    "cis_type": "N/A",
+    "security_value": 4,
+    "rag_retrieval_value": 5,
+    "fine_tuning_value": 5,
+    "business_value": 5,
+    "estimated_file_count": 1,
+    "existing_coverage": "No",
+    "match_confidence": 0.0,
+    "technology_tags": [
+      "Microsoft Security Baseline",
+      "Zero Trust"
+    ],
+    "operational_tags": [
+      "Day 2 Operations",
+      "Remediation",
+      "Validation"
+    ],
+    "priority_score": 4.7
+  },
+  {
+    "scenario_title": "Troubleshooting expired client secrets and automating key rotations",
+    "scenario_category": "Troubleshooting",
+    "domain": "azure",
+    "subdomain": "Entra ID",
+    "is_cis": false,
+    "cis_type": "N/A",
+    "security_value": 4,
+    "rag_retrieval_value": 5,
+    "fine_tuning_value": 5,
+    "business_value": 5,
+    "estimated_file_count": 1,
+    "existing_coverage": "No",
+    "match_confidence": 41.7,
+    "technology_tags": [
+      "Azure Landing Zone",
+      "Hybrid Identity",
+      "Microsoft Security Baseline",
+      "Zero Trust"
+    ],
+    "operational_tags": [
+      "Day 2 Operations",
+      "Remediation",
+      "Validation"
+    ],
+    "priority_score": 4.7
+  },
+  {
+    "scenario_title": "Security Baseline: Restricting device inventory reports access and disabling insecure default protocols",
+    "scenario_category": "Security Hardening",
+    "domain": "intune",
+    "subdomain": "Device Management",
+    "is_cis": true,
+    "cis_type": "Remediation",
+    "security_value": 5,
+    "rag_retrieval_value": 4,
+    "fine_tuning_value": 4,
+    "business_value": 5,
+    "estimated_file_count": 1,
+    "existing_coverage": "No",
+    "match_confidence": 37.8,
+    "technology_tags": [
+      "CIS",
+      "Microsoft Security Baseline",
+      "Zero Trust"
+    ],
+    "operational_tags": [
+      "Remediation",
+      "Validation"
+    ],
+    "priority_score": 4.65
+  },
+  {
+    "scenario_title": "Security Baseline: Restricting Intune Wi-Fi configurations access and disabling insecure default protocols",
+    "scenario_category": "Security Hardening",
+    "domain": "intune",
+    "subdomain": "Configuration Profiles",
+    "is_cis": true,
+    "cis_type": "Remediation",
+    "security_value": 5,
+    "rag_retrieval_value": 4,
+    "fine_tuning_value": 4,
+    "business_value": 5,
+    "estimated_file_count": 1,
+    "existing_coverage": "No",
+    "match_confidence": 37.8,
+    "technology_tags": [
+      "CIS",
+      "Microsoft Security Baseline",
+      "Zero Trust"
+    ],
+    "operational_tags": [
+      "Remediation",
+      "Validation"
+    ],
+    "priority_score": 4.65
+  },
+  {
+    "scenario_title": "Security Baseline: Restricting Intune Management Extension IME access and disabling insecure default protocols",
+    "scenario_category": "Security Hardening",
+    "domain": "intune",
+    "subdomain": "Application Deployment",
+    "is_cis": true,
+    "cis_type": "Remediation",
+    "security_value": 5,
+    "rag_retrieval_value": 4,
+    "fine_tuning_value": 4,
+    "business_value": 5,
+    "estimated_file_count": 1,
+    "existing_coverage": "No",
+    "match_confidence": 37.8,
+    "technology_tags": [
+      "CIS",
+      "Microsoft Security Baseline",
+      "Zero Trust"
+    ],
+    "operational_tags": [
+      "Remediation",
+      "Validation"
+    ],
+    "priority_score": 4.65
+  },
+  {
+    "scenario_title": "Security Baseline: Restricting Intune Endpoint Security firewall policies access and disabling insecure default protocols",
+    "scenario_category": "Security Hardening",
+    "domain": "intune",
+    "subdomain": "Endpoint Security",
+    "is_cis": true,
+    "cis_type": "Remediation",
+    "security_value": 5,
+    "rag_retrieval_value": 4,
+    "fine_tuning_value": 4,
+    "business_value": 5,
+    "estimated_file_count": 1,
+    "existing_coverage": "No",
+    "match_confidence": 30.0,
+    "technology_tags": [
+      "CIS",
+      "Microsoft Security Baseline",
+      "Zero Trust"
+    ],
+    "operational_tags": [
+      "Remediation",
+      "Validation"
+    ],
+    "priority_score": 4.65
+  },
+  {
+    "scenario_title": "Security Baseline: Restricting Enrollment Status Page ESP settings access and disabling insecure default protocols",
+    "scenario_category": "Security Hardening",
+    "domain": "intune",
+    "subdomain": "Autopilot",
+    "is_cis": true,
+    "cis_type": "Remediation",
+    "security_value": 5,
+    "rag_retrieval_value": 4,
+    "fine_tuning_value": 4,
+    "business_value": 5,
+    "estimated_file_count": 1,
+    "existing_coverage": "No",
+    "match_confidence": 0.0,
+    "technology_tags": [
+      "CIS",
+      "Microsoft Security Baseline",
+      "Zero Trust"
+    ],
+    "operational_tags": [
+      "Remediation",
+      "Validation"
+    ],
+    "priority_score": 4.65
+  },
+  {
+    "scenario_title": "Security Baseline: Restricting BitLocker compliance rules access and disabling insecure default protocols",
+    "scenario_category": "Security Hardening",
+    "domain": "intune",
+    "subdomain": "Compliance Policies",
+    "is_cis": true,
+    "cis_type": "Remediation",
+    "security_value": 5,
+    "rag_retrieval_value": 4,
+    "fine_tuning_value": 4,
+    "business_value": 5,
+    "estimated_file_count": 1,
+    "existing_coverage": "No",
+    "match_confidence": 30.0,
+    "technology_tags": [
+      "CIS",
+      "Microsoft Security Baseline",
+      "Zero Trust"
+    ],
+    "operational_tags": [
+      "Remediation",
+      "Validation"
+    ],
+    "priority_score": 4.65
+  },
+  {
+    "scenario_title": "Security Baseline: Restricting Android Enterprise BYOD work profiles access and disabling insecure default protocols",
+    "scenario_category": "Security Hardening",
+    "domain": "intune",
+    "subdomain": "Enrollment",
+    "is_cis": true,
+    "cis_type": "Remediation",
+    "security_value": 5,
+    "rag_retrieval_value": 4,
+    "fine_tuning_value": 4,
+    "business_value": 5,
+    "estimated_file_count": 1,
+    "existing_coverage": "No",
+    "match_confidence": 30.0,
+    "technology_tags": [
+      "CIS",
+      "Microsoft Security Baseline",
+      "Zero Trust"
+    ],
+    "operational_tags": [
+      "Remediation",
+      "Validation"
+    ],
+    "priority_score": 4.65
+  },
+  {
+    "scenario_title": "Enforcing BitLocker and TPM compliance policy for Windows endpoints",
+    "scenario_category": "Security Hardening",
+    "domain": "intune",
+    "subdomain": "Compliance Policies",
+    "is_cis": true,
+    "cis_type": "Remediation",
+    "security_value": 5,
+    "rag_retrieval_value": 4,
+    "fine_tuning_value": 4,
+    "business_value": 5,
+    "estimated_file_count": 1,
+    "existing_coverage": "No",
+    "match_confidence": 30.0,
+    "technology_tags": [
+      "CIS",
+      "Microsoft Security Baseline",
+      "Zero Trust"
+    ],
+    "operational_tags": [
+      "Remediation",
+      "Validation"
+    ],
+    "priority_score": 4.65
+  },
+  {
+    "scenario_title": "Deploying Attack Surface Reduction ASR rules via Intune security policies",
+    "scenario_category": "Security Hardening",
+    "domain": "intune",
+    "subdomain": "Endpoint Security",
+    "is_cis": true,
+    "cis_type": "Remediation",
+    "security_value": 5,
+    "rag_retrieval_value": 4,
+    "fine_tuning_value": 4,
+    "business_value": 5,
+    "estimated_file_count": 1,
+    "existing_coverage": "No",
+    "match_confidence": 30.0,
+    "technology_tags": [
+      "CIS",
+      "Microsoft Security Baseline",
+      "Zero Trust"
+    ],
+    "operational_tags": [
+      "Remediation",
+      "Validation"
+    ],
+    "priority_score": 4.65
+  },
+  {
+    "scenario_title": "Configuring Microsoft Defender Antivirus settings and exclusion lists via Intune",
+    "scenario_category": "Security Hardening",
+    "domain": "intune",
+    "subdomain": "Endpoint Security",
+    "is_cis": true,
+    "cis_type": "Remediation",
+    "security_value": 5,
+    "rag_retrieval_value": 4,
+    "fine_tuning_value": 4,
+    "business_value": 5,
+    "estimated_file_count": 1,
+    "existing_coverage": "No",
+    "match_confidence": 30.0,
+    "technology_tags": [
+      "CIS",
+      "Microsoft Security Baseline",
+      "Zero Trust"
+    ],
+    "operational_tags": [
+      "Remediation",
+      "Validation"
+    ],
+    "priority_score": 4.65
+  },
+  {
+    "scenario_title": "Tuning anti-spoofing policies and mailbox intelligence settings in Defender",
+    "scenario_category": "Security Hardening",
+    "domain": "defender",
+    "subdomain": "Defender for Office 365",
+    "is_cis": false,
+    "cis_type": "N/A",
+    "security_value": 5,
+    "rag_retrieval_value": 4,
+    "fine_tuning_value": 4,
+    "business_value": 5,
+    "estimated_file_count": 1,
+    "existing_coverage": "No",
+    "match_confidence": 0.0,
+    "technology_tags": [
+      "Microsoft Security Baseline",
+      "Zero Trust"
+    ],
+    "operational_tags": [
+      "Remediation",
+      "Validation"
+    ],
+    "priority_score": 4.65
+  },
+  {
+    "scenario_title": "Security Baseline: Restricting custom detection rules access and disabling insecure default protocols",
+    "scenario_category": "Security Hardening",
+    "domain": "defender",
+    "subdomain": "Threat Hunting",
+    "is_cis": true,
+    "cis_type": "Remediation",
+    "security_value": 5,
+    "rag_retrieval_value": 4,
+    "fine_tuning_value": 4,
+    "business_value": 5,
+    "estimated_file_count": 1,
+    "existing_coverage": "No",
+    "match_confidence": 37.8,
+    "technology_tags": [
+      "CIS",
+      "Microsoft Security Baseline",
+      "Zero Trust"
+    ],
+    "operational_tags": [
+      "Remediation",
+      "Validation"
+    ],
+    "priority_score": 4.65
+  },
+  {
+    "scenario_title": "Security Baseline: Restricting Safe Attachments policies access and disabling insecure default protocols",
+    "scenario_category": "Security Hardening",
+    "domain": "defender",
+    "subdomain": "Defender for Office 365",
+    "is_cis": true,
+    "cis_type": "Remediation",
+    "security_value": 5,
+    "rag_retrieval_value": 4,
+    "fine_tuning_value": 4,
+    "business_value": 5,
+    "estimated_file_count": 1,
+    "existing_coverage": "No",
+    "match_confidence": 0.0,
+    "technology_tags": [
+      "CIS",
+      "Microsoft Security Baseline",
+      "Zero Trust"
+    ],
+    "operational_tags": [
+      "Remediation",
+      "Validation"
+    ],
+    "priority_score": 4.65
+  },
+  {
+    "scenario_title": "Security Baseline: Restricting MDI directory service accounts access and disabling insecure default protocols",
+    "scenario_category": "Security Hardening",
+    "domain": "defender",
+    "subdomain": "Defender for Identity",
+    "is_cis": true,
+    "cis_type": "Remediation",
+    "security_value": 5,
+    "rag_retrieval_value": 4,
+    "fine_tuning_value": 4,
+    "business_value": 5,
+    "estimated_file_count": 1,
+    "existing_coverage": "No",
+    "match_confidence": 0.0,
+    "technology_tags": [
+      "CIS",
+      "Microsoft Security Baseline",
+      "Zero Trust"
+    ],
+    "operational_tags": [
+      "Remediation",
+      "Validation"
+    ],
+    "priority_score": 4.65
+  },
+  {
+    "scenario_title": "Security Baseline: Restricting MDE security recommendations remediation access and disabling insecure default protocols",
+    "scenario_category": "Security Hardening",
+    "domain": "defender",
+    "subdomain": "Vulnerability Management",
+    "is_cis": true,
+    "cis_type": "Remediation",
+    "security_value": 5,
+    "rag_retrieval_value": 4,
+    "fine_tuning_value": 4,
+    "business_value": 5,
+    "estimated_file_count": 1,
+    "existing_coverage": "No",
+    "match_confidence": 0.0,
+    "technology_tags": [
+      "CIS",
+      "Microsoft Security Baseline",
+      "Zero Trust"
+    ],
+    "operational_tags": [
+      "Remediation",
+      "Validation"
+    ],
+    "priority_score": 4.65
+  },
+  {
+    "scenario_title": "Security Baseline: Restricting MDE device groups configurations access and disabling insecure default protocols",
+    "scenario_category": "Security Hardening",
+    "domain": "defender",
+    "subdomain": "Defender for Endpoint",
+    "is_cis": true,
+    "cis_type": "Remediation",
+    "security_value": 5,
+    "rag_retrieval_value": 4,
+    "fine_tuning_value": 4,
+    "business_value": 5,
+    "estimated_file_count": 1,
+    "existing_coverage": "No",
+    "match_confidence": 30.0,
+    "technology_tags": [
+      "CIS",
+      "Microsoft Security Baseline",
+      "Zero Trust"
+    ],
+    "operational_tags": [
+      "Remediation",
+      "Validation"
+    ],
+    "priority_score": 4.65
+  },
+  {
+    "scenario_title": "Security Baseline: Restricting MCAS activity policies access and disabling insecure default protocols",
+    "scenario_category": "Security Hardening",
+    "domain": "defender",
+    "subdomain": "Defender for Cloud Apps",
+    "is_cis": true,
+    "cis_type": "Remediation",
+    "security_value": 5,
+    "rag_retrieval_value": 4,
+    "fine_tuning_value": 4,
+    "business_value": 5,
+    "estimated_file_count": 1,
+    "existing_coverage": "No",
+    "match_confidence": 0.0,
+    "technology_tags": [
+      "CIS",
+      "Microsoft Security Baseline",
+      "Zero Trust"
+    ],
+    "operational_tags": [
+      "Remediation",
+      "Validation"
+    ],
+    "priority_score": 4.65
+  },
+  {
+    "scenario_title": "Prioritizing and remediating software vulnerabilities using MDE Security Recommendations",
+    "scenario_category": "Security Hardening",
+    "domain": "defender",
+    "subdomain": "Vulnerability Management",
+    "is_cis": false,
+    "cis_type": "N/A",
+    "security_value": 5,
+    "rag_retrieval_value": 4,
+    "fine_tuning_value": 4,
+    "business_value": 5,
+    "estimated_file_count": 1,
+    "existing_coverage": "No",
+    "match_confidence": 0.0,
+    "technology_tags": [
+      "Microsoft Security Baseline",
+      "Zero Trust"
+    ],
+    "operational_tags": [
+      "Remediation",
+      "Validation"
+    ],
+    "priority_score": 4.65
+  },
+  {
+    "scenario_title": "Creating Defender for Cloud Apps policies to block unauthorized SaaS integrations",
+    "scenario_category": "Security Hardening",
+    "domain": "defender",
+    "subdomain": "Defender for Cloud Apps",
+    "is_cis": true,
+    "cis_type": "Remediation",
+    "security_value": 5,
+    "rag_retrieval_value": 4,
+    "fine_tuning_value": 4,
+    "business_value": 5,
+    "estimated_file_count": 1,
+    "existing_coverage": "No",
+    "match_confidence": 0.0,
+    "technology_tags": [
+      "CIS",
+      "Microsoft Security Baseline",
+      "Zero Trust"
+    ],
+    "operational_tags": [
+      "Remediation",
+      "Validation"
+    ],
+    "priority_score": 4.65
+  },
+  {
+    "scenario_title": "Configuring Safe Attachments and Safe Links anti-phishing protection",
+    "scenario_category": "Security Hardening",
+    "domain": "defender",
+    "subdomain": "Defender for Office 365",
+    "is_cis": true,
+    "cis_type": "Remediation",
+    "security_value": 5,
+    "rag_retrieval_value": 4,
+    "fine_tuning_value": 4,
+    "business_value": 5,
+    "estimated_file_count": 1,
+    "existing_coverage": "No",
+    "match_confidence": 0.0,
+    "technology_tags": [
+      "CIS",
+      "Microsoft Security Baseline",
+      "Zero Trust"
+    ],
+    "operational_tags": [
+      "Remediation",
+      "Validation"
+    ],
+    "priority_score": 4.65
+  },
+  {
+    "scenario_title": "Configuring compliance policies for iOS/Android jailbroken device detection",
+    "scenario_category": "Compliance",
+    "domain": "intune",
+    "subdomain": "Compliance Policies",
+    "is_cis": true,
+    "cis_type": "Audit",
+    "security_value": 5,
+    "rag_retrieval_value": 3,
+    "fine_tuning_value": 4,
+    "business_value": 5,
+    "estimated_file_count": 1,
+    "existing_coverage": "No",
+    "match_confidence": 30.0,
+    "technology_tags": [
+      "CIS",
+      "ISO27001",
+      "Microsoft Security Baseline",
+      "NIST",
+      "Zero Trust"
+    ],
+    "operational_tags": [
+      "Audit Preparation",
+      "Validation"
+    ],
+    "priority_score": 4.45
+  },
+  {
+    "scenario_title": "CIS Validation: Testing and verifying device inventory reports configuration compliance",
+    "scenario_category": "Compliance",
+    "domain": "intune",
+    "subdomain": "Device Management",
+    "is_cis": true,
+    "cis_type": "Troubleshooting",
+    "security_value": 5,
+    "rag_retrieval_value": 3,
+    "fine_tuning_value": 4,
+    "business_value": 5,
+    "estimated_file_count": 1,
+    "existing_coverage": "No",
+    "match_confidence": 40.0,
+    "technology_tags": [
+      "CIS",
+      "ISO27001",
+      "Microsoft Security Baseline",
+      "NIST",
+      "Zero Trust"
+    ],
+    "operational_tags": [
+      "Day 2 Operations",
+      "Remediation"
+    ],
+    "priority_score": 4.45
+  },
+  {
+    "scenario_title": "CIS Validation: Testing and verifying Intune Wi-Fi configurations configuration compliance",
+    "scenario_category": "Compliance",
+    "domain": "intune",
+    "subdomain": "Configuration Profiles",
+    "is_cis": true,
+    "cis_type": "Troubleshooting",
+    "security_value": 5,
+    "rag_retrieval_value": 3,
+    "fine_tuning_value": 4,
+    "business_value": 5,
+    "estimated_file_count": 1,
+    "existing_coverage": "No",
+    "match_confidence": 40.0,
+    "technology_tags": [
+      "CIS",
+      "ISO27001",
+      "Microsoft Security Baseline",
+      "NIST",
+      "Zero Trust"
+    ],
+    "operational_tags": [
+      "Day 2 Operations",
+      "Remediation"
+    ],
+    "priority_score": 4.45
+  },
+  {
+    "scenario_title": "CIS Validation: Testing and verifying Intune Management Extension IME configuration compliance",
+    "scenario_category": "Compliance",
+    "domain": "intune",
+    "subdomain": "Application Deployment",
+    "is_cis": true,
+    "cis_type": "Troubleshooting",
+    "security_value": 5,
+    "rag_retrieval_value": 3,
+    "fine_tuning_value": 4,
+    "business_value": 5,
+    "estimated_file_count": 1,
+    "existing_coverage": "No",
+    "match_confidence": 30.0,
+    "technology_tags": [
+      "CIS",
+      "ISO27001",
+      "Microsoft Security Baseline",
+      "NIST",
+      "Zero Trust"
+    ],
+    "operational_tags": [
+      "Day 2 Operations",
+      "Remediation"
+    ],
+    "priority_score": 4.45
+  },
+  {
+    "scenario_title": "CIS Validation: Testing and verifying Intune Endpoint Security firewall policies configuration compliance",
+    "scenario_category": "Compliance",
+    "domain": "intune",
+    "subdomain": "Endpoint Security",
+    "is_cis": true,
+    "cis_type": "Troubleshooting",
+    "security_value": 5,
+    "rag_retrieval_value": 3,
+    "fine_tuning_value": 4,
+    "business_value": 5,
+    "estimated_file_count": 1,
+    "existing_coverage": "No",
+    "match_confidence": 30.0,
+    "technology_tags": [
+      "CIS",
+      "ISO27001",
+      "Microsoft Security Baseline",
+      "NIST",
+      "Zero Trust"
+    ],
+    "operational_tags": [
+      "Day 2 Operations",
+      "Remediation"
+    ],
+    "priority_score": 4.45
+  },
+  {
+    "scenario_title": "CIS Validation: Testing and verifying Enrollment Status Page ESP settings configuration compliance",
+    "scenario_category": "Compliance",
+    "domain": "intune",
+    "subdomain": "Autopilot",
+    "is_cis": true,
+    "cis_type": "Troubleshooting",
+    "security_value": 5,
+    "rag_retrieval_value": 3,
+    "fine_tuning_value": 4,
+    "business_value": 5,
+    "estimated_file_count": 1,
+    "existing_coverage": "No",
+    "match_confidence": 0.0,
+    "technology_tags": [
+      "CIS",
+      "ISO27001",
+      "Microsoft Security Baseline",
+      "NIST",
+      "Zero Trust"
+    ],
+    "operational_tags": [
+      "Day 2 Operations",
+      "Remediation"
+    ],
+    "priority_score": 4.45
+  },
+  {
+    "scenario_title": "CIS Validation: Testing and verifying BitLocker compliance rules configuration compliance",
+    "scenario_category": "Compliance",
+    "domain": "intune",
+    "subdomain": "Compliance Policies",
+    "is_cis": true,
+    "cis_type": "Troubleshooting",
+    "security_value": 5,
+    "rag_retrieval_value": 3,
+    "fine_tuning_value": 4,
+    "business_value": 5,
+    "estimated_file_count": 1,
+    "existing_coverage": "No",
+    "match_confidence": 30.0,
+    "technology_tags": [
+      "CIS",
+      "ISO27001",
+      "Microsoft Security Baseline",
+      "NIST",
+      "Zero Trust"
+    ],
+    "operational_tags": [
+      "Day 2 Operations",
+      "Remediation"
+    ],
+    "priority_score": 4.45
+  },
+  {
+    "scenario_title": "CIS Validation: Testing and verifying Android Enterprise BYOD work profiles configuration compliance",
+    "scenario_category": "Compliance",
+    "domain": "intune",
+    "subdomain": "Enrollment",
+    "is_cis": true,
+    "cis_type": "Troubleshooting",
+    "security_value": 5,
+    "rag_retrieval_value": 3,
+    "fine_tuning_value": 4,
+    "business_value": 5,
+    "estimated_file_count": 1,
+    "existing_coverage": "No",
+    "match_confidence": 37.8,
+    "technology_tags": [
+      "CIS",
+      "ISO27001",
+      "Microsoft Security Baseline",
+      "NIST",
+      "Zero Trust"
+    ],
+    "operational_tags": [
+      "Day 2 Operations",
+      "Remediation"
+    ],
+    "priority_score": 4.45
+  },
+  {
+    "scenario_title": "CIS Troubleshooting: Resolving configuration conflicts during jailbreak detection compliance policies hardening",
+    "scenario_category": "Compliance",
+    "domain": "intune",
+    "subdomain": "Compliance Policies",
+    "is_cis": true,
+    "cis_type": "Validation",
+    "security_value": 5,
+    "rag_retrieval_value": 3,
+    "fine_tuning_value": 4,
+    "business_value": 5,
+    "estimated_file_count": 1,
+    "existing_coverage": "No",
+    "match_confidence": 30.0,
+    "technology_tags": [
+      "CIS",
+      "ISO27001",
+      "Microsoft Security Baseline",
+      "NIST",
+      "Zero Trust"
+    ],
+    "operational_tags": [
+      "Validation"
+    ],
+    "priority_score": 4.45
+  },
+  {
+    "scenario_title": "CIS Troubleshooting: Resolving configuration conflicts during custom OMA-URI settings hardening",
+    "scenario_category": "Compliance",
+    "domain": "intune",
+    "subdomain": "Configuration Profiles",
+    "is_cis": true,
+    "cis_type": "Validation",
+    "security_value": 5,
+    "rag_retrieval_value": 3,
+    "fine_tuning_value": 4,
+    "business_value": 5,
+    "estimated_file_count": 1,
+    "existing_coverage": "No",
+    "match_confidence": 37.8,
+    "technology_tags": [
+      "CIS",
+      "ISO27001",
+      "Microsoft Security Baseline",
+      "NIST",
+      "Zero Trust"
+    ],
+    "operational_tags": [
+      "Validation"
+    ],
+    "priority_score": 4.45
+  },
+  {
+    "scenario_title": "CIS Troubleshooting: Resolving configuration conflicts during app update policies hardening",
+    "scenario_category": "Compliance",
+    "domain": "intune",
+    "subdomain": "Application Deployment",
+    "is_cis": true,
+    "cis_type": "Validation",
+    "security_value": 5,
+    "rag_retrieval_value": 3,
+    "fine_tuning_value": 4,
+    "business_value": 5,
+    "estimated_file_count": 1,
+    "existing_coverage": "No",
+    "match_confidence": 38.8,
+    "technology_tags": [
+      "CIS",
+      "ISO27001",
+      "Microsoft Security Baseline",
+      "NIST",
+      "Zero Trust"
+    ],
+    "operational_tags": [
+      "Validation"
+    ],
+    "priority_score": 4.45
+  },
+  {
+    "scenario_title": "CIS Troubleshooting: Resolving configuration conflicts during MDM push certificates hardening",
+    "scenario_category": "Compliance",
+    "domain": "intune",
+    "subdomain": "Enrollment",
+    "is_cis": true,
+    "cis_type": "Validation",
+    "security_value": 5,
+    "rag_retrieval_value": 3,
+    "fine_tuning_value": 4,
+    "business_value": 5,
+    "estimated_file_count": 1,
+    "existing_coverage": "No",
+    "match_confidence": 38.8,
+    "technology_tags": [
+      "CIS",
+      "ISO27001",
+      "Microsoft Security Baseline",
+      "NIST",
+      "Zero Trust"
+    ],
+    "operational_tags": [
+      "Validation"
+    ],
+    "priority_score": 4.45
+  },
+  {
+    "scenario_title": "CIS Troubleshooting: Resolving configuration conflicts during Intune security baselines hardening",
+    "scenario_category": "Compliance",
+    "domain": "intune",
+    "subdomain": "Endpoint Security",
+    "is_cis": true,
+    "cis_type": "Validation",
+    "security_value": 5,
+    "rag_retrieval_value": 3,
+    "fine_tuning_value": 4,
+    "business_value": 5,
+    "estimated_file_count": 1,
+    "existing_coverage": "No",
+    "match_confidence": 30.0,
+    "technology_tags": [
+      "CIS",
+      "ISO27001",
+      "Microsoft Security Baseline",
+      "NIST",
+      "Zero Trust"
+    ],
+    "operational_tags": [
+      "Validation"
+    ],
+    "priority_score": 4.45
+  },
+  {
+    "scenario_title": "CIS Troubleshooting: Resolving configuration conflicts during Intune diagnostic log collections hardening",
+    "scenario_category": "Compliance",
+    "domain": "intune",
+    "subdomain": "Device Management",
+    "is_cis": true,
+    "cis_type": "Validation",
+    "security_value": 5,
+    "rag_retrieval_value": 3,
+    "fine_tuning_value": 4,
+    "business_value": 5,
+    "estimated_file_count": 1,
+    "existing_coverage": "No",
+    "match_confidence": 30.0,
+    "technology_tags": [
+      "CIS",
+      "ISO27001",
+      "Microsoft Security Baseline",
+      "NIST",
+      "Zero Trust"
+    ],
+    "operational_tags": [
+      "Validation"
+    ],
+    "priority_score": 4.45
+  },
+  {
+    "scenario_title": "CIS Troubleshooting: Resolving configuration conflicts during Autopilot device registration hardening",
+    "scenario_category": "Compliance",
+    "domain": "intune",
+    "subdomain": "Autopilot",
+    "is_cis": true,
+    "cis_type": "Validation",
+    "security_value": 5,
+    "rag_retrieval_value": 3,
+    "fine_tuning_value": 4,
+    "business_value": 5,
+    "estimated_file_count": 1,
+    "existing_coverage": "No",
+    "match_confidence": 0.0,
+    "technology_tags": [
+      "CIS",
+      "ISO27001",
+      "Microsoft Security Baseline",
+      "NIST",
+      "Zero Trust"
+    ],
+    "operational_tags": [
+      "Validation"
+    ],
+    "priority_score": 4.45
+  },
+  {
+    "scenario_title": "Initiating remote wipe, retire, and lock actions on lost client devices",
+    "scenario_category": "Operational Runbooks",
+    "domain": "intune",
+    "subdomain": "Device Management",
+    "is_cis": false,
+    "cis_type": "N/A",
+    "security_value": 3,
+    "rag_retrieval_value": 5,
+    "fine_tuning_value": 5,
+    "business_value": 5,
+    "estimated_file_count": 1,
+    "existing_coverage": "No",
+    "match_confidence": 37.8,
+    "technology_tags": [
+      "Microsoft Security Baseline",
+      "Zero Trust"
+    ],
+    "operational_tags": [
+      "Day 2 Operations"
+    ],
+    "priority_score": 4.4
+  },
+  {
+    "scenario_title": "CLI runbook: Automating backups and rotation routines for stale device cleanup rules",
+    "scenario_category": "Operational Runbooks",
+    "domain": "intune",
+    "subdomain": "Device Management",
+    "is_cis": false,
+    "cis_type": "N/A",
+    "security_value": 3,
+    "rag_retrieval_value": 5,
+    "fine_tuning_value": 5,
+    "business_value": 5,
+    "estimated_file_count": 1,
+    "existing_coverage": "No",
+    "match_confidence": 37.0,
+    "technology_tags": [
+      "Microsoft Security Baseline",
+      "Zero Trust"
+    ],
+    "operational_tags": [
+      "Day 2 Operations"
+    ],
+    "priority_score": 4.4
+  },
+  {
+    "scenario_title": "CLI runbook: Automating backups and rotation routines for TPM version validation",
+    "scenario_category": "Operational Runbooks",
+    "domain": "intune",
+    "subdomain": "Compliance Policies",
+    "is_cis": false,
+    "cis_type": "N/A",
+    "security_value": 3,
+    "rag_retrieval_value": 5,
+    "fine_tuning_value": 5,
+    "business_value": 5,
+    "estimated_file_count": 1,
+    "existing_coverage": "No",
+    "match_confidence": 30.0,
+    "technology_tags": [
+      "Microsoft Security Baseline",
+      "Zero Trust"
+    ],
+    "operational_tags": [
+      "Day 2 Operations"
+    ],
+    "priority_score": 4.4
+  },
+  {
+    "scenario_title": "CLI runbook: Automating backups and rotation routines for SCEP certificate deployment profile",
+    "scenario_category": "Operational Runbooks",
+    "domain": "intune",
+    "subdomain": "Configuration Profiles",
+    "is_cis": false,
+    "cis_type": "N/A",
+    "security_value": 3,
+    "rag_retrieval_value": 5,
+    "fine_tuning_value": 5,
+    "business_value": 5,
+    "estimated_file_count": 1,
+    "existing_coverage": "No",
+    "match_confidence": 30.0,
+    "technology_tags": [
+      "Microsoft Security Baseline",
+      "Zero Trust"
+    ],
+    "operational_tags": [
+      "Day 2 Operations"
+    ],
+    "priority_score": 4.4
+  },
+  {
+    "scenario_title": "CLI runbook: Automating backups and rotation routines for SCCM co-management to cloud Autopilot migration",
+    "scenario_category": "Operational Runbooks",
+    "domain": "intune",
+    "subdomain": "Autopilot",
+    "is_cis": false,
+    "cis_type": "N/A",
+    "security_value": 3,
+    "rag_retrieval_value": 5,
+    "fine_tuning_value": 5,
+    "business_value": 5,
+    "estimated_file_count": 1,
+    "existing_coverage": "No",
+    "match_confidence": 0.0,
+    "technology_tags": [
+      "Microsoft Security Baseline",
+      "Zero Trust"
+    ],
+    "operational_tags": [
+      "Day 2 Operations"
+    ],
+    "priority_score": 4.4
+  },
+  {
+    "scenario_title": "CLI runbook: Automating backups and rotation routines for Microsoft Store app deployment",
+    "scenario_category": "Operational Runbooks",
+    "domain": "intune",
+    "subdomain": "Application Deployment",
+    "is_cis": false,
+    "cis_type": "N/A",
+    "security_value": 3,
+    "rag_retrieval_value": 5,
+    "fine_tuning_value": 5,
+    "business_value": 5,
+    "estimated_file_count": 1,
+    "existing_coverage": "No",
+    "match_confidence": 37.0,
+    "technology_tags": [
+      "Microsoft Security Baseline",
+      "Zero Trust"
+    ],
+    "operational_tags": [
+      "Day 2 Operations"
+    ],
+    "priority_score": 4.4
+  },
+  {
+    "scenario_title": "CLI runbook: Automating backups and rotation routines for Microsoft Defender Antivirus exclusions",
+    "scenario_category": "Operational Runbooks",
+    "domain": "intune",
+    "subdomain": "Endpoint Security",
+    "is_cis": false,
+    "cis_type": "N/A",
+    "security_value": 3,
+    "rag_retrieval_value": 5,
+    "fine_tuning_value": 5,
+    "business_value": 5,
+    "estimated_file_count": 1,
+    "existing_coverage": "No",
+    "match_confidence": 30.0,
+    "technology_tags": [
+      "Microsoft Security Baseline",
+      "Zero Trust"
+    ],
+    "operational_tags": [
+      "Day 2 Operations"
+    ],
+    "priority_score": 4.4
+  },
+  {
+    "scenario_title": "CLI runbook: Automating backups and rotation routines for Intune enrollment restrictions",
+    "scenario_category": "Operational Runbooks",
+    "domain": "intune",
+    "subdomain": "Enrollment",
+    "is_cis": false,
+    "cis_type": "N/A",
+    "security_value": 3,
+    "rag_retrieval_value": 5,
+    "fine_tuning_value": 5,
+    "business_value": 5,
+    "estimated_file_count": 1,
+    "existing_coverage": "No",
+    "match_confidence": 30.0,
+    "technology_tags": [
+      "Microsoft Security Baseline",
+      "Zero Trust"
+    ],
+    "operational_tags": [
+      "Day 2 Operations"
+    ],
+    "priority_score": 4.4
+  },
+  {
+    "scenario_title": "CLI runbook: Automating backups and rotation routines for mailbox intelligence settings",
+    "scenario_category": "Operational Runbooks",
+    "domain": "defender",
+    "subdomain": "Defender for Office 365",
+    "is_cis": false,
+    "cis_type": "N/A",
+    "security_value": 3,
+    "rag_retrieval_value": 5,
+    "fine_tuning_value": 5,
+    "business_value": 5,
+    "estimated_file_count": 1,
+    "existing_coverage": "No",
+    "match_confidence": 0.0,
+    "technology_tags": [
+      "Microsoft Security Baseline",
+      "Zero Trust"
+    ],
+    "operational_tags": [
+      "Day 2 Operations"
+    ],
+    "priority_score": 4.4
+  },
+  {
+    "scenario_title": "CLI runbook: Automating backups and rotation routines for automated investigation and remediation (AIR)",
+    "scenario_category": "Operational Runbooks",
+    "domain": "defender",
+    "subdomain": "Defender for Endpoint",
+    "is_cis": false,
+    "cis_type": "N/A",
+    "security_value": 3,
+    "rag_retrieval_value": 5,
+    "fine_tuning_value": 5,
+    "business_value": 5,
+    "estimated_file_count": 1,
+    "existing_coverage": "No",
+    "match_confidence": 30.0,
+    "technology_tags": [
+      "Microsoft Security Baseline",
+      "Zero Trust"
+    ],
+    "operational_tags": [
+      "Day 2 Operations"
+    ],
+    "priority_score": 4.4
+  },
+  {
+    "scenario_title": "CLI runbook: Automating backups and rotation routines for MDI directory service accounts",
+    "scenario_category": "Operational Runbooks",
+    "domain": "defender",
+    "subdomain": "Defender for Identity",
+    "is_cis": false,
+    "cis_type": "N/A",
+    "security_value": 3,
+    "rag_retrieval_value": 5,
+    "fine_tuning_value": 5,
+    "business_value": 5,
+    "estimated_file_count": 1,
+    "existing_coverage": "No",
+    "match_confidence": 0.0,
+    "technology_tags": [
+      "Microsoft Security Baseline",
+      "Zero Trust"
+    ],
+    "operational_tags": [
+      "Day 2 Operations"
+    ],
+    "priority_score": 4.4
+  },
+  {
+    "scenario_title": "CLI runbook: Automating backups and rotation routines for MDE security recommendations remediation",
+    "scenario_category": "Operational Runbooks",
+    "domain": "defender",
+    "subdomain": "Vulnerability Management",
+    "is_cis": false,
+    "cis_type": "N/A",
+    "security_value": 3,
+    "rag_retrieval_value": 5,
+    "fine_tuning_value": 5,
+    "business_value": 5,
+    "estimated_file_count": 1,
+    "existing_coverage": "No",
+    "match_confidence": 0.0,
+    "technology_tags": [
+      "Microsoft Security Baseline",
+      "Zero Trust"
+    ],
+    "operational_tags": [
+      "Day 2 Operations"
+    ],
+    "priority_score": 4.4
+  },
+  {
+    "scenario_title": "CLI runbook: Automating backups and rotation routines for Defender XDR incident alerts containment",
+    "scenario_category": "Operational Runbooks",
+    "domain": "defender",
+    "subdomain": "Threat Hunting",
+    "is_cis": false,
+    "cis_type": "N/A",
+    "security_value": 3,
+    "rag_retrieval_value": 5,
+    "fine_tuning_value": 5,
+    "business_value": 5,
+    "estimated_file_count": 1,
+    "existing_coverage": "No",
+    "match_confidence": 30.0,
+    "technology_tags": [
+      "Microsoft Security Baseline",
+      "Zero Trust"
+    ],
+    "operational_tags": [
+      "Day 2 Operations"
+    ],
+    "priority_score": 4.4
+  },
+  {
+    "scenario_title": "CLI runbook: Automating backups and rotation routines for App governance rules",
+    "scenario_category": "Operational Runbooks",
+    "domain": "defender",
+    "subdomain": "Defender for Cloud Apps",
+    "is_cis": false,
+    "cis_type": "N/A",
+    "security_value": 3,
+    "rag_retrieval_value": 5,
+    "fine_tuning_value": 5,
+    "business_value": 5,
+    "estimated_file_count": 1,
+    "existing_coverage": "No",
+    "match_confidence": 0.0,
+    "technology_tags": [
+      "Microsoft Security Baseline",
+      "Zero Trust"
+    ],
+    "operational_tags": [
+      "Day 2 Operations"
+    ],
+    "priority_score": 4.4
+  },
+  {
+    "scenario_title": "Enforcing MFA registration campaigns for all corporate user accounts",
+    "scenario_category": "Operational Runbooks",
+    "domain": "azure",
+    "subdomain": "Entra ID",
+    "is_cis": false,
+    "cis_type": "N/A",
+    "security_value": 3,
+    "rag_retrieval_value": 5,
+    "fine_tuning_value": 5,
+    "business_value": 5,
+    "estimated_file_count": 1,
+    "existing_coverage": "No",
+    "match_confidence": 47.5,
+    "technology_tags": [
+      "Azure Landing Zone",
+      "Hybrid Identity",
+      "Microsoft Security Baseline",
+      "Zero Trust"
+    ],
+    "operational_tags": [
+      "Day 2 Operations"
+    ],
+    "priority_score": 4.4
+  },
+  {
+    "scenario_title": "Setting up Apple ADE enrollment profiles and company portal delivery",
+    "scenario_category": "Implementation",
+    "domain": "intune",
+    "subdomain": "Enrollment",
+    "is_cis": false,
+    "cis_type": "N/A",
+    "security_value": 3,
+    "rag_retrieval_value": 4,
+    "fine_tuning_value": 3,
+    "business_value": 5,
+    "estimated_file_count": 1,
+    "existing_coverage": "No",
+    "match_confidence": 30.0,
+    "technology_tags": [
+      "Microsoft Security Baseline",
+      "Zero Trust"
+    ],
+    "operational_tags": [
+      "Day 0 Deployment"
+    ],
+    "priority_score": 3.9
+  },
+  {
+    "scenario_title": "Packaging and deploying Win32 applications via Intune Management Extension",
+    "scenario_category": "Implementation",
+    "domain": "intune",
+    "subdomain": "Application Deployment",
+    "is_cis": false,
+    "cis_type": "N/A",
+    "security_value": 3,
+    "rag_retrieval_value": 4,
+    "fine_tuning_value": 3,
+    "business_value": 5,
+    "estimated_file_count": 1,
+    "existing_coverage": "No",
+    "match_confidence": 30.0,
+    "technology_tags": [
+      "Microsoft Security Baseline",
+      "Zero Trust"
+    ],
+    "operational_tags": [
+      "Day 0 Deployment"
+    ],
+    "priority_score": 3.9
+  },
+  {
+    "scenario_title": "Deploying remote wipe and retire commands to establish secure baseline controls",
+    "scenario_category": "Implementation",
+    "domain": "intune",
+    "subdomain": "Device Management",
+    "is_cis": false,
+    "cis_type": "N/A",
+    "security_value": 3,
+    "rag_retrieval_value": 4,
+    "fine_tuning_value": 3,
+    "business_value": 5,
+    "estimated_file_count": 1,
+    "existing_coverage": "No",
+    "match_confidence": 30.0,
+    "technology_tags": [
+      "Microsoft Security Baseline",
+      "Zero Trust"
+    ],
+    "operational_tags": [
+      "Day 0 Deployment"
+    ],
+    "priority_score": 3.9
+  },
+  {
+    "scenario_title": "Deploying Windows Autopilot profiles to establish secure baseline controls",
+    "scenario_category": "Implementation",
+    "domain": "intune",
+    "subdomain": "Autopilot",
+    "is_cis": false,
+    "cis_type": "N/A",
+    "security_value": 3,
+    "rag_retrieval_value": 4,
+    "fine_tuning_value": 3,
+    "business_value": 5,
+    "estimated_file_count": 1,
+    "existing_coverage": "No",
+    "match_confidence": 0.0,
+    "technology_tags": [
+      "Microsoft Security Baseline",
+      "Zero Trust"
+    ],
+    "operational_tags": [
+      "Day 0 Deployment"
+    ],
+    "priority_score": 3.9
+  },
+  {
+    "scenario_title": "Deploying Win32 applications packaging to establish secure baseline controls",
+    "scenario_category": "Implementation",
+    "domain": "intune",
+    "subdomain": "Application Deployment",
+    "is_cis": false,
+    "cis_type": "N/A",
+    "security_value": 3,
+    "rag_retrieval_value": 4,
+    "fine_tuning_value": 3,
+    "business_value": 5,
+    "estimated_file_count": 1,
+    "existing_coverage": "No",
+    "match_confidence": 30.0,
+    "technology_tags": [
+      "Microsoft Security Baseline",
+      "Zero Trust"
+    ],
+    "operational_tags": [
+      "Day 0 Deployment"
+    ],
+    "priority_score": 3.9
+  },
+  {
+    "scenario_title": "Deploying Intune compliance policy settings to establish secure baseline controls",
+    "scenario_category": "Implementation",
+    "domain": "intune",
+    "subdomain": "Compliance Policies",
+    "is_cis": false,
+    "cis_type": "N/A",
+    "security_value": 3,
+    "rag_retrieval_value": 4,
+    "fine_tuning_value": 3,
+    "business_value": 5,
+    "estimated_file_count": 1,
+    "existing_coverage": "No",
+    "match_confidence": 30.0,
+    "technology_tags": [
+      "Microsoft Security Baseline",
+      "Zero Trust"
+    ],
+    "operational_tags": [
+      "Day 0 Deployment"
+    ],
+    "priority_score": 3.9
+  },
+  {
+    "scenario_title": "Deploying Intune Administrative Templates ADMX to establish secure baseline controls",
+    "scenario_category": "Implementation",
+    "domain": "intune",
+    "subdomain": "Configuration Profiles",
+    "is_cis": false,
+    "cis_type": "N/A",
+    "security_value": 3,
+    "rag_retrieval_value": 4,
+    "fine_tuning_value": 3,
+    "business_value": 5,
+    "estimated_file_count": 1,
+    "existing_coverage": "No",
+    "match_confidence": 50.0,
+    "technology_tags": [
+      "Microsoft Security Baseline",
+      "Zero Trust"
+    ],
+    "operational_tags": [
+      "Day 0 Deployment"
+    ],
+    "priority_score": 3.9
+  },
+  {
+    "scenario_title": "Deploying Apple ADE enrollment profiles to establish secure baseline controls",
+    "scenario_category": "Implementation",
+    "domain": "intune",
+    "subdomain": "Enrollment",
+    "is_cis": false,
+    "cis_type": "N/A",
+    "security_value": 3,
+    "rag_retrieval_value": 4,
+    "fine_tuning_value": 3,
+    "business_value": 5,
+    "estimated_file_count": 1,
+    "existing_coverage": "No",
+    "match_confidence": 30.0,
+    "technology_tags": [
+      "Microsoft Security Baseline",
+      "Zero Trust"
+    ],
+    "operational_tags": [
+      "Day 0 Deployment"
+    ],
+    "priority_score": 3.9
+  },
+  {
+    "scenario_title": "Deploying ASR rules via Intune to establish secure baseline controls",
+    "scenario_category": "Implementation",
+    "domain": "intune",
+    "subdomain": "Endpoint Security",
+    "is_cis": false,
+    "cis_type": "N/A",
+    "security_value": 3,
+    "rag_retrieval_value": 4,
+    "fine_tuning_value": 3,
+    "business_value": 5,
+    "estimated_file_count": 1,
+    "existing_coverage": "No",
+    "match_confidence": 30.0,
+    "technology_tags": [
+      "Microsoft Security Baseline",
+      "Zero Trust"
+    ],
+    "operational_tags": [
+      "Day 0 Deployment"
+    ],
+    "priority_score": 3.9
+  },
+  {
+    "scenario_title": "Configuring Windows Autopilot User-Driven deployment profiles",
+    "scenario_category": "Implementation",
+    "domain": "intune",
+    "subdomain": "Enrollment",
+    "is_cis": false,
+    "cis_type": "N/A",
+    "security_value": 3,
+    "rag_retrieval_value": 4,
+    "fine_tuning_value": 3,
+    "business_value": 5,
+    "estimated_file_count": 1,
+    "existing_coverage": "No",
+    "match_confidence": 30.0,
+    "technology_tags": [
+      "Microsoft Security Baseline",
+      "Zero Trust"
+    ],
+    "operational_tags": [
+      "Day 0 Deployment"
+    ],
+    "priority_score": 3.9
+  },
+  {
+    "scenario_title": "Configuring Wi-Fi profiles with SCEP certificate deployment configurations",
+    "scenario_category": "Implementation",
+    "domain": "intune",
+    "subdomain": "Configuration Profiles",
+    "is_cis": false,
+    "cis_type": "N/A",
+    "security_value": 3,
+    "rag_retrieval_value": 4,
+    "fine_tuning_value": 3,
+    "business_value": 5,
+    "estimated_file_count": 1,
+    "existing_coverage": "No",
+    "match_confidence": 38.8,
+    "technology_tags": [
+      "Microsoft Security Baseline",
+      "Zero Trust"
+    ],
+    "operational_tags": [
+      "Day 0 Deployment"
+    ],
+    "priority_score": 3.9
+  },
+  {
+    "scenario_title": "Configuring Android Enterprise work profile enrollment for BYOD endpoints",
+    "scenario_category": "Implementation",
+    "domain": "intune",
+    "subdomain": "Enrollment",
+    "is_cis": false,
+    "cis_type": "N/A",
+    "security_value": 3,
+    "rag_retrieval_value": 4,
+    "fine_tuning_value": 3,
+    "business_value": 5,
+    "estimated_file_count": 1,
+    "existing_coverage": "No",
+    "match_confidence": 30.0,
+    "technology_tags": [
+      "Microsoft Security Baseline",
+      "Zero Trust"
+    ],
+    "operational_tags": [
+      "Day 0 Deployment"
+    ],
+    "priority_score": 3.9
+  },
+  {
+    "scenario_title": "Onboarding Windows Servers and non-Windows endpoints to Defender for Endpoint",
+    "scenario_category": "Implementation",
+    "domain": "defender",
+    "subdomain": "Defender for Endpoint",
+    "is_cis": false,
+    "cis_type": "N/A",
+    "security_value": 3,
+    "rag_retrieval_value": 4,
+    "fine_tuning_value": 3,
+    "business_value": 5,
+    "estimated_file_count": 1,
+    "existing_coverage": "No",
+    "match_confidence": 44.0,
+    "technology_tags": [
+      "Microsoft Security Baseline",
+      "Zero Trust"
+    ],
+    "operational_tags": [
+      "Day 0 Deployment"
+    ],
+    "priority_score": 3.9
+  },
+  {
+    "scenario_title": "Installing and configuring Defender for Identity sensors on Active Directory DCs",
+    "scenario_category": "Implementation",
+    "domain": "defender",
+    "subdomain": "Defender for Identity",
+    "is_cis": false,
+    "cis_type": "N/A",
+    "security_value": 3,
+    "rag_retrieval_value": 4,
+    "fine_tuning_value": 3,
+    "business_value": 5,
+    "estimated_file_count": 1,
+    "existing_coverage": "No",
+    "match_confidence": 0.0,
+    "technology_tags": [
+      "Microsoft Security Baseline",
+      "Zero Trust"
+    ],
+    "operational_tags": [
+      "Day 0 Deployment"
+    ],
+    "priority_score": 3.9
+  },
+  {
+    "scenario_title": "Deploying Defender for Office 365 Safe Links to establish secure baseline controls",
+    "scenario_category": "Implementation",
+    "domain": "defender",
+    "subdomain": "Defender for Office 365",
+    "is_cis": false,
+    "cis_type": "N/A",
+    "security_value": 3,
+    "rag_retrieval_value": 4,
+    "fine_tuning_value": 3,
+    "business_value": 5,
+    "estimated_file_count": 1,
+    "existing_coverage": "No",
+    "match_confidence": 0.0,
+    "technology_tags": [
+      "Microsoft Security Baseline",
+      "Zero Trust"
+    ],
+    "operational_tags": [
+      "Day 0 Deployment"
+    ],
+    "priority_score": 3.9
+  },
+  {
+    "scenario_title": "Deploying Defender for Identity sensor installation to establish secure baseline controls",
+    "scenario_category": "Implementation",
+    "domain": "defender",
+    "subdomain": "Defender for Identity",
+    "is_cis": false,
+    "cis_type": "N/A",
+    "security_value": 3,
+    "rag_retrieval_value": 4,
+    "fine_tuning_value": 3,
+    "business_value": 5,
+    "estimated_file_count": 1,
+    "existing_coverage": "No",
+    "match_confidence": 0.0,
+    "technology_tags": [
+      "Microsoft Security Baseline",
+      "Zero Trust"
+    ],
+    "operational_tags": [
+      "Day 0 Deployment"
+    ],
+    "priority_score": 3.9
+  },
+  {
+    "scenario_title": "Deploying Defender for Endpoint onboarding scripts to establish secure baseline controls",
+    "scenario_category": "Implementation",
+    "domain": "defender",
+    "subdomain": "Defender for Endpoint",
+    "is_cis": false,
+    "cis_type": "N/A",
+    "security_value": 3,
+    "rag_retrieval_value": 4,
+    "fine_tuning_value": 3,
+    "business_value": 5,
+    "estimated_file_count": 1,
+    "existing_coverage": "No",
+    "match_confidence": 40.0,
+    "technology_tags": [
+      "Microsoft Security Baseline",
+      "Zero Trust"
+    ],
+    "operational_tags": [
+      "Day 0 Deployment"
+    ],
+    "priority_score": 3.9
+  },
+  {
+    "scenario_title": "Deploying Defender for Cloud Apps OAuth permissions to establish secure baseline controls",
+    "scenario_category": "Implementation",
+    "domain": "defender",
+    "subdomain": "Defender for Cloud Apps",
+    "is_cis": false,
+    "cis_type": "N/A",
+    "security_value": 3,
+    "rag_retrieval_value": 4,
+    "fine_tuning_value": 3,
+    "business_value": 5,
+    "estimated_file_count": 1,
+    "existing_coverage": "No",
+    "match_confidence": 0.0,
+    "technology_tags": [
+      "Microsoft Security Baseline",
+      "Zero Trust"
+    ],
+    "operational_tags": [
+      "Day 0 Deployment"
+    ],
+    "priority_score": 3.9
+  },
+  {
+    "scenario_title": "Deploying Defender Vulnerability Management dashboard to establish secure baseline controls",
+    "scenario_category": "Implementation",
+    "domain": "defender",
+    "subdomain": "Vulnerability Management",
+    "is_cis": false,
+    "cis_type": "N/A",
+    "security_value": 3,
+    "rag_retrieval_value": 4,
+    "fine_tuning_value": 3,
+    "business_value": 5,
+    "estimated_file_count": 1,
+    "existing_coverage": "No",
+    "match_confidence": 0.0,
+    "technology_tags": [
+      "Microsoft Security Baseline",
+      "Zero Trust"
+    ],
+    "operational_tags": [
+      "Day 0 Deployment"
+    ],
+    "priority_score": 3.9
+  },
+  {
+    "scenario_title": "Deploying Advanced Hunting KQL queries to establish secure baseline controls",
+    "scenario_category": "Implementation",
+    "domain": "defender",
+    "subdomain": "Threat Hunting",
+    "is_cis": false,
+    "cis_type": "N/A",
+    "security_value": 3,
+    "rag_retrieval_value": 4,
+    "fine_tuning_value": 3,
+    "business_value": 5,
+    "estimated_file_count": 1,
+    "existing_coverage": "No",
+    "match_confidence": 38.8,
+    "technology_tags": [
+      "Microsoft Security Baseline",
+      "Zero Trust"
+    ],
+    "operational_tags": [
+      "Day 0 Deployment"
+    ],
+    "priority_score": 3.9
+  }
+]

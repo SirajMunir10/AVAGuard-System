@@ -1,0 +1,148 @@
+<div class="stats-grid avag-mb-24" id="ai-stats-panel">
+    <!-- 1. Daily Queries Count -->
+    <div class="stat-card" id="card-queries-today">
+        <div class="stat-card-header">
+            <span class="stat-label">Daily AI Usage</span>
+            <div class="stat-icon primary">
+                <i data-lucide="message-square"></i>
+            </div>
+        </div>
+        <div class="stat-value" id="val-queries-today">{{ stats.queries_today|default:0 }}</div>
+        <div class="stat-change text-muted" id="val-daily-limit">Daily Limit: {{ stats.daily_limit|default:100 }}</div>
+    </div>
+
+    <!-- 2. Flagged Queries -->
+    <div class="stat-card" id="card-flagged-queries" {% if stats.flagged_queries > 0 %}style="border-left: 4px solid var(--avag-accent-danger);"{% endif %}>
+        <div class="stat-card-header">
+            <span class="stat-label">Safety Flags Today</span>
+            <div class="stat-icon danger">
+                <i data-lucide="shield-alert"></i>
+            </div>
+        </div>
+        <div class="stat-value avag-text-danger" id="val-flagged-queries">{{ stats.flagged_queries|default:0 }}</div>
+        <div class="stat-change negative" id="val-flagged-desc">Flagged queries blocked</div>
+    </div>
+
+    <!-- 3. Average Latency -->
+    <div class="stat-card" id="card-avg-latency">
+        <div class="stat-card-header">
+            <span class="stat-label">Avg LLM Latency</span>
+            <div class="stat-icon info">
+                <i data-lucide="gauge"></i>
+            </div>
+        </div>
+        <div class="stat-value" id="val-avg-latency">{{ stats.avg_latency_ms|floatformat:0|default:"0" }}ms</div>
+        <div class="stat-change text-muted">Rolling avg (last 100 queries)</div>
+    </div>
+
+    <!-- 4. Fallback/Mock Count -->
+    <div class="stat-card" id="card-fallback-queries">
+        <div class="stat-card-header">
+            <span class="stat-label">Mock Fallbacks</span>
+            <div class="stat-icon warning">
+                <i data-lucide="alert-triangle"></i>
+            </div>
+        </div>
+        <div class="stat-value avag-text-warning" id="val-fallback-queries">{{ stats.fallback_queries|default:0 }}</div>
+        <div class="stat-change text-muted">Degraded mode queries run</div>
+    </div>
+</div>
+
+<!-- Health Status Panel -->
+<div class="ai-health-panel stat-card avag-mb-24" id="ai-health-status-panel">
+    <div class="ai-health-header">
+        <h3 class="ai-panel-title">
+            <i data-lucide="activity"></i> System Operations & Backend Health
+        </h3>
+        <span class="ai-health-overall badge {% if stats.health.retriever_status == 'ready' and stats.health.api_key_configured %}badge-success{% else %}badge-warning{% endif %}">
+            {% if stats.health.retriever_status == 'ready' and stats.health.api_key_configured %}
+                All Systems Operational
+            {% else %}
+                Degraded / Fallback active
+            {% endif %}
+        </span>
+    </div>
+    
+    <div class="ai-health-grid">
+        <!-- Retriever Health -->
+        <div class="ai-health-item">
+            <div class="ai-health-item-header">
+                <span class="ai-health-label">Vector Retriever (FAISS)</span>
+                <span class="ai-health-indicator {% if stats.health.retriever_status == 'ready' %}healthy{% else %}unhealthy{% endif %}">
+                    <span class="pulse-indicator"></span>
+                    {{ stats.health.retriever_status|upper }}
+                </span>
+            </div>
+            <div class="ai-health-detail">
+                <p>Type: <strong>{{ stats.health.retriever_type|upper }}</strong></p>
+                <p>Documents Ingested: <strong>{{ stats.health.retriever_doc_count|default:0 }}</strong></p>
+            </div>
+        </div>
+
+        <!-- LLM Provider Health -->
+        <div class="ai-health-item">
+            <div class="ai-health-item-header">
+                <span class="ai-health-label">LLM Compliance Generator</span>
+                <span class="ai-health-indicator {% if stats.health.api_key_configured or stats.health.llm_provider == 'mock' %}healthy{% else %}unhealthy{% endif %}">
+                    <span class="pulse-indicator"></span>
+                    {% if stats.health.api_key_configured or stats.health.llm_provider == 'mock' %}READY{% else %}UNCONFIGURED{% endif %}
+                </span>
+            </div>
+            <div class="ai-health-detail">
+                <p>Active Provider: <strong>{{ stats.health.llm_provider|upper }}</strong></p>
+                <p>Active Model: <strong>{{ stats.health.llm_model|default:"Mock Compliance Service" }}</strong></p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Phase 2: Retrieval Quality Metrics Row -->
+<div class="stats-grid avag-mb-24" id="ai-retrieval-stats-panel">
+    <!-- 5. Avg Reranker Score -->
+    <div class="stat-card" id="card-avg-reranker">
+        <div class="stat-card-header">
+            <span class="stat-label">Avg Reranker Score</span>
+            <div class="stat-icon primary">
+                <i data-lucide="target"></i>
+            </div>
+        </div>
+        <div class="stat-value" id="val-avg-reranker">—</div>
+        <div class="stat-change text-muted">Cross-encoder avg (last 100)</div>
+    </div>
+
+    <!-- 6. Retrieval Success Rate -->
+    <div class="stat-card" id="card-retrieval-success">
+        <div class="stat-card-header">
+            <span class="stat-label">Retrieval Success</span>
+            <div class="stat-icon info">
+                <i data-lucide="check-circle-2"></i>
+            </div>
+        </div>
+        <div class="stat-value" id="val-retrieval-success">—</div>
+        <div class="stat-change text-muted">Queries with results returned</div>
+    </div>
+
+    <!-- 7. Total Corpus Chunks -->
+    <div class="stat-card" id="card-corpus-chunks">
+        <div class="stat-card-header">
+            <span class="stat-label">Corpus Chunks</span>
+            <div class="stat-icon primary">
+                <i data-lucide="database"></i>
+            </div>
+        </div>
+        <div class="stat-value" id="val-corpus-chunks">—</div>
+        <div class="stat-change text-muted" id="val-corpus-files">— files indexed</div>
+    </div>
+
+    <!-- 8. User Feedback Score -->
+    <div class="stat-card" id="card-feedback-score">
+        <div class="stat-card-header">
+            <span class="stat-label">User Satisfaction</span>
+            <div class="stat-icon info">
+                <i data-lucide="heart"></i>
+            </div>
+        </div>
+        <div class="stat-value" id="val-feedback-score">—</div>
+        <div class="stat-change text-muted" id="val-feedback-count">0 feedback received</div>
+    </div>
+</div>

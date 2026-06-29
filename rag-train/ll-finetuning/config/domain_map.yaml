@@ -1,0 +1,546 @@
+# ============================================
+# AVAGuard Security AI - Knowledge Domain Map
+# ============================================
+# Defines all question categories, targets, and topics
+# for the data generation pipeline.
+#
+# Structure: pilot_domains (5K) → full_domains (100K)
+# ============================================
+
+# ──────────────────────────────────────────────
+# PHASE 1: PILOT (5,000 questions)
+# Focus: Azure, CIS, Sentinel, IR, MITRE
+# ──────────────────────────────────────────────
+pilot_domains:
+
+  azure_security:
+    total: 1500
+    subcategories:
+      entra_id:
+        count: 400
+        topics:
+          - "Conditional Access policies configuration and troubleshooting"
+          - "Multi-Factor Authentication (MFA) setup and enforcement"
+          - "Privileged Identity Management (PIM) roles and activation"
+          - "Identity Protection risk policies"
+          - "B2B and B2C guest access security"
+          - "Role-Based Access Control (RBAC) best practices"
+          - "Managed Identities for Azure services"
+          - "Service Principals and App Registrations security"
+
+      defender_cloud:
+        count: 350
+        topics:
+          - "Microsoft Defender for Cloud configuration"
+          - "Secure Score optimization strategies"
+          - "Vulnerability assessment and remediation"
+          - "Regulatory compliance dashboard usage"
+          - "Azure Security Benchmark (ASB) controls"
+          - "Just-In-Time VM access setup"
+          - "Adaptive application controls"
+
+      sentinel_kql:
+        count: 400
+        topics:
+          - "KQL query writing for SecurityEvent table"
+          - "KQL queries for SigninLogs and AuditLogs"
+          - "Analytics rule creation for threat detection"
+          - "Workbook development and visualization"
+          - "Incident investigation and triage"
+          - "Threat hunting with KQL"
+          - "Automation playbooks with Logic Apps"
+          - "Data connector configuration"
+
+      networking:
+        count: 350
+        topics:
+          - "Network Security Group (NSG) rules and configuration"
+          - "Azure Firewall policies and rule collections"
+          - "Private Endpoints and Private Link setup"
+          - "DDoS Protection Standard configuration"
+          - "VNet peering security considerations"
+          - "Application Gateway WAF policies"
+          - "Azure Bastion secure access"
+
+  cis_benchmarks:
+    total: 1000
+    subcategories:
+      cis_azure:
+        count: 500
+        topics:
+          - "CIS Azure Foundations Benchmark v2.0 controls"
+          - "Identity and Access Management controls (Section 1)"
+          - "Microsoft Defender controls (Section 2)"
+          - "Storage Account security controls (Section 3)"
+          - "Database Services controls (Section 4)"
+          - "Logging and Monitoring controls (Section 5)"
+          - "Networking controls (Section 6)"
+          - "Virtual Machines controls (Section 7)"
+          - "Key Vault controls (Section 8)"
+          - "AppService controls (Section 9)"
+          - "Audit procedures and remediation scripts"
+
+      cis_windows:
+        count: 500
+        topics:
+          - "CIS Windows Server 2019/2022 Benchmark controls"
+          - "Account Policies and Password Settings"
+          - "Local Policies and User Rights Assignment"
+          - "Security Options hardening"
+          - "Windows Firewall configuration"
+          - "Advanced Audit Policy Configuration"
+          - "Administrative Templates (GPO) security"
+          - "PowerShell audit scripts for CIS compliance"
+
+  incident_response:
+    total: 700
+    subcategories:
+      ir_procedures:
+        count: 350
+        topics:
+          - "Incident preparation and readiness assessment"
+          - "Detection and analysis of security incidents"
+          - "Containment strategies (short-term and long-term)"
+          - "Eradication procedures and root cause analysis"
+          - "Recovery steps and system restoration"
+          - "Post-incident review and lessons learned"
+          - "IR playbook development and automation"
+
+      forensics:
+        count: 350
+        topics:
+          - "Memory forensics with Volatility"
+          - "Disk forensics and evidence preservation"
+          - "Network forensics and packet analysis"
+          - "Cloud forensics (Azure, AWS)"
+          - "Log analysis for incident investigation"
+          - "Chain of custody and evidence handling"
+          - "Timeline reconstruction techniques"
+
+  mitre_attack:
+    total: 700
+    subcategories:
+      initial_access:
+        count: 150
+        topics:
+          - "T1566 Phishing detection and prevention"
+          - "T1190 Exploit Public-Facing Application"
+          - "T1133 External Remote Services"
+          - "T1078 Valid Accounts abuse"
+          - "T1199 Trusted Relationship exploitation"
+
+      execution_persistence:
+        count: 200
+        topics:
+          - "T1059 Command and Scripting Interpreter"
+          - "T1204 User Execution techniques"
+          - "T1547 Boot or Logon Autostart Execution"
+          - "T1546 Event Triggered Execution"
+          - "T1053 Scheduled Task/Job"
+          - "T1098 Account Manipulation"
+
+      privilege_escalation:
+        count: 200
+        topics:
+          - "T1548 Abuse Elevation Control Mechanism"
+          - "T1068 Exploitation for Privilege Escalation"
+          - "T1055 Process Injection"
+          - "T1574 Hijack Execution Flow"
+          - "T1550 Use Alternate Authentication Material"
+
+      defense_evasion:
+        count: 150
+        topics:
+          - "T1562 Impair Defenses"
+          - "T1218 System Binary Proxy Execution"
+          - "T1497 Virtualization/Sandbox Evasion"
+          - "T1036 Masquerading"
+          - "T1070 Indicator Removal"
+
+  windows_security:
+    total: 300
+    subcategories:
+      event_logs:
+        count: 150
+        topics:
+          - "Security Event IDs (4624, 4625, 4648, 4672, 4720)"
+          - "PowerShell script block logging analysis"
+          - "Sysmon event analysis (Event IDs 1, 3, 7, 10, 11)"
+          - "Windows Defender logs"
+          - "Log correlation for lateral movement detection"
+
+      active_directory:
+        count: 100
+        topics:
+          - "Active Directory hardening best practices"
+          - "Group Policy Object (GPO) security"
+          - "Kerberos authentication security"
+          - "LDAP security and signing"
+          - "Domain controller protection"
+
+      endpoint_hardening:
+        count: 50
+        topics:
+          - "BitLocker encryption configuration"
+          - "AppLocker and WDAC application control"
+          - "Credential Guard setup"
+          - "Attack Surface Reduction rules"
+
+# ──────────────────────────────────────────────
+# PHASE 2-3: FULL EXPANSION (100,000 questions)
+# Add after pilot validation
+# ──────────────────────────────────────────────
+full_domains:
+
+  aws_security:
+    total: 8000
+    subcategories:
+      iam:
+        count: 1500
+        topics:
+          - "IAM users, groups, and roles management"
+          - "IAM policies (identity-based vs resource-based)"
+          - "AWS Organizations and SCPs"
+          - "Cross-account access patterns"
+          - "Federation and SSO"
+          - "IAM Access Analyzer"
+      security_services:
+        count: 2000
+        topics:
+          - "AWS Security Hub configuration"
+          - "Amazon GuardDuty threat detection"
+          - "AWS CloudTrail logging and monitoring"
+          - "Amazon Inspector vulnerability scanning"
+          - "AWS Config compliance rules"
+          - "Amazon Detective investigation"
+      networking:
+        count: 1500
+        topics:
+          - "VPC Security Groups and NACLs"
+          - "AWS WAF and Shield"
+          - "AWS Network Firewall"
+          - "VPC Flow Logs analysis"
+          - "Transit Gateway security"
+      data_protection:
+        count: 1500
+        topics:
+          - "S3 bucket security and policies"
+          - "AWS KMS key management"
+          - "Secrets Manager and Parameter Store"
+          - "RDS encryption and security"
+          - "DynamoDB security"
+      compute:
+        count: 1500
+        topics:
+          - "EC2 instance hardening"
+          - "Lambda security best practices"
+          - "ECS/EKS container security"
+          - "Systems Manager patch management"
+
+  gcp_security:
+    total: 5000
+    subcategories:
+      iam:
+        count: 1000
+        topics:
+          - "Cloud IAM roles and bindings"
+          - "Service accounts security"
+          - "Organization policies"
+          - "Workload Identity Federation"
+      security_services:
+        count: 1500
+        topics:
+          - "Security Command Center"
+          - "Cloud Armor WAF"
+          - "Binary Authorization"
+          - "Cloud Audit Logs"
+      networking:
+        count: 1000
+        topics:
+          - "VPC firewall rules"
+          - "Cloud NAT configuration"
+          - "Private Google Access"
+      data_protection:
+        count: 1000
+        topics:
+          - "Cloud KMS encryption"
+          - "Cloud Storage security"
+          - "BigQuery security"
+      compute:
+        count: 500
+        topics:
+          - "GCE hardening"
+          - "GKE security policies"
+          - "Cloud Run security"
+
+  nist_frameworks:
+    total: 4000
+    subcategories:
+      nist_csf:
+        count: 1500
+        topics:
+          - "Identify function implementation"
+          - "Protect function controls"
+          - "Detect function monitoring"
+          - "Respond function procedures"
+          - "Recover function planning"
+      nist_800_53:
+        count: 1500
+        topics:
+          - "Access Control family (AC)"
+          - "Audit and Accountability (AU)"
+          - "Incident Response (IR)"
+          - "System and Communications Protection (SC)"
+          - "System and Information Integrity (SI)"
+      nist_800_171:
+        count: 500
+        topics:
+          - "CUI protection requirements"
+          - "DFARS compliance"
+      rmf:
+        count: 500
+        topics:
+          - "Risk Management Framework steps"
+          - "Security categorization"
+          - "Continuous monitoring"
+
+  compliance_general:
+    total: 7000
+    subcategories:
+      iso_27001:
+        count: 1500
+        topics:
+          - "Annex A controls implementation"
+          - "Risk assessment methodology"
+          - "Statement of Applicability"
+          - "Internal audit procedures"
+      pci_dss:
+        count: 1500
+        topics:
+          - "PCI DSS v4.0 requirements 1-12"
+          - "Network segmentation for PCI"
+          - "Encryption requirements"
+          - "Access control requirements"
+      hipaa:
+        count: 1000
+        topics:
+          - "Privacy Rule requirements"
+          - "Security Rule technical safeguards"
+          - "Breach notification procedures"
+      soc2:
+        count: 1000
+        topics:
+          - "Trust Service Criteria"
+          - "SOC 2 Type II audit preparation"
+          - "Evidence collection"
+      gdpr:
+        count: 1000
+        topics:
+          - "Data protection principles (Article 5)"
+          - "Security measures (Article 32)"
+          - "Breach notification (Article 33)"
+          - "Data subject rights"
+      audit:
+        count: 1000
+        topics:
+          - "Compliance audit procedures"
+          - "Gap analysis techniques"
+          - "Evidence collection automation"
+          - "Remediation planning"
+
+  network_security:
+    total: 3000
+    subcategories:
+      firewalls:
+        count: 800
+        topics:
+          - "Firewall rule management"
+          - "Next-gen firewall features"
+          - "Palo Alto configuration"
+      ids_ips:
+        count: 800
+        topics:
+          - "Snort rule writing"
+          - "Suricata configuration"
+          - "Alert tuning and management"
+      zero_trust:
+        count: 700
+        topics:
+          - "Zero Trust architecture design"
+          - "Micro-segmentation"
+          - "Identity-based access"
+      vpn:
+        count: 700
+        topics:
+          - "IPSec VPN configuration"
+          - "SSL VPN security"
+          - "WireGuard setup"
+
+  linux_security:
+    total: 4000
+    subcategories:
+      hardening:
+        count: 1200
+        topics:
+          - "CIS Linux Benchmarks"
+          - "SELinux and AppArmor"
+          - "SSH hardening"
+          - "Kernel parameters security"
+      logging:
+        count: 1000
+        topics:
+          - "Syslog analysis"
+          - "Auditd configuration"
+          - "SIEM integration"
+      package_security:
+        count: 800
+        topics:
+          - "Repository signing verification"
+          - "Vulnerability scanning"
+          - "Patch management"
+      network:
+        count: 1000
+        topics:
+          - "iptables and nftables"
+          - "TCP wrappers"
+          - "Port security"
+
+  siem_platforms:
+    total: 5000
+    subcategories:
+      splunk:
+        count: 2000
+        topics:
+          - "SPL query writing"
+          - "Dashboard and report creation"
+          - "Alert and correlation rules"
+          - "Data onboarding"
+          - "Enterprise Security content"
+      qradar:
+        count: 500
+        topics:
+          - "QRadar offense management"
+          - "AQL queries"
+          - "Log source configuration"
+      edr_xdr:
+        count: 2500
+        topics:
+          - "CrowdStrike Falcon queries (Raptor)"
+          - "Microsoft Defender for Endpoint"
+          - "Carbon Black response"
+          - "SentinelOne Deep Visibility"
+          - "EDR alert investigation"
+
+  vulnerability_management:
+    total: 5000
+    subcategories:
+      scanning:
+        count: 1500
+        topics:
+          - "Nessus scan configuration"
+          - "Qualys vulnerability management"
+          - "OpenVAS setup and scanning"
+      patch_management:
+        count: 1500
+        topics:
+          - "Windows patching (WSUS/SCCM)"
+          - "Linux patch management"
+          - "Application patching"
+          - "Patch prioritization frameworks"
+      cve_analysis:
+        count: 1000
+        topics:
+          - "CVSS scoring interpretation"
+          - "Exploit availability assessment"
+          - "Risk-based prioritization"
+      security_testing:
+        count: 1000
+        topics:
+          - "Penetration testing methodology"
+          - "Web application testing (OWASP)"
+          - "API security testing"
+
+  application_security:
+    total: 5000
+    subcategories:
+      web_security:
+        count: 2000
+        topics:
+          - "OWASP Top 10 vulnerabilities"
+          - "SQL Injection prevention"
+          - "XSS and CSRF protection"
+          - "Authentication flaws"
+          - "Server-side request forgery"
+      api_security:
+        count: 1500
+        topics:
+          - "REST API security"
+          - "OAuth 2.0 and OpenID Connect"
+          - "JWT security"
+          - "API gateway configuration"
+          - "GraphQL security"
+      devsecops:
+        count: 1500
+        topics:
+          - "CI/CD pipeline security"
+          - "Container image scanning"
+          - "IaC security (Terraform, Bicep)"
+          - "Secret management"
+          - "SAST and DAST integration"
+
+  malware_analysis:
+    total: 2500
+    subcategories:
+      static_analysis:
+        count: 800
+        topics:
+          - "PE file analysis"
+          - "String analysis"
+          - "Import/export analysis"
+          - "YARA rule writing"
+      dynamic_analysis:
+        count: 800
+        topics:
+          - "Sandbox analysis"
+          - "Process monitoring"
+          - "Network traffic analysis"
+          - "Registry changes"
+      reverse_engineering:
+        count: 900
+        topics:
+          - "Ghidra usage"
+          - "IDA Pro basics"
+          - "Assembly language for malware"
+          - "Unpacking techniques"
+
+  emerging_tech:
+    total: 5000
+    subcategories:
+      zero_trust_architecture:
+        count: 1500
+        topics:
+          - "Zero Trust principles implementation"
+          - "Identity verification strategies"
+          - "Device trust assessment"
+          - "Micro-segmentation design"
+      cloud_native:
+        count: 1500
+        topics:
+          - "Serverless security concerns"
+          - "Service mesh security (Istio)"
+          - "CNAPP platforms"
+          - "Microservices security patterns"
+      ai_security:
+        count: 1000
+        topics:
+          - "AI/ML model security"
+          - "Adversarial attacks on ML models"
+          - "LLM security considerations"
+          - "AI in cybersecurity operations"
+      iot_ot:
+        count: 1000
+        topics:
+          - "Industrial Control Systems security"
+          - "SCADA/ICS protocols"
+          - "IoT device hardening"
+          - "OT network segmentation"

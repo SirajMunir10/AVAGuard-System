@@ -1,0 +1,33 @@
+{
+  "control_id": "2.2.1",
+  "title": "Ensure public network access is Disabled on Virtual Networks",
+  "version": "1.0.0",
+  "deprecated": false,
+  "profile_level": "Level 1",
+  "provider_compatibility": ["azure"],
+  "category": "Networking",
+  "framework_mappings": {
+    "NIST_800_53": ["SC-7", "SC-8"],
+    "ISO_27001": ["A.13.1.1"]
+  },
+  "scan_query": {
+    "resource_type": "virtual_networks",
+    "fields": ["id", "name", "public_network_access"]
+  },
+  "evaluation_rules": [
+    {
+      "field": "public_network_access",
+      "operator": "equals",
+      "expected": "Disabled",
+      "remedy_on_fail": true
+    }
+  ],
+  "remediation_metadata": {
+    "severity": "HIGH",
+    "impact_statement": "Leaving public access enabled on Virtual Networks allows malicious internet traffic to scan or exploit internal assets.",
+    "validation_steps": "Verify public network access is disabled on Virtual Networks in Azure Portal under network properties or run az network vnet show.",
+    "templates": {
+      "azure_cli": "az network vnet update --name {{ resource.name }} --public-network-access Disabled"
+    }
+  }
+}

@@ -1,0 +1,185 @@
+{% extends 'ai_ops/base_ai_ops.html' %}
+{% load static %}
+
+{% block title %}AI Operations Dashboard - AVAGuard{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'ai_ops/css/dashboard.css' %}?v=5.0">
+{% endblock %}
+
+{% block ai_page_name %}Dashboard{% endblock %}
+
+{% block ai_content %}
+<div class="ai-dashboard-container">
+    
+    <!-- Render Reusable Stats Summary & Health Check panel -->
+    {% include 'ai_ops/partials/ai_stats_panel.html' %}
+
+    <!-- Operational Charts Grid -->
+    <div class="charts-grid avag-mb-24" style="grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));">
+        
+        <!-- 1. AI Query Volume Chart -->
+        <div class="chart-card">
+            <h3 class="chart-title">
+                <i data-lucide="bar-chart-2"></i> Query volume timeline (Last 7 days)
+            </h3>
+            <div class="chart-container" style="height: 280px; position: relative;">
+                <canvas id="aiVolumeChart"></canvas>
+            </div>
+        </div>
+
+        <!-- 2. Latency Telemetry Chart -->
+        <div class="chart-card">
+            <h3 class="chart-title">
+                <i data-lucide="activity"></i> average latency & retrieval metrics
+            </h3>
+            <div class="chart-container" style="height: 280px; position: relative;">
+                <canvas id="aiLatencyChart"></canvas>
+            </div>
+        </div>
+
+        <!-- 3. Confidence Distribution (Phase 2) -->
+        <div class="chart-card">
+            <h3 class="chart-title">
+                <i data-lucide="pie-chart"></i> Confidence distribution
+            </h3>
+            <div class="chart-container" style="height: 280px; position: relative;">
+                <canvas id="aiConfidenceChart"></canvas>
+            </div>
+        </div>
+
+        <!-- 4. Corpus Coverage by Framework (Phase 2) -->
+        <div class="chart-card">
+            <h3 class="chart-title">
+                <i data-lucide="layers"></i> Corpus coverage by framework
+            </h3>
+            <div class="chart-container" style="height: 280px; position: relative;">
+                <canvas id="aiCorpusChart"></canvas>
+            </div>
+        </div>
+    </div>
+
+    <!-- Quick Administrative Controls - placed at bottom for operational visibility -->
+    <div class="stat-card avag-mt-24" style="padding: 24px;">
+        <h3 class="ai-panel-title avag-mb-16"><i data-lucide="layout-grid"></i> Quick Administrative Controls</h3>
+        {% include 'ai_ops/partials/ai_nav_grid.html' %}
+    </div>
+
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script src="{% static 'ai_ops/js/admin.js' %}?v=3.0"></script>
+<script>
+function scrollToMetrics() {
+    const chartsGrid = document.querySelector('.charts-grid');
+    if (chartsGrid) {
+        chartsGrid.scrollIntoView({ behavior: 'smooth' });
+        // briefly highlight the charts section
+        chartsGrid.style.outline = '2px dashed var(--avag-accent-primary)';
+        chartsGrid.style.outlineOffset = '6px';
+        chartsGrid.style.borderRadius = '12px';
+        setTimeout(() => {
+            chartsGrid.style.outline = 'none';
+        }, 2000);
+    }
+}
+
+async function refreshRetrieverStatus() {
+    showToast('Refreshing retriever...', 'info');
+    try {
+        const resp = await fetch('/api/ai/admin/stats/');
+        const stats = await resp.json();
+        if (stats.health) {
+            showToast('Retriever state reloaded and verified healthy!', 'success');
+            // Dynamically refresh details or stats panel if applicable
+            setTimeout(() => { location.reload(); }, 800);
+        } else {
+            showToast('Retriever health check returned degraded status.', 'warning');
+        }
+    } catch (err) {
+        showToast('Retriever refresh request failed: ' + err.message, 'danger');
+    }
+}
+
+async function clearQueryCache() {
+    if (!confirm('Are you sure you want to clear the query response cache? Subsequent requests will fetch live LLM answers.')) {
+        return;
+    }
+    showToast('Clearing query cache...', 'info');
+    try {
+        const resp = await fetch('/api/ai/admin/clear-cache/', {
+            method: 'POST',
+            headers: {
+                'X-CSRFToken': '{{ csrf_token }}',
+                'Content-Type': 'application/json'
+            }
+        });
+        const data = await resp.json();
+        if (resp.ok) {
+            showToast(data.message || 'Query cache cleared successfully!', 'success');
+        } else {
+            showToast(data.error || 'Failed to clear query cache.', 'danger');
+        }
+    } catch (err) {
+        showToast('Cache clearing request failed: ' + err.message, 'danger');
+    }
+}
+
+function showToast(message, type = 'info') {
+    let container = document.getElementById('toast-container');
+    if (!container) {
+        container = document.createElement('div');
+        container.id = 'toast-container';
+        container.style.position = 'fixed';
+        container.style.bottom = '24px';
+        container.style.right = '24px';
+        container.style.zIndex = '99999';
+        container.style.display = 'flex';
+        container.style.flexDirection = 'column';
+        container.style.gap = '10px';
+        document.body.appendChild(container);
+    }
+
+    const toast = document.createElement('div');
+    
+    let bg = 'rgba(18, 18, 36, 0.9)';
+    let border = '1px solid rgba(255,255,255,0.1)';
+    let color = '#ffffff';
+    if (type === 'success') { bg = '#10b981'; border = '1px solid #059669'; }
+    else if (type === 'danger') { bg = '#ef4444'; border = '1px solid #dc2626'; }
+    else if (type === 'warning') { bg = '#f59e0b'; border = '1px solid #d97706'; color = '#000000'; }
+    else if (type === 'info') { bg = '#00d4ff'; border = '1px solid #00b4db'; color = '#000000'; }
+
+    toast.style.background = bg;
+    toast.style.border = border;
+    toast.style.color = color;
+    toast.style.padding = '12px 20px';
+    toast.style.borderRadius = '8px';
+    toast.style.fontSize = '13px';
+    toast.style.fontWeight = '600';
+    toast.style.boxShadow = '0 8px 20px rgba(0,0,0,0.3)';
+    toast.style.backdropFilter = 'blur(4px)';
+    toast.style.minWidth = '250px';
+    toast.style.transition = 'all 0.3s ease';
+    toast.style.opacity = '0';
+    toast.style.transform = 'translateY(20px)';
+    toast.textContent = message;
+
+    container.appendChild(toast);
+
+    setTimeout(() => {
+        toast.style.opacity = '1';
+        toast.style.transform = 'translateY(0)';
+    }, 10);
+
+    setTimeout(() => {
+        toast.style.opacity = '0';
+        toast.style.transform = 'translateY(-20px)';
+        setTimeout(() => {
+            toast.remove();
+        }, 300);
+    }, 3000);
+}
+</script>
+{% endblock %}

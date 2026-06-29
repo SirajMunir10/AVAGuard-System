@@ -1,0 +1,60 @@
+domain,topic,subtopics,split_into_n_files,output_filename_prefix
+azure_security,entra_id,"Conditional Access policies configuration and troubleshooting,Multi-Factor Authentication (MFA) setup and enforcement,Privileged Identity Management (PIM) roles and activation,Identity Protection risk policies,B2B and B2C guest access security,Role-Based Access Control (RBAC) best practices,Managed Identities for Azure services,Service Principals and App Registrations security",8,azure_security_01_entra_id
+azure_security,defender_cloud,"Microsoft Defender for Cloud configuration,Secure Score optimization strategies,Vulnerability assessment and remediation,Regulatory compliance dashboard usage,Azure Security Benchmark (ASB) controls,Just-In-Time VM access setup,Adaptive application controls",7,azure_security_02_defender_cloud
+azure_security,sentinel_kql,"KQL query writing for SecurityEvent table,KQL queries for SigninLogs and AuditLogs,Analytics rule creation for threat detection,Workbook development and visualization,Incident investigation and triage,Threat hunting with KQL,Automation playbooks with Logic Apps,Data connector configuration",8,azure_security_03_sentinel_kql
+azure_security,networking,"Network Security Group (NSG) rules and configuration,Azure Firewall policies and rule collections,Private Endpoints and Private Link setup,DDoS Protection Standard configuration,VNet peering security considerations,Application Gateway WAF policies,Azure Bastion secure access",7,azure_security_04_networking
+incident_response,ir_procedures,"Incident preparation and readiness assessment,Detection and analysis of security incidents,Containment strategies (short-term and long-term),Eradication procedures and root cause analysis,Recovery steps and system restoration,Post-incident review and lessons learned,IR playbook development and automation",7,incident_response_01_ir_procedures
+incident_response,forensics,"Memory forensics with Volatility,Disk forensics and evidence preservation,Network forensics and packet analysis,Cloud forensics (Azure, AWS),Log analysis for incident investigation,Chain of custody and evidence handling,Timeline reconstruction techniques",7,incident_response_02_forensics
+mitre_attack,initial_access,"T1566 Phishing detection and prevention,T1190 Exploit Public-Facing Application,T1133 External Remote Services,T1078 Valid Accounts abuse,T1199 Trusted Relationship exploitation",5,mitre_attack_01_initial_access
+mitre_attack,execution_persistence,"T1059 Command and Scripting Interpreter,T1204 User Execution techniques,T1547 Boot or Logon Autostart Execution,T1546 Event Triggered Execution,T1053 Scheduled Task/Job,T1098 Account Manipulation",6,mitre_attack_02_execution_persistence
+mitre_attack,privilege_escalation,"T1548 Abuse Elevation Control Mechanism,T1068 Exploitation for Privilege Escalation,T1055 Process Injection,T1574 Hijack Execution Flow,T1550 Use Alternate Authentication Material",5,mitre_attack_03_privilege_escalation
+mitre_attack,defense_evasion,"T1562 Impair Defenses,T1218 System Binary Proxy Execution,T1497 Virtualization/Sandbox Evasion,T1036 Masquerading,T1070 Indicator Removal",5,mitre_attack_04_defense_evasion
+windows_security,event_logs,"Security Event IDs (4624, 4625, 4648, 4672, 4720),PowerShell script block logging analysis,Sysmon event analysis (Event IDs 1, 3, 7, 10, 11),Windows Defender logs,Log correlation for lateral movement detection",5,windows_security_01_event_logs
+windows_security,active_directory,"Active Directory hardening best practices,Group Policy Object (GPO) security,Kerberos authentication security,LDAP security and signing,Domain controller protection",5,windows_security_02_active_directory
+windows_security,endpoint_hardening,"BitLocker encryption configuration,AppLocker and WDAC application control,Credential Guard setup,Attack Surface Reduction rules",4,windows_security_03_endpoint_hardening
+aws_security,iam,"IAM users, groups, and roles management,IAM policies (identity-based vs resource-based),AWS Organizations and SCPs,Cross-account access patterns,Federation and SSO,IAM Access Analyzer",6,aws_security_01_iam
+aws_security,security_services,"AWS Security Hub configuration,Amazon GuardDuty threat detection,AWS CloudTrail logging and monitoring,Amazon Inspector vulnerability scanning,AWS Config compliance rules,Amazon Detective investigation",6,aws_security_02_security_services
+aws_security,networking,"VPC Security Groups and NACLs,AWS WAF and Shield,AWS Network Firewall,VPC Flow Logs analysis,Transit Gateway security",5,aws_security_03_networking
+aws_security,data_protection,"S3 bucket security and policies,AWS KMS key management,Secrets Manager and Parameter Store,RDS encryption and security,DynamoDB security",5,aws_security_04_data_protection
+aws_security,compute,"EC2 instance hardening,Lambda security best practices,ECS/EKS container security,Systems Manager patch management",4,aws_security_05_compute
+gcp_security,iam,"Cloud IAM roles and bindings,Service accounts security,Organization policies,Workload Identity Federation",4,gcp_security_01_iam
+gcp_security,security_services,"Security Command Center,Cloud Armor WAF,Binary Authorization,Cloud Audit Logs",4,gcp_security_02_security_services
+gcp_security,networking,"VPC firewall rules,Cloud NAT configuration,Private Google Access",3,gcp_security_03_networking
+gcp_security,data_protection,"Cloud KMS encryption,Cloud Storage security,BigQuery security",3,gcp_security_04_data_protection
+gcp_security,compute,"GCE hardening,GKE security policies,Cloud Run security",3,gcp_security_05_compute
+nist_frameworks,nist_csf,"Identify function implementation,Protect function controls,Detect function monitoring,Respond function procedures,Recover function planning",5,nist_frameworks_01_nist_csf
+nist_frameworks,nist_800_53,"Access Control family (AC),Audit and Accountability (AU),Incident Response (IR),System and Communications Protection (SC),System and Information Integrity (SI)",5,nist_frameworks_02_nist_800_53
+nist_frameworks,nist_800_171,"CUI protection requirements,DFARS compliance",2,nist_frameworks_03_nist_800_171
+nist_frameworks,rmf,"Risk Management Framework steps,Security categorization,Continuous monitoring",3,nist_frameworks_04_rmf
+compliance_general,iso_27001,"Annex A controls implementation,Risk assessment methodology,Statement of Applicability,Internal audit procedures",4,compliance_general_01_iso_27001
+compliance_general,pci_dss,"PCI DSS v4.0 requirements 1-12,Network segmentation for PCI,Encryption requirements,Access control requirements",4,compliance_general_02_pci_dss
+compliance_general,hipaa,"Privacy Rule requirements,Security Rule technical safeguards,Breach notification procedures",3,compliance_general_03_hipaa
+compliance_general,soc2,"Trust Service Criteria,SOC 2 Type II audit preparation,Evidence collection",3,compliance_general_04_soc2
+compliance_general,gdpr,"Data protection principles (Article 5),Security measures (Article 32),Breach notification (Article 33),Data subject rights",4,compliance_general_05_gdpr
+compliance_general,audit,"Compliance audit procedures,Gap analysis techniques,Evidence collection automation,Remediation planning",4,compliance_general_06_audit
+network_security,firewalls,"Firewall rule management,Next-gen firewall features,Palo Alto configuration",3,network_security_01_firewalls
+network_security,ids_ips,"Snort rule writing,Suricata configuration,Alert tuning and management",3,network_security_02_ids_ips
+network_security,zero_trust,"Zero Trust architecture design,Micro-segmentation,Identity-based access",3,network_security_03_zero_trust
+network_security,vpn,"IPSec VPN configuration,SSL VPN security,WireGuard setup",3,network_security_04_vpn
+linux_security,hardening,"CIS Linux Benchmarks,SELinux and AppArmor,SSH hardening,Kernel parameters security",4,linux_security_01_hardening
+linux_security,logging,"Syslog analysis,Auditd configuration,SIEM integration",3,linux_security_02_logging
+linux_security,package_security,"Repository signing verification,Vulnerability scanning,Patch management",3,linux_security_03_package_security
+linux_security,network,"iptables and nftables,TCP wrappers,Port security",3,linux_security_04_network
+siem_platforms,splunk,"SPL query writing,Dashboard and report creation,Alert and correlation rules,Data onboarding,Enterprise Security content",5,siem_platforms_01_splunk
+siem_platforms,qradar,"QRadar offense management,AQL queries,Log source configuration",3,siem_platforms_02_qradar
+siem_platforms,edr_xdr,"CrowdStrike Falcon queries (Raptor),Microsoft Defender for Endpoint,Carbon Black response,SentinelOne Deep Visibility,EDR alert investigation",5,siem_platforms_03_edr_xdr
+vulnerability_management,scanning,"Nessus scan configuration,Qualys vulnerability management,OpenVAS setup and scanning",3,vulnerability_management_01_scanning
+vulnerability_management,patch_management,"Windows patching (WSUS/SCCM),Linux patch management,Application patching,Patch prioritization frameworks",4,vulnerability_management_02_patch_management
+vulnerability_management,cve_analysis,"CVSS scoring interpretation,Exploit availability assessment,Risk-based prioritization",3,vulnerability_management_03_cve_analysis
+vulnerability_management,security_testing,"Penetration testing methodology,Web application testing (OWASP),API security testing",3,vulnerability_management_04_security_testing
+application_security,web_security,"OWASP Top 10 vulnerabilities,SQL Injection prevention,XSS and CSRF protection,Authentication flaws,Server-side request forgery",5,application_security_01_web_security
+application_security,api_security,"REST API security,OAuth 2.0 and OpenID Connect,JWT security,API gateway configuration,GraphQL security",5,application_security_02_api_security
+application_security,devsecops,"CI/CD pipeline security,Container image scanning,IaC security (Terraform, Bicep),Secret management,SAST and DAST integration",5,application_security_03_devsecops
+malware_analysis,static_analysis,"PE file analysis,String analysis,Import/export analysis,YARA rule writing",4,malware_analysis_01_static_analysis
+malware_analysis,dynamic_analysis,"Sandbox analysis,Process monitoring,Network traffic analysis,Registry changes",4,malware_analysis_02_dynamic_analysis
+malware_analysis,reverse_engineering,"Ghidra usage,IDA Pro basics,Assembly language for malware,Unpacking techniques",4,malware_analysis_03_reverse_engineering
+emerging_tech,zero_trust_architecture,"Zero Trust principles implementation,Identity verification strategies,Device trust assessment,Micro-segmentation design",4,emerging_tech_01_zero_trust_architecture
+emerging_tech,cloud_native,"Serverless security concerns,Service mesh security (Istio),CNAPP platforms,Microservices security patterns",4,emerging_tech_02_cloud_native
+emerging_tech,ai_security,"AI/ML model security,Adversarial attacks on ML models,LLM security considerations,AI in cybersecurity operations",4,emerging_tech_03_ai_security
+emerging_tech,iot_ot,"Industrial Control Systems security,SCADA/ICS protocols,IoT device hardening,OT network segmentation",4,emerging_tech_04_iot_ot
+application_security,bitbucket_security,"Bitbucket repository access control,Bitbucket branch restrictions,Bitbucket CI/CD security,Bitbucket audit logging,Bitbucket integration security",5,application_security_04_bitbucket

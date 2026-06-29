@@ -1,0 +1,495 @@
+{% extends 'ai_ops/base_ai_ops.html' %}
+{% load static %}
+
+{% block title %}AI Retrieval Inspector - AVAGuard{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'ai_ops/css/admin.css' %}?v=3.0">
+<style>
+    .inspector-container {
+        display: flex;
+        flex-direction: column;
+        gap: 24px;
+    }
+    
+    .inspector-header-panel {
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+        padding: 24px;
+    }
+    
+    .inspector-form-row {
+        display: flex;
+        gap: 16px;
+        width: 100%;
+        flex-wrap: wrap;
+    }
+    
+    .inspector-search-wrapper {
+        flex: 1;
+        position: relative;
+        min-width: 300px;
+    }
+    
+    .inspector-search-icon {
+        position: absolute;
+        left: 16px;
+        top: 50%;
+        transform: translateY(-50%);
+        color: var(--avag-text-secondary);
+        width: 18px;
+        height: 18px;
+    }
+    
+    .inspector-search-input {
+        width: 100%;
+        padding: 14px 16px 14px 48px;
+        background: var(--avag-bg-input, rgba(255, 255, 255, 0.03));
+        border: 1px solid var(--avag-border-color, rgba(255, 255, 255, 0.08));
+        border-radius: 8px;
+        color: var(--avag-text-primary);
+        font-size: 15px;
+        transition: all var(--transition-fast);
+    }
+    
+    .inspector-search-input:focus {
+        outline: none;
+        border-color: var(--avag-accent-primary);
+        box-shadow: 0 0 0 3px rgba(0, 212, 255, 0.12);
+    }
+    
+    .pipeline-stage {
+        border: 1px solid var(--avag-border-color, rgba(255, 255, 255, 0.08));
+        border-radius: 12px;
+        background: var(--avag-bg-card, #121224);
+        overflow: hidden;
+        margin-bottom: 16px;
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+    }
+    
+    .pipeline-stage.active {
+        border-color: rgba(0, 212, 255, 0.3);
+        box-shadow: 0 4px 30px rgba(0, 212, 255, 0.05);
+    }
+    
+    .stage-header {
+        padding: 18px 24px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        cursor: pointer;
+        background: linear-gradient(90deg, rgba(255, 255, 255, 0.01) 0%, rgba(255, 255, 255, 0.0) 100%);
+        user-select: none;
+    }
+    
+    .stage-header:hover {
+        background: rgba(255, 255, 255, 0.02);
+    }
+    
+    .stage-title {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        font-size: 15px;
+        font-weight: 600;
+        margin: 0;
+        color: var(--avag-text-primary);
+    }
+    
+    .stage-icon-circle {
+        width: 32px;
+        height: 32px;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.05);
+        color: var(--avag-text-secondary);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 14px;
+        font-weight: 700;
+        transition: all 0.3s ease;
+    }
+    
+    .pipeline-stage.active .stage-icon-circle {
+        background: rgba(0, 212, 255, 0.12);
+        color: var(--avag-accent-primary);
+        box-shadow: 0 0 10px rgba(0, 212, 255, 0.1);
+    }
+    
+    .stage-meta {
+        display: flex;
+        align-items: center;
+        gap: 16px;
+    }
+    
+    .stage-badge {
+        font-size: 11px;
+        font-weight: 700;
+        padding: 3px 8px;
+        border-radius: 4px;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+    }
+    
+    .badge-success {
+        background: rgba(0, 255, 136, 0.08);
+        color: var(--avag-accent-success);
+        border: 1px solid rgba(0, 255, 136, 0.15);
+    }
+    
+    .badge-warning {
+        background: rgba(255, 193, 7, 0.08);
+        color: var(--avag-accent-warning);
+        border: 1px solid rgba(255, 193, 7, 0.15);
+    }
+    
+    .badge-info {
+        background: rgba(0, 212, 255, 0.08);
+        color: var(--avag-accent-primary);
+        border: 1px solid rgba(0, 212, 255, 0.15);
+    }
+    
+    .badge-danger {
+        background: rgba(255, 75, 75, 0.08);
+        color: #ff4b4b;
+        border: 1px solid rgba(255, 75, 75, 0.15);
+    }
+    
+    .stage-chevron {
+        color: var(--avag-text-secondary);
+        transition: transform 0.3s ease;
+    }
+    
+    .pipeline-stage.collapsed .stage-chevron {
+        transform: rotate(-90deg);
+    }
+    
+    .stage-content {
+        padding: 24px;
+        border-top: 1px solid var(--avag-border-color, rgba(255, 255, 255, 0.08));
+        background: rgba(0, 0, 0, 0.1);
+        transition: max-height 0.3s ease-out, opacity 0.3s ease;
+        opacity: 1;
+    }
+    
+    .pipeline-stage.collapsed .stage-content {
+        display: none;
+        opacity: 0;
+    }
+    
+    .inspector-metric-card {
+        background: var(--avag-bg-input, rgba(255, 255, 255, 0.02));
+        border: 1px solid var(--avag-border-color, rgba(255, 255, 255, 0.06));
+        border-radius: 8px;
+        padding: 16px;
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
+    }
+    
+    .metric-label {
+        font-size: 11px;
+        font-weight: 600;
+        color: var(--avag-text-secondary);
+        text-transform: uppercase;
+        letter-spacing: 0.8px;
+    }
+    
+    .metric-value {
+        font-size: 18px;
+        font-weight: 700;
+        color: var(--avag-text-primary);
+    }
+    
+    .metrics-row {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+        gap: 16px;
+        margin-bottom: 24px;
+    }
+    
+    .snippet-pre {
+        background: rgba(0, 0, 0, 0.3);
+        border: 1px solid var(--avag-border-color, rgba(255, 255, 255, 0.05));
+        border-radius: 6px;
+        padding: 14px;
+        font-family: inherit;
+        font-size: 13.5px;
+        line-height: 1.5;
+        white-space: pre-wrap;
+        color: var(--avag-text-secondary);
+        margin: 8px 0 0 0;
+    }
+    
+    .inspector-dropdown {
+        background: var(--avag-bg-input, rgba(0,0,0,0.3));
+        border: 1px solid var(--avag-border-color, rgba(255,255,255,0.08));
+        color: var(--avag-text-primary);
+        border-radius: 8px;
+        padding: 14px;
+        font-size: 14px;
+        max-width: 250px;
+        cursor: pointer;
+    }
+    
+    .inspector-dropdown:focus {
+        outline: none;
+        border-color: var(--avag-accent-primary);
+    }
+    
+    .badge-rank {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 24px;
+        height: 24px;
+        border-radius: 4px;
+        font-size: 12px;
+        font-weight: 700;
+        background: rgba(0, 212, 255, 0.12);
+        color: var(--avag-accent-primary);
+    }
+    
+    .badge-confidence {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        font-size: 12px;
+        font-weight: 600;
+    }
+    
+    .confidence-dot {
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+    }
+    
+    .dot-high { background-color: var(--avag-accent-success, #00ff88); }
+    .dot-medium { background-color: var(--avag-accent-warning, #ffd93d); }
+    .dot-low { background-color: var(--avag-accent-danger, #ff4b4b); }
+    .dot-none { background-color: var(--avag-text-secondary, #808080); }
+</style>
+{% endblock %}
+
+{% block ai_page_name %}Retrieval Inspector{% endblock %}
+
+{% block ai_content %}
+<div class="inspector-container">
+    
+    <!-- Header panel with Query input -->
+    <div class="stat-card inspector-header-panel">
+        <div class="ai-panel-header" style="border-bottom: 1px solid var(--avag-border-color); padding-bottom: 16px; width: 100%;">
+            <div>
+                <h3 class="ai-panel-title"><i data-lucide="zoom-in"></i> Debug & Profile Retrieval Performance</h3>
+                <p class="ai-subtitle-text" style="margin-top: 4px; margin-bottom: 0;">Enter a live test question to run through the active RAG similarity pipeline, or review query logs.</p>
+            </div>
+            <div style="display: flex; gap: 12px; align-items: center;">
+                <label for="history-query-select" style="font-size: 12px; color: var(--avag-text-secondary); text-transform: uppercase; font-weight: 600; letter-spacing: 0.5px;">Replay History:</label>
+                <select id="history-query-select" class="inspector-dropdown" onchange="loadHistoricalQuery(this.value)">
+                    <option value="">-- Choose Past Query --</option>
+                    <!-- Populated via API -->
+                </select>
+            </div>
+        </div>
+        
+        <form id="inspect-query-form" onsubmit="runLiveInspection(event)" style="width: 100%;">
+            <div class="inspector-form-row">
+                <div class="inspector-search-wrapper">
+                    <i data-lucide="search" class="inspector-search-icon"></i>
+                    <input type="text" id="inspect-query-input" class="inspector-search-input" placeholder="Type a compliance question (e.g., 'What are the password policy rules for CIS Windows 11?')..." required>
+                </div>
+                <select id="inspect-framework-filter" class="inspector-dropdown" style="max-width: 180px;">
+                    <option value="">All Frameworks</option>
+                    <!-- Populated dynamically via JS -->
+                </select>
+                <button type="submit" class="btn btn-primary" id="inspect-submit-btn" style="padding: 0 32px; height: 50px;">
+                    <span class="btn-text">Execute Profiler</span>
+                    <span class="spinner-small avag-hide" id="inspect-spinner"></span>
+                </button>
+            </div>
+        </form>
+    </div>
+
+    <!-- Empty State -->
+    <div id="inspector-empty-state" class="stat-card" style="padding: 60px; text-align: center;">
+        <div style="width: 64px; height: 64px; border-radius: 50%; background: rgba(0, 212, 255, 0.08); display: flex; align-items: center; justify-content: center; margin: 0 auto 20px; color: var(--avag-accent-primary);">
+            <i data-lucide="play" style="width: 32px; height: 32px;"></i>
+        </div>
+        <h4 style="font-size: 16px; font-weight: 600; color: var(--avag-text-primary); margin-bottom: 8px;">No Profile Data Loaded</h4>
+        <p style="font-size: 13.5px; color: var(--avag-text-secondary); max-width: 480px; margin: 0 auto;">Type a question above and click "Execute Profiler", or choose a historical query from the dropdown to dissect search ranking and confidence scores.</p>
+    </div>
+
+    <!-- Loading State -->
+    <div id="inspector-loading-state" class="stat-card avag-hide" style="padding: 60px; text-align: center;">
+        <span class="spinner-large avag-mb-16"></span>
+        <h4 style="font-size: 15px; font-weight: 600; color: var(--avag-text-primary); margin-bottom: 4px;">Profiling Search Pipeline...</h4>
+        <p style="font-size: 13px; color: var(--avag-text-secondary);">Querying dense FAISS, calculating BM25 lexical matches, running RRF merge, and evaluating Cross-Encoder scores.</p>
+    </div>
+
+    <!-- Pipeline Visualizer -->
+    <div id="inspector-pipeline-container" class="avag-hide">
+        
+        <!-- Stage 1: Query & Intent Parsing -->
+        <div class="pipeline-stage active" id="stage-query">
+            <div class="stage-header" onclick="toggleStage('stage-query')">
+                <div class="stage-title">
+                    <span class="stage-icon-circle">1</span>
+                    <span>Query & Intent Classification</span>
+                </div>
+                <div class="stage-meta">
+                    <span id="badge-intent-mode" class="stage-badge badge-info">AI Mode</span>
+                    <span id="badge-intent-safety" class="stage-badge badge-success">Safe</span>
+                    <i data-lucide="chevron-down" class="stage-chevron"></i>
+                </div>
+            </div>
+            <div class="stage-content">
+                <div class="metrics-row">
+                    <div class="inspector-metric-card">
+                        <span class="metric-label">Sanitization Latency</span>
+                        <span class="metric-value" id="val-sanitization-latency">--</span>
+                    </div>
+                    <div class="inspector-metric-card">
+                        <span class="metric-label">Token Estimate</span>
+                        <span class="metric-value" id="val-query-tokens">--</span>
+                    </div>
+                </div>
+                
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 24px; flex-wrap: wrap;">
+                    <div>
+                        <label class="metric-label">Raw User Query</label>
+                        <blockquote class="snippet-pre" id="val-raw-query" style="background: rgba(255,255,255,0.01);"></blockquote>
+                    </div>
+                    <div>
+                        <label class="metric-label">Sanitized Pipeline Query</label>
+                        <blockquote class="snippet-pre" id="val-sanitized-query" style="background: rgba(255,255,255,0.01);"></blockquote>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Stage 2: Retrieval (BM25 + FAISS → RRF) -->
+        <div class="pipeline-stage active" id="stage-retrieval">
+            <div class="stage-header" onclick="toggleStage('stage-retrieval')">
+                <div class="stage-title">
+                    <span class="stage-icon-circle">2</span>
+                    <span>Hybrid Search & Reciprocal Rank Fusion</span>
+                </div>
+                <div class="stage-meta">
+                    <span id="badge-candidate-count" class="stage-badge badge-info">-- candidates</span>
+                    <i data-lucide="chevron-down" class="stage-chevron"></i>
+                </div>
+            </div>
+            <div class="stage-content">
+                <div class="metrics-row">
+                    <div class="inspector-metric-card">
+                        <span class="metric-label">Retrieval Latency</span>
+                        <span class="metric-value" id="val-retrieval-latency">--</span>
+                    </div>
+                    <div class="inspector-metric-card">
+                        <span class="metric-label">Embedding Model</span>
+                        <span class="metric-value" id="val-embedding-model" style="font-size: 13px; line-height: 22px;">--</span>
+                    </div>
+                </div>
+                
+                <div style="border: 1px solid var(--avag-border-color); border-radius: 8px; overflow: hidden; background: rgba(0,0,0,0.15);">
+                    <table class="avag-table" style="width: 100%; border-collapse: collapse; text-align: left; font-size: 13.5px;">
+                        <thead>
+                            <tr style="border-bottom: 1px solid var(--avag-border-color); color: var(--avag-text-secondary); background: rgba(255,255,255,0.01);">
+                                <th style="padding: 12px 16px;">Hybrid Rank</th>
+                                <th style="padding: 12px 16px;">Document Filename</th>
+                                <th style="padding: 12px 16px;">Framework Directory</th>
+                                <th style="padding: 12px 16px;">RRF Fusion Score</th>
+                            </tr>
+                        </thead>
+                        <tbody id="retrieval-tbody">
+                            <!-- Populated via Javascript -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <!-- Stage 3: Reranking & Relevance Filtering -->
+        <div class="pipeline-stage active" id="stage-reranking">
+            <div class="stage-header" onclick="toggleStage('stage-reranking')">
+                <div class="stage-title">
+                    <span class="stage-icon-circle">3</span>
+                    <span>Cross-Encoder Reranking & Confidence Scoring</span>
+                </div>
+                <div class="stage-meta">
+                    <span id="badge-confidence-level" class="stage-badge">-- Confidence</span>
+                    <i data-lucide="chevron-down" class="stage-chevron"></i>
+                </div>
+            </div>
+            <div class="stage-content">
+                <div class="metrics-row">
+                    <div class="inspector-metric-card">
+                        <span class="metric-label">Reranker Latency</span>
+                        <span class="metric-value" id="val-rerank-latency">--</span>
+                    </div>
+                    <div class="inspector-metric-card">
+                        <span class="metric-label">Cross-Encoder Model</span>
+                        <span class="metric-value" style="font-size: 13px; line-height: 22px;">cross-encoder/ms-marco-MiniLM-L-6-v2</span>
+                    </div>
+                    <div class="inspector-metric-card">
+                        <span class="metric-label">Avg Relevance Score</span>
+                        <span class="metric-value" id="val-avg-relevance">--</span>
+                    </div>
+                    <div class="inspector-metric-card">
+                        <span class="metric-label">Passed Threshold</span>
+                        <span class="metric-value" id="val-passed-count">--</span>
+                    </div>
+                </div>
+
+                <h4 style="font-size: 13px; font-weight: 600; color: var(--avag-text-primary); text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 12px;">Reranked Document Chunks</h4>
+                <div id="reranked-chunks-container" style="display: flex; flex-direction: column; gap: 16px;">
+                    <!-- Populated via Javascript -->
+                </div>
+            </div>
+        </div>
+
+        <!-- Stage 4: Generation Output -->
+        <div class="pipeline-stage collapsed" id="stage-generation">
+            <div class="stage-header" onclick="toggleStage('stage-generation')">
+                <div class="stage-title">
+                    <span class="stage-icon-circle">4</span>
+                    <span>Response Synthesis & Grounding Verification</span>
+                </div>
+                <div class="stage-meta">
+                    <span id="badge-generation-status" class="stage-badge badge-success">Success</span>
+                    <i data-lucide="chevron-down" class="stage-chevron"></i>
+                </div>
+            </div>
+            <div class="stage-content">
+                <div class="metrics-row">
+                    <div class="inspector-metric-card">
+                        <span class="metric-label">Generation Model</span>
+                        <span class="metric-value" id="val-generation-model" style="font-size: 13.5px; line-height: 22px;">--</span>
+                    </div>
+                    <div class="inspector-metric-card">
+                        <span class="metric-label">Response Tokens</span>
+                        <span class="metric-value" id="val-generation-tokens">--</span>
+                    </div>
+                    <div class="inspector-metric-card">
+                        <span class="metric-label">Total Pipeline Latency</span>
+                        <span class="metric-value" id="val-total-latency">--</span>
+                    </div>
+                </div>
+
+                <div style="display: flex; flex-direction: column; gap: 8px;">
+                    <label class="metric-label">Grounded LLM Compliance Answer</label>
+                    <div class="snippet-pre" id="val-generation-response" style="background: rgba(0, 212, 255, 0.02); border-color: rgba(0, 212, 255, 0.15); color: var(--avag-text-primary); font-size: 14px; padding: 20px;"></div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script src="{% static 'ai_ops/js/retrieval_inspector.js' %}?v=3.0"></script>
+{% endblock %}

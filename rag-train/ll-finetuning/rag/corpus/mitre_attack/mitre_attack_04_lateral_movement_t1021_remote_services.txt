@@ -1,0 +1,150 @@
+MITRE ATT&CK Lateral Movement — T1021 Remote Services and Related Techniques
+
+OVERVIEW
+
+Lateral Movement consists of techniques that adversaries use to progressively move through an environment and gain access to remote systems and resources. Achieving their goal often requires exploring the network to find targets and subsequently gain access. Reaching their objective often involves pivoting through multiple systems and accounts. Adversaries use lateral movement for many purposes, including remote code execution, access to specific data and files, and installation of other tools for later stages of their operation.
+
+TECHNIQUE T1021: REMOTE SERVICES
+
+Remote services such as VPNs, Citrix, and other access mechanisms allow users to connect to internal enterprise network resources from external locations. There are often remote service gateways that manage connections and credential authentication for these services. Services such as Windows Remote Management (WinRM) can also be used externally.
+
+Sub-techniques:
+- T1021.001 Remote Desktop Protocol (RDP)
+- T1021.002 SMB/Windows Admin Shares
+- T1021.003 Distributed Component Object Model (DCOM)
+- T1021.004 SSH
+- T1021.005 VNC
+- T1021.006 Windows Remote Management
+- T1021.007 Cloud Services
+
+TECHNIQUE T1021.001: REMOTE DESKTOP PROTOCOL (RDP)
+
+Adversaries may use Valid Accounts to log into a computer using the Remote Desktop Protocol (RDP). The adversary may then perform actions as the logged-on user. RDP is a common feature in operating systems. It allows a user to log into an interactive session with a system desktop graphical user interface on a remote system. Microsoft refers to its implementation of the Remote Desktop Protocol as Remote Desktop Services (RDS).
+
+Detection:
+- Use of RDP may be legitimate depending on the network environment and how it is used. Other factors, such as access patterns and activity that occurs after a remote login, may indicate suspicious or malicious behavior with RDP.
+- Monitor for user accounts logged into systems they would not normally access or access patterns to multiple systems over a relatively short period of time.
+- Monitor for processes and command-line arguments associated with remote service activity (e.g., mstsc.exe).
+
+Mitigation:
+- Disable the RDP service if it is unnecessary. Remove unnecessary accounts and groups that have access to RDP.
+- Enable the Windows Firewall to block unauthorized RDP connections.
+- Use Network Level Authentication (NLA) before establishing RDP sessions.
+- Limit access to RDP by blocking TCP port 3389 at network boundaries.
+- Implement multi-factor authentication (MFA) for RDP connections using solutions like Duo Security or Microsoft Authenticator.
+- Monitor and log all RDP connections, especially from external IP addresses.
+- Use dedicated jump servers or privileged access workstations (PAWs) for RDP access to critical systems.
+
+TECHNIQUE T1021.002: SMB/WINDOWS ADMIN SHARES
+
+Adversaries may use Valid Accounts to interact with a remote network share using Server Message Block (SMB). The adversary may then perform actions as the logged-on user.
+
+SMB is a file, printer, and serial port sharing protocol for Windows machines on the same network or domain. Adversaries may use SMB to interact with file shares, allowing them to move laterally throughout a network.
+
+Windows systems have hidden network shares that are accessible only to administrators and provide the ability for remote file copy and other administrative functions:
+- ADMIN$ — Remote Admin
+- IPC$ — Remote IPC
+- C$ — Default share (C:\)
+
+Detection:
+- Ensure that proper logging of accounts that have been used to log in using explicit credentials is collected and reviewed.
+- Monitor for unusual use of net use commands or Windows API calls to access shares.
+- Monitor for creation of files on network shares that were not expected or that are not normally accessed.
+
+Mitigation:
+- Consider disabling Windows administrative shares with the AutoShareServer and AutoShareWks registry settings.
+- Use host-based firewalls to limit lateral movement using SMB.
+- Restrict access to SMB ports (TCP 445 and 139) using firewalls.
+- Require strong passwords and MFA for all administrative accounts.
+
+TECHNIQUE T1021.004: SSH
+
+Adversaries may use Valid Accounts to log into remote machines using Secure Shell (SSH). The adversary may then perform actions as the logged-on user. SSH is a protocol that allows authorized users to open remote shells on other computers. Many Linux and macOS versions come with SSH installed by default.
+
+Detection:
+- Monitor for user accounts logged into systems they would not normally access.
+- Monitor SSH logs for unusual login times, locations, or failed authentication attempts.
+- Watch for SSH connections using keys that are not normally used.
+- Alert on SSH tunneling activity or use of non-standard ports.
+
+Mitigation:
+- Disable SSH access where it is not required.
+- Use SSH keys instead of passwords for authentication.
+- Implement multi-factor authentication for SSH where possible.
+- Restrict SSH access to specific IP ranges using AllowUsers and AllowGroups directives.
+- Use a jump server or bastion host for SSH access to internal systems.
+- Regularly audit and rotate SSH keys.
+- Monitor and log all SSH connections and commands.
+- Consider using SSH certificate authorities for centralized key management.
+
+TECHNIQUE T1021.006: WINDOWS REMOTE MANAGEMENT
+
+Adversaries may use Valid Accounts to interact with remote systems using Windows Remote Management (WinRM). The adversary may then perform actions as the logged-on user.
+
+WinRM is the name of both a Windows service and a protocol that allows a user to interact with a remote system. The service uses the Simple Object Access Protocol (SOAP) for message transport. WinRM allows the execution of commands on remote computers via the command line or scripting environments.
+
+Detection:
+- Monitor for use of WinRM tools (winrm.cmd, winrs.exe, Invoke-Command) in unexpected contexts.
+- Review WinRM logs in the Windows Event Log (Event ID 6 for outbound connections).
+- Alert on WinRM connections to systems that are not normally managed remotely.
+
+Mitigation:
+- Disable WinRM if not needed using: winrm delete winrm/config/listener?*
+- Restrict WinRM access to specific hosts using firewall rules (TCP ports 5985 and 5986).
+- Require HTTPS for WinRM connections.
+- Implement allowlists for systems that can receive WinRM connections.
+- Enable PowerShell Script Block Logging to monitor commands executed via WinRM.
+
+GENERAL LATERAL MOVEMENT DETECTION STRATEGIES
+
+Network-Based Detection:
+- Monitor for unusual network traffic patterns between internal systems.
+- Alert on systems connecting to many other internal systems in a short time period (network scanning behavior).
+- Watch for use of administrative protocols (RDP, SMB, SSH, WinRM) from unusual source systems or accounts.
+- Deploy network detection and response (NDR) tools capable of identifying lateral movement patterns.
+- Monitor east-west traffic with the same rigor applied to north-south (perimeter) traffic.
+
+Endpoint-Based Detection:
+- Enable and monitor Windows Event Logs, particularly Security and System event logs.
+- Implement EDR (Endpoint Detection and Response) solutions that can identify process trees and network connections.
+- Alert on processes making unexpected network connections.
+- Monitor for credential dumping tools (mimikatz, procdump, etc.) that are prerequisites for lateral movement.
+- Detect use of living-off-the-land (LOLBAS) tools for lateral movement.
+
+Identity and Access Monitoring:
+- Alert on accounts logging into multiple systems within a short timeframe.
+- Monitor for use of service accounts making interactive logons.
+- Watch for logons outside normal working hours.
+- Track pass-the-hash, pass-the-ticket, and other credential-based attacks.
+- Alert on use of local administrator accounts across multiple systems.
+
+MITIGATIONS FOR LATERAL MOVEMENT
+
+Network Segmentation:
+- Implement micro-segmentation to limit lateral movement between network segments.
+- Use VLANs, firewalls, and access control lists (ACLs) to restrict traffic between systems.
+- Apply the principle of least privilege to network access.
+
+Privileged Access Management:
+- Implement a privileged access management (PAM) solution to control and monitor access to sensitive systems.
+- Use just-in-time (JIT) access provisioning for administrative accounts.
+- Implement privileged access workstations (PAWs) for sensitive administrative tasks.
+
+Credential Protection:
+- Enable Windows Credential Guard to protect credentials in memory.
+- Implement LAPS (Local Administrator Password Solution) to use unique local admin passwords on each system.
+- Disable NTLM where possible and enforce Kerberos authentication.
+- Regularly audit and rotate service account credentials.
+
+Multi-Factor Authentication:
+- Implement MFA for all remote access mechanisms, including RDP, SSH, and VPN.
+- Require MFA for privileged account usage, even within the internal network.
+- Consider risk-based authentication that triggers MFA challenges for anomalous access patterns.
+
+REFERENCES
+- MITRE ATT&CK T1021: https://attack.mitre.org/techniques/T1021/
+- MITRE ATT&CK Lateral Movement Tactic: https://attack.mitre.org/tactics/TA0008/
+- NIST SP 800-171 Rev 2 — 3.1.3 Control the flow of CUI
+- CIS Control 4: Controlled Use of Administrative Privileges
+- CIS Control 12: Boundary Defense
+- CIS Control 16: Account Monitoring and Control
