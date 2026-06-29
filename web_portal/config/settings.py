@@ -10,6 +10,7 @@ Hardened for team collaboration:
 
 import os
 import sys
+import secrets, base64
 from pathlib import Path
 from datetime import timedelta
 from dotenv import load_dotenv
@@ -34,7 +35,11 @@ ALLOWED_HOSTS = [h.strip() for h in os.getenv('ALLOWED_HOSTS', 'localhost,127.0.
 # JWT Signing Key — MUST be separate from SECRET_KEY.
 # If SECRET_KEY leaks (error pages, git history), JWTs remain safe.
 # Falls back to SECRET_KEY in development only.
-JWT_SIGNING_KEY = os.getenv('JWT_SIGNING_KEY', SECRET_KEY if DEBUG else '')
+if os.getenv('VERCEL') == '1' and not os.getenv('JWT_SIGNING_KEY'):
+    # Generate a temporary signing key for Vercel builds without a JWT secret
+    JWT_SIGNING_KEY = base64.urlsafe_b64encode(secrets.token_bytes(32)).decode()
+else:
+    JWT_SIGNING_KEY = os.getenv('JWT_SIGNING_KEY', SECRET_KEY if DEBUG else '')
 
 # OTP / 2FA toggle — set OTP_ENABLED=True in .env to enforce 2FA
 OTP_ENABLED = os.getenv('OTP_ENABLED', 'False') == 'True'
@@ -157,13 +162,21 @@ if _db_engine == 'postgresql':
         }
     }
 else:
-    # SQLite — local development and Desktop app
-    DATABASES = {
-        'default': {
-            'ENGINE': 'django.db.backends.sqlite3',
-            'NAME': BASE_DIR / 'db.sqlite3',
+    # SQLite — use in‑memory DB on Vercel (read‑only filesystem)
+    if os.getenv('VERCEL') == '1':
+        DATABASES = {
+            'default': {
+                'ENGINE': 'django.db.backends.sqlite3',
+                'NAME': ':memory:',
+            }
         }
-    }
+    else:
+        DATABASES = {
+            'default': {
+                'ENGINE': 'django.db.backends.sqlite3',
+                'NAME': BASE_DIR / 'db.sqlite3',
+            }
+        }
 
 # ==============================================================================
 # Password validation
