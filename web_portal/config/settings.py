@@ -19,9 +19,8 @@ from dotenv import load_dotenv
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 # Load .env FIRST — before anything else reads env vars
+# BASE_DIR = web_portal/, so .env lives directly inside it
 load_dotenv(BASE_DIR / '.env')
-# Also load the .env inside the web_portal folder (used by Vercel deployments)
-load_dotenv(BASE_DIR / 'web_portal' / '.env', override=True)
 
 # --- AVAGuard Core Integration ---
 # (Web Portal directly imports avaguard_core using the installed package)
@@ -220,6 +219,9 @@ USE_TZ = True
 # Static files
 # ==============================================================================
 STATIC_URL = 'static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 # ==============================================================================
 # Request / Upload Limits (prevent OOM via oversized payloads)
