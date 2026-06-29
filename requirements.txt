@@ -1,4 +1,4 @@
-# AVAGuard Platform — Consolidated Dependencies
+# AVAGuard Platform — Web Portal Vercel Dependencies
 # Usage: pip install -r requirements.txt
 
 # === Core Engine ===
@@ -18,9 +18,6 @@ click>=8.1.3
 colorama>=0.4.6
 tabulate>=0.9.0
 
-# === Desktop App ===
-PyQt6>=6.6.0
-
 # === Web Portal ===
 Django>=4.2,<5.0
 djangorestframework>=3.14.0
@@ -35,9 +32,6 @@ openpyxl>=3.1.2
 psycopg2-binary>=2.9.9
 Jinja2>=3.1.0
 
-# === AI Retrieval (Phase 5) ===
-faiss-cpu>=1.7.4
-sentence-transformers>=2.2.0
+# === AI APIs (Cloud only) ===
 openai>=1.0.0
 tiktoken>=0.5.0
-rank-bm25>=0.2.2

@@ -1,0 +1,7 @@
+desktop_app/
+rag-train/
+.venv/
+docs/
+docs_assets/
+*.pyc
+__pycache__/
