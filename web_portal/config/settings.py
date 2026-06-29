@@ -20,6 +20,8 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 # Load .env FIRST — before anything else reads env vars
 load_dotenv(BASE_DIR / '.env')
+# Also load the .env inside the web_portal folder (used by Vercel deployments)
+load_dotenv(BASE_DIR / 'web_portal' / '.env', override=True)
 
 # --- AVAGuard Core Integration ---
 # (Web Portal directly imports avaguard_core using the installed package)
@@ -28,18 +30,26 @@ PROJECT_ROOT = BASE_DIR.parent
 # ==============================================================================
 # Core Settings (from .env with safe fallbacks)
 # ==============================================================================
-SECRET_KEY = os.getenv('SECRET_KEY', 'dev-insecure-key-change-in-production')
+SECRET_KEY = os.getenv('SECRET_KEY')
+if not SECRET_KEY:
+    # Generate a temporary secret key when none is provided
+    SECRET_KEY = base64.urlsafe_b64encode(secrets.token_bytes(48)).decode()
 DEBUG = os.getenv('DEBUG', 'True') == 'True'
-ALLOWED_HOSTS = [h.strip() for h in os.getenv('ALLOWED_HOSTS', 'localhost,127.0.0.1').split(',') if h.strip()]
+ALLOWED_HOSTS = os.getenv('ALLOWED_HOSTS')
+if not ALLOWED_HOSTS:
+    # Allow all hosts in serverless env (override in production if needed)
+    ALLOWED_HOSTS = ['*']
+else:
+    ALLOWED_HOSTS = [h.strip() for h in ALLOWED_HOSTS.split(',') if h.strip()]
 
 # JWT Signing Key — MUST be separate from SECRET_KEY.
 # If SECRET_KEY leaks (error pages, git history), JWTs remain safe.
 # Falls back to SECRET_KEY in development only.
-if os.getenv('VERCEL') == '1' and not os.getenv('JWT_SIGNING_KEY'):
-    # Generate a temporary signing key for Vercel builds without a JWT secret
+JWT_SIGNING_KEY = os.getenv('JWT_SIGNING_KEY')
+if not JWT_SIGNING_KEY:
+    # Generate a temporary JWT signing key when none is provided
     JWT_SIGNING_KEY = base64.urlsafe_b64encode(secrets.token_bytes(32)).decode()
-else:
-    JWT_SIGNING_KEY = os.getenv('JWT_SIGNING_KEY', SECRET_KEY if DEBUG else '')
+# No else needed – JWT_SIGNING_KEY now always has a value
 
 # OTP / 2FA toggle — set OTP_ENABLED=True in .env to enforce 2FA
 OTP_ENABLED = os.getenv('OTP_ENABLED', 'False') == 'True'
@@ -162,8 +172,8 @@ if _db_engine == 'postgresql':
         }
     }
 else:
-    # SQLite — use in‑memory DB on Vercel (read‑only filesystem)
-    if os.getenv('VERCEL') == '1':
+    # Use in‑memory SQLite when the filesystem is read‑only (Vercel) or when VERCEL env var is set
+    if os.getenv('VERCEL') == '1' or not os.access(BASE_DIR, os.W_OK):
         DATABASES = {
             'default': {
                 'ENGINE': 'django.db.backends.sqlite3',
