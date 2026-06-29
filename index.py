@@ -13,16 +13,15 @@ def load_app():
         from django.core.wsgi import get_wsgi_application
         return get_wsgi_application()
     except Exception as e:
-        # Print the exception to stderr so it shows up in Vercel Runtime Logs
-        print(f"FATAL ERROR ON STARTUP: {e}", file=sys.stderr)
-        traceback.print_exc(file=sys.stderr)
+        # Capture the error traceback IMMEDIATELY
+        error_message = str(e)
+        full_traceback = traceback.format_exc()
         
-        # Still raise it so Vercel knows it failed, or return a fake app that prints the error
         def fallback_app(environ, start_response):
             status = '500 Internal Server Error'
             headers = [('Content-type', 'text/plain; charset=utf-8')]
             start_response(status, headers)
-            error_msg = f"Startup Error:\n{traceback.format_exc()}"
+            error_msg = f"Startup Error: {error_message}\n\nFull Traceback:\n{full_traceback}"
             return [error_msg.encode("utf-8")]
         
         return fallback_app
