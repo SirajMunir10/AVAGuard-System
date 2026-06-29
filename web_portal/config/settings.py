@@ -263,8 +263,17 @@ if DEBUG:
 # ==============================================================================
 # Logging Configuration (auto-creates logs/ directory)
 # ==============================================================================
-LOGS_DIR = BASE_DIR / 'logs'
-os.makedirs(LOGS_DIR, exist_ok=True)
+# On Vercel, the filesystem is read-only, so we fallback to /tmp or just disable file logging.
+if os.getenv("VERCEL") == "1" or not os.access(BASE_DIR, os.W_OK):
+    LOGS_DIR = Path('/tmp/logs')
+else:
+    LOGS_DIR = BASE_DIR / 'logs'
+
+try:
+    os.makedirs(LOGS_DIR, exist_ok=True)
+except Exception:
+    pass
+
 
 LOGGING = {
     'version': 1,
